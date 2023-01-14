@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="white"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="black"
+    />
+    <link rel="manifest" href="/manifest.json" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="src/style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="images/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="images/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="images/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="images/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="images/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="images/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="images/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="images/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="images/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="images/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="images/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="images/favicon-16x16.png"
+    />
+
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="images/ms-icon-144x144.png" />
+
+    <title>saif khan</title>
+  </head>
+
+  <body>
+    <div id="preloader">
+      <div class="spinner"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-1">
+        <nav class="nav-menu">
+          <!-- <div class="profile">
+            <img
+              src="https://1.bp.blogspot.com/-OLosLJuYAgw/YJvH9DJDT9I/AAAAAAAAAgM/8VEfiYdK5_E49bFbybajpn6Fjt_NHvcmwCLcBGAsYHQ/s320/FB_IMG_1620821836908.jpg"
+              alt=""
+            />
+            <h1 class="text-light"><a href="index.html">Saif Khan</a></h1>
+            <div class="social-links mt-3 text-center">
+              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div> 
+          </div>-->
+          <ul>
+            <li>
+              <a href="#hero" class="nav-link scrollto active"
+                ><i class="bx bx-home"> </i> <span>Home</span></a
+              >
+            </li>
+            <li>
+              <a href="#" class="nav-link">
+                <img
+                  src="https://1.bp.blogspot.com/-OLosLJuYAgw/YJvH9DJDT9I/AAAAAAAAAgM/8VEfiYdK5_E49bFbybajpn6Fjt_NHvcmwCLcBGAsYHQ/s320/FB_IMG_1620821836908.jpg"
+                  width="30px"
+                  height="30px"
+                  class="rounded-circle"
+                /><span>Profile</span></a
+              >
+            </li>
+            <hr />
+            <li>
+              <a href="#about" class="nav-link scrollto"
+                ><i class="bx bx-user"></i> <span>About</span></a
+              >
+            </li>
+            <li>
+              <a href="#resume" class="nav-link scrollto"
+                ><i class="bx bx-file-blank"></i> <span>Resume</span></a
+              >
+            </li>
+            <li>
+              <a href="#portfolio" class="nav-link scrollto"
+                ><i class="bx bx-book-content"></i> <span>projects</span></a
+              >
+            </li>
+            <li>
+              <a href="#portfolio" class="nav-link scrollto"
+                ><i class="bx bx-server"></i> <span>Skills</span></a
+              >
+            </li>
+            <li>
+              <a href="#contact" class="nav-link scrollto"
+                ><i class="bx bx-envelope"></i> <span>Contact</span></a
+              >
+            </li>
+            <li>
+              <a href="#" class="nav-link scrollto"
+                ><i class="bx bx-link"></i> <span>links</span></a
+              >
+            </li>
+          </ul>
+          <i class="bx bx-moon" id="theme-button"></i>
+        </nav>
+      </div>
+      <div class="col-md-11">
+        <!--=============== HEADER ===============-->
+        <header class="container" id="hero">
+          <!-- Theme button -->
+          <div class="profile">
+            <img
+              src="https://media.licdn.com/dms/image/D5616AQExDesCDwSOIw/profile-displaybackgroundimage-shrink_350_1400/0/1672496095183?e=1678924800&v=beta&t=mIL1KsqMfbz9ilH1EdzinzliNkhgMkzzMh7OC2ChmFw"
+              class="rounded-3"
+            />
+            <img
+              src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiXfJwuvHzw922wZBfLgiq7Ov4yQ26no_QDpTXE63othHG47uCgc2Cxrr3TQSS3_hINC4OY5pQyODeArlvTbydQ6m-CchY-Am4X-rMwc4c2CuUhMRo9-cliUsFZ6Qysfyb2xy_FMUsvlXMGi08QZN-TvW6sBwHWeqr9XhBT_Hb1y1Q28Ngvs0BpCtQCJA/s320/FB_IMG_1620821836908-removebg-preview.png"
+              class="profile-img"
+            />
+            <div class="profile-info">
+              <h2 class="profile__name">ABDULLAH AL SAIF</h2>
+              <h3 class="profile__profession">
+                I'm a <span class="typed"></span>
+              </h3>
+            </div>
+            <div class="buttons d-flex">
+              <!-- Insert your CV -->
+              <a download="" href="#" class="button">
+                Download CV <i class="bx bx-download"></i>
+              </a>
+
+              <div class="profile__buttons-small">
+                <!-- Insert a real number plus country code -->
+                <a
+                  href="https://api.whatsapp.com/send?phone=01988782021&text=Hello, more information!"
+                  target="_blank"
+                  class="button button__small button__gray"
+                >
+                  <i class="bx bxl-whatsapp"></i>
+                </a>
+                <!-- Insert your brand name or profile -->
+                <a
+                  href="https://m.me/alsaif2001"
+                  class="button button__small button__gray"
+                >
+                  <i class="bx bxl-messenger"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top: 150px">
+            <div class="row">
+              <h2 class="my-3">Views:</h2>
+              <div class="col-md-6 d-flex justify-content-between">
+                <div class="profile__info-group">
+                  <h3 class="profile__info-number counter">
+                    <span
+                      data-purecounter-start="0"
+                      data-purecounter-end="100"
+                      data-purecounter-duration="2"
+                      class="purecounter"
+                    ></span
+                    >+
+                  </h3>
+                  <p class="profile__info-description">
+                    Years of <br />
+                    work
+                  </p>
+                </div>
+                <div class="profile__info-group">
+                  <h3 class="profile__info-number counter">
+                    <span
+                      data-purecounter-start="0"
+                      data-purecounter-end="126"
+                      data-purecounter-duration="2"
+                      class="purecounter"
+                    ></span
+                    >+
+                  </h3>
+                  <p class="profile__info-description">
+                    Completed <br />
+                    projects
+                  </p>
+                </div>
+                <div class="profile__info-group">
+                  <h3 class="profile__info-number counter">
+                    <span
+                      data-purecounter-start="0"
+                      data-purecounter-end="47"
+                      data-purecounter-duration="2"
+                      class="purecounter"
+                    ></span
+                    >+
+                  </h3>
+                  <p class="profile__info-description">
+                    Satisfied <br />
+                    customers
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-md-6 d-flex justify-content-center">
+                <ul class="profile__social">
+                  <a href="#" target="_blank" class="profile__social-link">
+                    <i class="bx bxl-instagram"></i>
+                  </a>
+                  <a href="#" target="_blank" class="profile__social-link">
+                    <i class="bx bxl-facebook-circle"></i>
+                  </a>
+                  <a href="#" target="_blank" class="profile__social-link">
+                    <i class="bx bxl-github"></i>
+                  </a>
+                  <a href="#" target="_blank" class="profile__social-link">
+                    <i class="bx bxl-twitter"></i>
+                  </a>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!--=============== MAIN ===============-->
+        <main class="main">
+          <section class="filters container" id="portfolio">
+            <div class="section-title">
+              <h2 class="text-center">Projects & skills</h2>
+            </div>
+            <!--=============== FILTERS TABS ===============-->
+            <ul class="filters__content">
+              <button
+                class="filters__button filter-tab-active"
+                data-target="#projects"
+              >
+                projects
+              </button>
+              <button class="filters__button" data-target="#skills">
+                Skills
+              </button>
+            </ul>
+
+            <div class="filters__sections">
+              <!--=============== PROJECTS ===============-->
+              <div
+                class="projects__content grid filters__active"
+                data-content
+                id="projects"
+              >
+                <article class="projects__card" data-aos="fade-up">
+                  <!-- Insert your image in a rectangular format (Ex: 600 x 400, 1000 x 800, 1200 x 1000, etc) -->
+                  <img
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGEhgGMDXpjqUPSs434qi_Sqj3CvaU8SfyjgHjnOY4hACCTqNb8enSyRV2j46KdRcjkvGF0XNdR3WRSxohWuJuxP5gHjsr4z8zF0hwUv-DRGs6XcWHDNOxHEfyLFy4pcGPNFIun5ZqZbTeRNWdEDJv-g0GwgkeIh8-5BEKjWOqe_E2oXN0Hodi-SDzug/s640/project1.jpg"
+                    alt=""
+                    class="projects__img"
+                  />
+
+                  <div class="projects__modal">
+                    <div>
+                      <span class="projects__subtitle">Web</span>
+                      <h3 class="projects__title">Payment Site</h3>
+                      <a href="#" class="projects__button button button__small">
+                        <i class="bx bx-link"></i>
+                      </a>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="projects__card" data-aos="fade-up">
+                  <img
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJnvJBwE9afUZgxAqq15T-nnM_G3qpZ3DlSK0KDAwEMDIuRD0qoNn0dN_p7fvWUbBnd2JnD-8zqRoKfOT73qV_AZmMCt-8GQshf5iJKDinwydmi8mNXDOOcPekhLDBqOUxx9h_vJJExHtMGFTQKJkQJDnZ84R5s4vTPWfB2DrgcwW2zm2G8TNm12iujQ/s640/project2.jpg"
+                    alt=""
+                    class="projects__img"
+                  />
+
+                  <div class="projects__modal">
+                    <div>
+                      <span class="projects__subtitle">Web</span>
+                      <h3 class="projects__title">Portfolio website</h3>
+                      <a href="#" class="projects__button button button__small">
+                        <i class="bx bx-link"></i>
+                      </a>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="projects__card" data-aos="fade-up">
+                  <img
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkIFH3xuhjggHfrumyZLlWFkuKjTqz-gCzffPwhRcnXy7VoUhixjfY8Zh6dqmGRSThpQwrxsffSr6TSHpabyhNkwdZlSa6gzxgMVeAYuEfVBtRqdkLLVrKUjLdvO8tRtBFluGQ_4RaRblOLVtFO1pFTYnFgG-pjdnr75nQ2l2WSuvkhrwnRnu9sjLnZQ/s640/project3.jpg"
+                    alt=""
+                    class="projects__img"
+                  />
+
+                  <div class="projects__modal">
+                    <div>
+                      <span class="projects__subtitle">Movil</span>
+                      <h3 class="projects__title">Fast food app</h3>
+                      <a href="#" class="projects__button button button__small">
+                        <i class="bx bx-link"></i>
+                      </a>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="projects__card" data-aos="fade-up">
+                  <img
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCZ-P_AGg8p9qsogyWkpZtq57ZMUAL3hdvR50ZSsiGGaVGf-PTj-8KIZQujsGOBvdpRN79-ZfV4ErYWlaFwYDTrj13RiYr6YOFPAtDbebvHUlH7bCfkpBK0DEOaZ0SGejKcKIzwLJLCR3-5cLrkau-SYjOXk77yEmJGvnH11V7HeUa7NgS-RCw-q4KTw/s640/project4.jpg"
+                    alt=""
+                    class="projects__img"
+                  />
+
+                  <div class="projects__modal">
+                    <div>
+                      <span class="projects__subtitle">Movil</span>
+                      <h3 class="projects__title">Travel app</h3>
+                      <a href="#" class="projects__button button button__small">
+                        <i class="bx bx-link"></i>
+                      </a>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="projects__card" data-aos="fade-in">
+                  <img
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizkzCvDb5Tuw32HBX6y8IHH-VARoWS13B1ScqdlFlr8iDTJORPusk6-f8vfwRF_YIGYtQfnPCM-jKSQwdpsWpVapp2pHQDOdErIszEMhOp63r-PbfK9vGIYeJP0MxAeSypmhxyEBxZ8qGkMU8bsXMNuaeAqPt3ruRt8Ym1rqWUcgwwYH0dMtIkyrXaxQ/s640/project5.jpg"
+                    alt=""
+                    class="projects__img"
+                  />
+
+                  <div class="projects__modal">
+                    <div>
+                      <span class="projects__subtitle">Design</span>
+                      <h3 class="projects__title">Music app design</h3>
+                      <a href="#" class="projects__button button button__small">
+                        <i class="bx bx-link"></i>
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <!--=============== SKILLS ===============-->
+              <div class="skills__content grid" data-content id="skills">
+                <div class="skills__area">
+                  <h3 class="skills__title">Frontend Developer</h3>
+
+                  <div class="skills__box">
+                    <div class="skills__group" data-aos="fade-right">
+                      <div class="skills__data">
+                        <div>
+                          <h3 class="skills__name">HTML - 97%</h3>
+                          <progress value="97" max="100">50%</progress>
+                        </div>
+                      </div>
+
+                      <div class="skills__data">
+                        <div>
+                          <h3 class="skills__name">CSS - 95%</h3>
+                          <progress value="95" max="100">95%</progress>
+                        </div>
+                      </div>
+
+                      <div class="skills__data">
+                        <div>
+                          <h3 class="skills__name">JavaScript - 70%</h3>
+                          <progress value="70" max="100">70%</progress>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="skills__group" data-aos="fade-up">
+                      <div class="skills__data">
+                        <div>
+                          <h3 class="skills__name">React - 40%</h3>
+                          <progress value="40" max="100">40%</progress>
+                        </div>
+                      </div>
+
+                      <div class="skills__data">
+                        <div>
+                          <h3 class="skills__name">Bootstrap - 80%</h3>
+                          <progress value="80" max="100">5 80%</progress>
+                        </div>
+                      </div>
+
+                      <div class="skills__data">
+                        <div>
+                          <h3 class="skills__name">Git - 50%</h3>
+                          <progress value="50" max="100">50%</progress>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="skills__area">
+                  <h3 class="skills__title">Backend Developer</h3>
+
+                  <div class="skills__box">
+                    <div class="skills__group" data-aos="fade-right">
+                      <div class="skills__data">
+                        <div>
+                          <h3 class="skills__name">PHP - 50%</h3>
+                          <progress value="50" max="100">50%</progress>
+                        </div>
+                      </div>
+
+                      <div class="skills__data">
+                        <div>
+                          <h3 class="skills__name">MySQL - 90%</h3>
+                          <progress value="90" max="100">90%</progress>
+                        </div>
+                      </div>
+
+                      <div class="skills__data">
+                        <div>
+                          <h3 class="skills__name">Firebase - 60%</h3>
+                          <progress value="60" max="100">60%</progress>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="skills__group" data-aos="fade-up">
+                      <div class="skills__data">
+                        <div>
+                          <h3 class="skills__name">Python - 30%</h3>
+                          <progress value="30" max="100">30%</progress>
+                        </div>
+                      </div>
+
+                      <div class="skills__data">
+                        <div>
+                          <h3 class="skills__name">Node Js - 60%</h3>
+                          <progress value="60" max="100">60%</progress>
+                        </div>
+                      </div>
+                      <div class="skills__data">
+                        <div>
+                          <h3 class="skills__name">App script - 45%</h3>
+                          <progress value="45" max="100">45%</progress>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="about" class="about container">
+            <div class="container">
+              <div class="section-title">
+                <h2 class="text-center">About</h2>
+                <p>
+                  Magnam dolores commodi suscipit. Necessitatibus eius
+                  consequatur ex aliquid fuga eum quidem. Sit sint consectetur
+                  velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit
+                  suscipit alias ea. Quia fugiat sit in iste officiis commodi
+                  quidem hic quas.
+                </p>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <img
+                    src="https://1.bp.blogspot.com/-OLosLJuYAgw/YJvH9DJDT9I/AAAAAAAAAgM/8VEfiYdK5_E49bFbybajpn6Fjt_NHvcmwCLcBGAsYHQ/s320/FB_IMG_1620821836908.jpg"
+                    class="img-fluid rounded-3"
+                    alt=""
+                  />
+                </div>
+                <div class="col-md-8 pt-4 pt-lg-0 content">
+                  <h3>Designer &amp; Web Developer.</h3>
+                  <p class="fst-italic">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.
+                  </p>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <ul>
+                        <li>
+                          <i class="bx bx-chevron-right"></i>
+                          <strong>Birthday:</strong>
+                          <span>1 December 2001</span>
+                        </li>
+                        <li>
+                          <i class="bx bx-chevron-right"></i>
+                          <strong>Website:</strong>
+                          <span>www.basicenglish.ga</span>
+                        </li>
+                        <li>
+                          <i class="bx bx-chevron-right"></i>
+                          <strong>Phone:</strong> <span>+8801947660563</span>
+                        </li>
+                        <li>
+                          <i class="bx bx-chevron-right"></i>
+                          <strong>City:</strong>
+                          <span>Meherpur,Bangladesh</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-lg-6">
+                      <ul>
+                        <li>
+                          <i class="bx bx-chevron-right"></i>
+                          <strong>Age:</strong>
+                          <span>21</span>
+                        </li>
+                        <li>
+                          <i class="bx bx-chevron-right"></i>
+                          <strong>Degree:</strong> <span>intermediate</span>
+                        </li>
+                        <li>
+                          <i class="bx bx-chevron-right"></i>
+                          <strong>Email:</strong>
+                          <span>saifkhan@gmail.com</span>
+                        </li>
+                        <li>
+                          <i class="bx bx-chevron-right"></i>
+                          <strong>Freelance:</strong> <span>Available</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- End About Section -->
+          <section id="resume" class="resume">
+            <div class="container">
+              <div class="section-title">
+                <h2 class="text-center">Resume</h2>
+                <p>
+                  Magnam dolores commodi suscipit. Necessitatibus eius
+                  consequatur ex aliquid fuga eum quidem. Sit sint consectetur
+                  velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit
+                  suscipit alias ea. Quia fugiat sit in iste officiis commodi
+                  quidem hic quas.
+                </p>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-6">
+                  <h3 class="resume-title">Sumary</h3>
+                  <div class="resume-item pb-0">
+                    <h4>Saif khan</h4>
+                    <p>
+                      <em
+                        >Innovative and deadline-driven Graphic Designer with 3+
+                        years of experience designing and developing
+                        user-centered digital/print marketing material from
+                        initial concept to final, polished deliverable.</em
+                      >
+                    </p>
+                    <ul>
+                      <li>Portland par 127,Orlando, FL</li>
+                      <li>(123) 456-7891</li>
+                      <li>saifkhan@gmail.com</li>
+                    </ul>
+                  </div>
+
+                  <h3 class="resume-title">Education</h3>
+                  <div class="resume-item">
+                    <h4>Master of Fine Arts &amp; Graphic Design</h4>
+                    <h5>2015 - 2016</h5>
+                    <p>
+                      <em>Rochester Institute of Technology, Rochester, NY</em>
+                    </p>
+                    <p>
+                      Qui deserunt veniam. Et sed aliquam labore tempore sed
+                      quisquam iusto autem sit. Ea vero voluptatum qui ut
+                      dignissimos deleniti nerada porti sand markend
+                    </p>
+                  </div>
+                  <div class="resume-item">
+                    <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
+                    <h5>2010 - 2014</h5>
+                    <p>
+                      <em>Rochester Institute of Technology, Rochester, NY</em>
+                    </p>
+                    <p>
+                      Quia nobis sequi est occaecati aut. Repudiandae et iusto
+                      quae reiciendis et quis Eius vel ratione eius unde vitae
+                      rerum voluptates asperiores voluptatem Earum molestiae
+                      consequatur neque etlon sader mart dila
+                    </p>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <h3 class="resume-title">Professional Experience</h3>
+                  <div class="resume-item">
+                    <h4>Senior graphic design specialist</h4>
+                    <h5>2019 - Present</h5>
+                    <p><em>Experion, New York, NY </em></p>
+                    <ul>
+                      <li>
+                        Lead in the design, development, and implementation of
+                        the graphic, layout, and production communication
+                        materials
+                      </li>
+                      <li>
+                        Delegate tasks to the 7 members of the design team and
+                        provide counsel on all aspects of the project.
+                      </li>
+                      <li>
+                        Supervise the assessment of all graphic materials in
+                        order to ensure quality and accuracy of the design
+                      </li>
+                      <li>
+                        Oversee the efficient use of production project budgets
+                        ranging from $2,000 - $25,000
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="resume-item">
+                    <h4>Graphic design specialist</h4>
+                    <h5>2017 - 2018</h5>
+                    <p><em>Stepping Stone Advertising, New York, NY</em></p>
+                    <ul>
+                      <li>
+                        Developed numerous marketing programs (logos,
+                        brochures,infographics, presentations, and
+                        advertisements).
+                      </li>
+                      <li>
+                        Managed up to 5 projects or tasks at a given time while
+                        under pressure
+                      </li>
+                      <li>
+                        Recommended and consulted with clients on the most
+                        appropriate graphic design
+                      </li>
+                      <li>
+                        Created 4+ design presentations and proposals a month
+                        for clients and account managers
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- End Resume Section -->
+          <section id="contact" class="contact">
+            <div class="container">
+              <div class="section-title">
+                <h2 class="text-center">Contact</h2>
+                <p>
+                  Magnam dolores commodi suscipit. Necessitatibus eius
+                  consequatur ex aliquid fuga eum quidem. Sit sint consectetur
+                  velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit
+                  suscipit alias ea. Quia fugiat sit in iste officiis commodi
+                  quidem hic quas.
+                </p>
+              </div>
+
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="address d-flex align-items-center">
+                    <i class="bx bx-location-plus"></i>
+                    <p>Location:</p>
+                    <p>Meherpur Bangladesh</p>
+                  </div>
+
+                  <div class="email">
+                    <i class="bx bx-envelope"></i>
+                    <p>Email:</p>
+                    <p>saifkhan@gmail.com</p>
+                  </div>
+
+                  <div class="phone">
+                    <i class="bx bx-phone"></i>
+                    <p>Call:</p>
+                    <p>+8801947660563</p>
+                  </div>
+                </div>
+                <div class="col-md-7">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29210.115078962957!2d88.59352328485754!3d23.77359789338921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f9480e64c8706f%3A0xcbbdd02da0f3099e!2sMeherpur!5e0!3m2!1sen!2sbd!4v1673695812620!5m2!1sen!2sbd"
+                    frameborder="0"
+                    style="
+                      border: 0;
+                      width: 100%;
+                      height: 290px;
+                      border-radius: 10px;
+                    "
+                    allowfullscreen
+                  ></iframe>
+                </div>
+
+                <div class="form-items">
+                  <form>
+                    <div class="row">
+                      <div class="col-md-6 mb-2">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input
+                          class="form-control"
+                          type="text"
+                          name="name"
+                          placeholder="your name"
+                          required
+                        />
+                      </div>
+                      <div class="col-md-6 mb-2">
+                        <label for="name" class="form-label">Your Email</label>
+                        <input
+                          class="form-control"
+                          type="email"
+                          placeholder="your email"
+                          name="email"
+                          id="email"
+                          required
+                        />
+                      </div>
+                      <div class="col-md-12 mb-2">
+                        <label for="name" class="form-label">Subject</label>
+                        <input
+                          class="form-control"
+                          type="text"
+                          name="subject"
+                          id="subject"
+                          placeholder="sunject here"
+                          required
+                        />
+                      </div>
+                      <div class="col-md-12 mb-2">
+                        <label for="name" class="form-label">Message</label>
+                        <textarea
+                          class="form-control"
+                          name="message"
+                          rows="7"
+                          required
+                        ></textarea>
+                      </div>
+
+                      <div class="text-center">
+                        <button type="submit">
+                          Send <i class="bx bx-send"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- End Contact Section -->
+        </main>
+      </div>
+    </div>
+
+    <!--=============== FOOTER ===============-->
+    <footer class="footer container">
+      <span class="footer__copy"> &#169; All rigths reserved </span>
+      <div class="fottor-nav">
+        <div class="nav-left">
+          <div class="image">
+            <img
+              src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiXfJwuvHzw922wZBfLgiq7Ov4yQ26no_QDpTXE63othHG47uCgc2Cxrr3TQSS3_hINC4OY5pQyODeArlvTbydQ6m-CchY-Am4X-rMwc4c2CuUhMRo9-cliUsFZ6Qysfyb2xy_FMUsvlXMGi08QZN-TvW6sBwHWeqr9XhBT_Hb1y1Q28Ngvs0BpCtQCJA/s320/FB_IMG_1620821836908-removebg-preview.png"
+              alt=""
+            />
+          </div>
+          <div class="dtls">
+            <h2>SAIF KHAN</h2>
+          </div>
+        </div>
+        <div class="nav-right">
+          <i class="bx bxs-home back-to-top" onclick="topFunction()"></i>
+          <i class="bx bx-menu menu"></i>
+        </div>
+      </div>
+    </footer>
+    <script src="src/index.js"></script>
+    <script src="src/script.js"></script>
+    <script src="src/other.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+      var typed = new Typed(".typed", {
+        strings: ["Web designer", "Web developer", "App developer"],
+        typeSpeed: 60,
+        backSpeed: 60,
+        loop: true,
+      });
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>

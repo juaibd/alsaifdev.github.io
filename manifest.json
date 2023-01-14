@@ -1,0 +1,20 @@
+{
+  "name": "SAIF KHAN",
+  "short_name": "SAIF KHAN",
+  "start_url": ".",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/images/apple-icon-180x180.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    },
+    {
+      "src": "/images/ms-icon-310x310.png",
+      "type": "image/png",
+      "sizes": "310x310"
+    }
+  ],
+  "background_color": "#3367D6",
+  "theme_color": "#3367D6"
+}
