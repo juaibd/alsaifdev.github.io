@@ -2,12 +2,12 @@ self.addEventListener("install", (e) => {
   e.waitUntill(
     caches.open("static").then((cache) => {
       return cache.addAll([
-        "./",
-        "./src/style.css",
-        "./src/index.js",
-        "./src/script.js",
-        "./src/other.js",
-        "./images/android-icon-192x192.png",
+        "https://raw.githubusercontent.com/alsaifdev/alsaifdev.github.io/main/index.html",
+        "https://raw.githubusercontent.com/alsaifdev/alsaifdev.github.io/main/src/style.css",
+        "https://raw.githubusercontent.com/alsaifdev/alsaifdev.github.io/main/src/index.js",
+        "https://raw.githubusercontent.com/alsaifdev/alsaifdev.github.io/main/src/script.js",
+        "https://raw.githubusercontent.com/alsaifdev/alsaifdev.github.io/main/src/other.js",
+        "https://github.com/alsaifdev/alsaifdev.github.io/blob/main/images/android-icon-144x144.png?raw=true",
       ]);
     })
   );
