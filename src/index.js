@@ -1,6 +1,6 @@
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
-    .register("sw.js")
+    .register("https://raw.githubusercontent.com/alsaifdev/alsaifdev.github.io/main/sw.js")
     .then((registration) => {
       console.log("SW registered");
       console.log(registration);
