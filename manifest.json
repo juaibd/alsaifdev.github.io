@@ -5,12 +5,12 @@
   "display": "standalone",
   "icons": [
     {
-      "src": "/images/apple-icon-180x180.png",
+      "src": "https://github.com/alsaifdev/alsaifdev.github.io/blob/main/images/android-icon-144x144.png?raw=true",
       "type": "image/png",
       "sizes": "180x180"
     },
     {
-      "src": "/images/ms-icon-310x310.png",
+      "src": "https://github.com/alsaifdev/alsaifdev.github.io/blob/main/images/android-icon-144x144.png?raw=true",
       "type": "image/png",
       "sizes": "310x310"
     }
