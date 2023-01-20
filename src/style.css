@@ -85,6 +85,10 @@ img {
   max-width: 100%;
   height: auto;
 }
+.grid{
+  display:grid;
+  grid-gap:10px;
+}
 
 /*=============== THEME ===============*/
 
