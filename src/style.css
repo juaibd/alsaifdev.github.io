@@ -823,6 +823,7 @@ textarea {
   .form-items {
     padding: 0;
   }
+  .about ul{padding-left:0;}
 }
 @media screen and (min-width: 776px) {
   .projects__content,
