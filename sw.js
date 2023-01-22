@@ -2,7 +2,7 @@ self.addEventListener("install", (e) => {
   e.waitUntill(
     caches.open("static").then((cache) => {
       return cache.addAll([
-        "https://raw.githubusercontent.com/alsaifdev/alsaifdev.github.io/main/index.html",
+        "https://alsaifdev.github.io",
         "https://raw.githubusercontent.com/alsaifdev/alsaifdev.github.io/main/src/style.css",
         "https://raw.githubusercontent.com/alsaifdev/alsaifdev.github.io/main/src/index.js",
         "https://raw.githubusercontent.com/alsaifdev/alsaifdev.github.io/main/src/script.js",
