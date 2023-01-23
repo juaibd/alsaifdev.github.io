@@ -805,13 +805,13 @@ textarea {
   .nav-menu {
     left: -100%;
   }
-  .nav-menu ul li span{
-    opacity:1; 
-  }
-
+  
   .nav-menu.show-nav-menu {
     left: 0;
     width:220px;
+  }
+  .nav-menu.show-nav-menu ul li a span{
+    opacity:1; 
   }
 
   .profile .profile-info {
