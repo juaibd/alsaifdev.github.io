@@ -543,6 +543,9 @@ body.dark-theme {
   height: 2px;
   background-color: #d318bc;
 }
+.about .section-title p{
+  padding-left:15px;
+}
 
 .row {
   margin: 2rem 0;
