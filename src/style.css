@@ -811,6 +811,7 @@ textarea {
 
   .nav-menu.show-nav-menu {
     left: 0;
+    width:220px;
   }
 
   .profile .profile-info {
