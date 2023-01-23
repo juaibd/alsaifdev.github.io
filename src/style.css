@@ -805,6 +805,9 @@ textarea {
   .nav-menu {
     left: -100%;
   }
+  .nav-menu ul li span{
+    opacity:1; 
+  }
 
   .nav-menu.show-nav-menu {
     left: 0;
