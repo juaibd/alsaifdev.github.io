@@ -833,11 +833,12 @@ textarea {
   .about ul{padding-left:0;}
 }
 @media screen and (min-width: 776px) {
-  .projects__content,
-  .skills__content {
+  .projects__content {
     grid-template-columns: repeat(3, 30%);
   }
-
+  .skills__content {
+      grid-template-columns: repeat(2, 45%);
+    }
   .skills__content {
     justify-content: center;
     column-gap: 3rem;
