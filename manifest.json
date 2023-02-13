@@ -30,5 +30,6 @@
       "sizes": "720x540",
       "form_factor": "wide"
     }
-  ]
+  ],
+  "orientation": "portrait-primary"
 }
