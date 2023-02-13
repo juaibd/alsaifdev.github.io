@@ -16,5 +16,19 @@
     }
   ],
   "background_color": "#3367D6",
-  "theme_color": "#3367D6"
+  "theme_color": "#3367D6",
+  "screenshots": [
+    {
+      "src": "https://github.com/alsaifdev/alsaifdev.github.io/blob/main/images/android-icon-144x144.png?raw=true",
+      "type": "image/png",
+      "sizes": "540x720",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "https://github.com/alsaifdev/alsaifdev.github.io/blob/main/images/android-icon-144x144.png?raw=true",
+      "type": "image/jpg",
+      "sizes": "720x540",
+      "form_factor": "wide"
+    }
+  ]
 }
