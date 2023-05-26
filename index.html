@@ -58,18 +58,56 @@
       overflow-y: auto;
     }
 
-    #messages li {
+        #messages li {
+
       width: 100%;
+
       padding: 10px;
+
       margin-bottom: 5px;
+
       border: 1px solid rgb(224, 226, 228);
+
       border-radius: 3px;
+
+      display: flex;
+
+      gap: 8px;
 
     }
 
     #messages li.outgoing {
-      text-align: right;
+
+      justify-content: flex-end;
+
     }
+
+    #messages li.outgoing p ,#messages li.incoming p{
+
+      width: 30px;
+
+      height: 30px;
+
+      background: #5C66DD;
+
+      color: #fff;
+
+      border-radius: 50%;
+
+      display: grid;
+
+      place-items: center;
+
+    }
+
+    #messages li.incoming p{
+
+      background: rgb(224, 226, 228);
+
+      color: #000;
+
+    }
+
   </style>
 </head>
 
@@ -124,9 +162,10 @@
       let li = document.createElement('li');
       if (username === messages.usr) {
         li.classList.add('outgoing');
-        li.innerHTML = messages.msg + " : " + messages.usr;
-      }else{
-        li.innerHTML = messages.usr + " : " + messages.msg;
+        li.innerHTML = `${messages.msg} <p> ${messages.usr.charAt(0).toUpperCase()} </p>`;
+      } else {
+        li.classList.add('incoming');
+        li.innerHTML = `<p> ${messages.usr.charAt(0).toUpperCase()}</p> ${messages.msg}`;
       }
       
       let ul =  document.getElementById("messages");
