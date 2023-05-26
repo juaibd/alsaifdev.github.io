@@ -129,7 +129,9 @@
         li.innerHTML = messages.usr + " : " + messages.msg;
       }
       
-      document.getElementById("messages").appendChild(li)
+      let ul =  document.getElementById("messages");
+     ul.appendChild(li);
+      ul.scrollTo(0, ul.scrollHeight);
     });
 
 
