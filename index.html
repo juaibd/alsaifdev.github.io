@@ -4,7 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-
+<link rel="manifest" href="/manifest.json" />
   <style>
     body {
       font-family: sans-serif !important;
@@ -253,7 +253,7 @@
     const fetchChat = db.ref("messages/");
     fetchChat.on("child_added", function(snapshot) {
       const messages = snapshot.val();
-      console.log(messages)
+     // console.log(messages)
       let div = document.createElement('div');
       if (username === messages.usr) {
         div.classList.add('outgoing_msg');
@@ -285,8 +285,9 @@
       msg_history.scrollTo(0, msg_history.scrollHeight);
     });
 
-console.log(new Date().toLocaleString())
+//console.log(new Date().toLocaleString())
   </script>
+  <script src="src/index.js"></script>
 </body>
 
 </html>
