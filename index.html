@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chatterbox</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+ 
+
+    #chat {
+      width: 100%;
+      height: 100vh;
+      background: ;
+      border: 1px solid rgb(224, 226, 228);
+      position: relative;
+    }
+
+    #chat #send-message {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 7px;
+    }
+
+    #chat #send-message input {
+      width: 80%;
+      height: 40px;
+      border: 1px solid rgb(224, 226, 228);
+      outline: none;
+      border-radius: 5px;
+      padding: 0 12px;
+    }
+
+    #chat #send-message button {
+      width: 18%;
+      height: 40px;
+      border: 1px solid rgb(224, 226, 228);
+      outline: none;
+      border-radius: 5px;
+    }
+
+    #messages {
+      list-style: none;
+      padding: 5px;
+      margin-bottom: 5px;
+      height: 90vh;
+      overflow-y: auto;
+    }
+
+    #messages li {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 5px;
+      border: 1px solid rgb(224, 226, 228);
+      border-radius: 3px;
+
+    }
+
+    #messages li.outgoing {
+      text-align: right;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="chat">
+    <ul id="messages"></ul>
+    <form id="send-message">
+      <input id="chat-txt" type="text" />
+      <button id="chat-btn" type="submit">Submit</button>
+    </form>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+
+  <script type="module">
+    const firebaseConfig = {
+      apiKey: "AIzaSyB7_3g-lN2QWJSoidezPt0hYoQ7OqdwLQ8",
+      authDomain: "database-beea7.firebaseapp.com",
+      databaseURL: "https://database-beea7-default-rtdb.firebaseio.com",
+      projectId: "database-beea7",
+      storageBucket: "database-beea7.appspot.com",
+      messagingSenderId: "914436010021",
+      appId: "1:914436010021:web:de6977f03dd386fcf28fcc"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    const username =localStorage.getItem('username') || prompt("What's your name?");
+    localStorage.setItem('username',username);
+    document.getElementById("send-message").addEventListener("submit", postChat);
+
+    function postChat(e) {
+      e.preventDefault();
+      const timestamp = Date.now();
+      const chatTxt = document.getElementById("chat-txt");
+      const message = chatTxt.value;
+      chatTxt.value = "";
+      db.ref("messages/" + timestamp).set({
+        usr: username,
+        msg: message,
+      });
+    }
+
+
+    const fetchChat = db.ref("messages/");
+    fetchChat.on("child_added", function(snapshot) {
+      const messages = snapshot.val();
+      let li = document.createElement('li');
+      if (username === messages.usr) {
+        li.classList.add('outgoing');
+        li.innerHTML = messages.msg + " : " + messages.usr;
+      }else{
+        li.innerHTML = messages.usr + " : " + messages.msg;
+      }
+      
+      document.getElementById("messages").appendChild(li)
+    });
+
+
+  </script>
+
+</body>
+
+</html>
