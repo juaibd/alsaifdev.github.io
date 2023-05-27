@@ -127,8 +127,34 @@
       margin: 3px 0 0;
     }
 
-    .received_withd_msg {
+        .received_withd_msg {
+
       width: 70%;
+
+      position: relative;
+
+      margin-bottom: 12px;
+
+    }
+
+    .received_withd_msg .received_usr {
+
+      position: absolute;
+
+      top: -8px;
+
+      left: 5px;
+
+      font-size: 10px;
+
+      background: #6974F5;
+
+      color: #fff;
+
+      padding: 0 5px;
+
+      border-radius: 4px;
+
     }
 
     .mesgs {
@@ -277,6 +303,7 @@
           <div class="received_msg">
             <div class="received_withd_msg">
               <p>${messages.msg}.</p>
+              <span class="received_usr">${messages.usr}</span>
               <span class="time_date"> 
               ${messages.date}
               </span>
