@@ -227,11 +227,29 @@
       max-height: 530px;
       overflow-y: auto;
     }
+      #exit{
+
+      border: 0;
+
+      background: red;
+
+      color: #fff;
+
+      position: fixed;
+
+      top: 5px;
+
+      right: 10px;
+
+      border-radius: 4px;
+
+    }
   </style>
 </head>
 
 <body class="bg-funky">
   <div class="messaging">
+     <button id="exit">Leave</button>
     <div class="inbox_msg">
       <div class="mesgs">
         <div class="msg_history">
@@ -251,6 +269,19 @@
   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
 
   <script type="module">
+    let exit = document.querySelector('#exit');
+
+  exit.addEventListener('click',exitTab)
+
+    function exitTab() {
+
+      if (confirm("Close Window?")) {
+
+        window.close();
+
+      }
+
+    }
     const firebaseConfig = {
       apiKey: "AIzaSyB7_3g-lN2QWJSoidezPt0hYoQ7OqdwLQ8",
       authDomain: "database-beea7.firebaseapp.com",
