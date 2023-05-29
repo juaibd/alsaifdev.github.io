@@ -75,6 +75,8 @@
         body: JSON.stringify(post)
       }).then(ress => {
         alert('data insert');
+        text.value = '';
+        file.value = '';
         getdata();
       })
     }
