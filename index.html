@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    .container {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container .room {
+      width: 85%;
+      height: 400px;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      gap: 6px;
+      justify-content: center;
+      background: #B5BBFA;
+      border-radius: 6px;
+    }
+
+    input,
+    button {
+      height: 40px;
+      border: 0;
+      outline: none;
+      padding: 0 7px;
+      border-radius: 7px;
+    }
+
+    button {
+      background: #5A67F0;
+      color: #fff;
+      margin-top: 7px;
+    }
+    .or{
+      width: 100%;
+      text-align: center;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="room">
+      <label for="name">Your name</label>
+      <input type="text" placeholder="Enter your name..." id="uname">
+      <label for="name">Your name</label>
+      <input type="text" placeholder="Enter your name..." id="uid">
+      <button onclick="join()" class="disabled" id="joinBtn">Submit</button>
+      <span class="or">Or</span>
+      <button id="createId"> Create Room id</button>
+    </div>
+  </div>
+
+  <script>
+    let container = document.querySelector('.container');
+    let uid = document.querySelector('#uid');
+    let uname = document.querySelector('#uname');
+    let joinBtn = document.querySelector('#joinBtn');
+    let createId = document.querySelector('#createId');
+
+    createId.addEventListener('click', () => {
+      //alert('hi')
+     let id = crypto.randomUUID();
+      uid.value = id;
+      //uid.classList.add('uid')
+      joinBtn.classList.remove('disabled');
+    })
+
+    function join() {
+      if (uname.value === '' && uid.value === '') {
+        return;
+      } else {
+        container.style.display = 'none';
+        joinRoom();
+      }
+    }
+
+    function joinRoom() {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+
+      script.addEventListener("load", function(event) {
+        const config = {
+          name: uname.value,
+          meetingId: uid.value,
+          apiKey: "a0c1c945-7467-4cf9-a967-698a8ad2382f",
+
+          containerId: null,
+
+          micEnabled: true,
+          webcamEnabled: true,
+          participantCanToggleSelfWebcam: true,
+          participantCanToggleSelfMic: true,
+
+          chatEnabled: true,
+          screenShareEnabled: true,
+
+          /*
+      
+           Other Feature Properties
+            
+            */
+        };
+
+        const meeting = new VideoSDKMeeting();
+        meeting.init(config);
+      });
+
+      script.src =
+        "https://sdk.videosdk.live/rtc-js-prebuilt/0.3.30/rtc-js-prebuilt.js";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    }
+  </script>
+
+</body>
+
+</html>
