@@ -1,16 +1,16 @@
 {
-  "name": "SAIF KHAN",
-  "short_name": "SAIF KHAN",
+  "name": "Messenger",
+  "short_name": "Messenger",
   "start_url": ".",
   "display": "standalone",
   "icons": [
     {
-      "src": "https://github.com/alsaifdev/alsaifdev.github.io/blob/main/images/android-icon-144x144.png?raw=true",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/b/be/Facebook_Messenger_logo_2020.svg",
       "type": "image/png",
       "sizes": "180x180"
     },
     {
-      "src": "https://github.com/alsaifdev/alsaifdev.github.io/blob/main/images/android-icon-144x144.png?raw=true",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/b/be/Facebook_Messenger_logo_2020.svg",
       "type": "image/png",
       "sizes": "310x310"
     }
