@@ -228,27 +228,31 @@
       overflow-y: auto;
     }
       #exit{
-
       border: 0;
-
       background: red;
-
       color: #fff;
-
       position: fixed;
-
       top: 5px;
-
       right: 10px;
-
       border-radius: 4px;
 
+    }
+    .top-head{
+      position: fixed;
+      top: 5px;
+      left: 10px;
+      display:flex;
+      align-items: center;
     }
   </style>
 </head>
 
 <body class="bg-funky">
   <div class="messaging">
+    <div class='top-head'>
+      <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil">
+      <h6 id='userName'></h6>
+    </div>
      <button id="exit">Leave</button>
     <div class="inbox_msg">
       <div class="mesgs">
@@ -270,7 +274,7 @@
 
   <script type="module">
     let exit = document.querySelector('#exit');
-
+let userName = document.querySelector('#userName');
   exit.addEventListener('click',exitTab)
 
     function exitTab() {
@@ -296,7 +300,7 @@
 
     const username = localStorage.getItem('username') || prompt("What's your name?");
     localStorage.setItem('username', username);
-    
+    userName.innerHTML = username;
     document.querySelector(".msg_send_btn").addEventListener("click", postChat);
 
     function postChat() {
