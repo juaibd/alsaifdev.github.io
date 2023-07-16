@@ -1,6 +1,6 @@
 {
-  "name": "Messenger",
-  "short_name": "Messenger",
+  "name": "Message Book",
+  "short_name": "Message Book",
   "start_url": ".",
   "display": "standalone",
   "icons": [
