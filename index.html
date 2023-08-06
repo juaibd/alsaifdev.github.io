@@ -29,7 +29,7 @@
             <button @click='share' type="button" class=" inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 border rounded-full" aria-expanded="false">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M3 12c0 1.654 1.346 3 3 3 .794 0 1.512-.315 2.049-.82l5.991 3.424c-.018.13-.04.26-.04.396 0 1.654 1.346 3 3 3s3-1.346 3-3-1.346-3-3-3c-.794 0-1.512.315-2.049.82L8.96 12.397c.018-.131.04-.261.04-.397s-.022-.266-.04-.397l5.991-3.423c.537.505 1.255.82 2.049.82 1.654 0 3-1.346 3-3s-1.346-3-3-3-3 1.346-3 3c0 .136.022.266.04.397L8.049 9.82A2.982 2.982 0 0 0 6 9c-1.654 0-3 1.346-3 3z"></path></svg>
            </button>
-            <button type="button" class="relative inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 border rounded-full" aria-expanded="false">
+            <button type="button" class="relative inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 border rounded-full" aria-expanded="false" data-drawer-target="drawer-right-example" data-drawer-show="drawer-right-example" data-drawer-placement="right" aria-controls="drawer-right-example">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
               <path d="M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921z"></path>
               <circle cx="10.5" cy="19.5" r="1.5"></circle>
@@ -285,7 +285,56 @@
       </ul>
 
     </div>
+    <div id="drawer-right-example" class="fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-white w-80 dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-right-label">
+      <h5 id="drawer-right-label" class="inline-flex items-center mb-4 text-base font-semibold text-gray-500 dark:text-gray-400"><svg class="w-4 h-4 mr-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+        </svg>Shopping Cart</h5>
+      <button type="button" data-drawer-hide="drawer-right-example" aria-controls="drawer-right-example" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 right-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white">
+        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+        </svg>
+        <span class="sr-only">Close menu</span>
+      </button>
 
+      <div class="w-full  p-2 bg-white dark:bg-gray-800 dark:border-gray-700">
+        <div class="flow-root h-96 overflow-y-scroll">
+          <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700 overflow-y-scroll h-full">
+            <li v-for="item in items" class="py-3 sm:py-4">
+              <div class="flex items-center space-x-4">
+                <div class="flex-shrink-0">
+                  <img class="w-8 h-8 rounded" :src="item.thumbnail" alt="Neil image">
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                    {{item.title}}
+                  </p>
+                  <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                    {{item.price}} × {{item.qnt}}
+                  </p>
+                </div>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white" @click="removeFromCart(item)">
+                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                  </svg>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="absolute bottom-0 left-0 w-full p-1 bg-white border border-gray-200 rounded shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 flex align-center justify-between">
+        
+          <span class="font-bold text-lg">Subtotal {{subtotal}}</span>
+        
+        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+          Check out
+          <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+          </svg>
+        </a>
+      </div>
+    </div>
   </div>
 
 
@@ -302,6 +351,7 @@
           categories: [],
           items: JSON.parse(localStorage.getItem('carts')) || [],
           qnt: 0,
+          subtotal: 0,
           isShow: false
         }
       },
@@ -317,21 +367,28 @@
           this.products = products.products;
           this.categories = await this.fetcher('https://dummyjson.com/products/categories')
         },
-        addToCart(item) {
-          this.items.push({ ...item, qnt: 1 });
+        addToCart(product) {
+         let inCart = this.items.find(item => item.id === product.id);
+         console.log(inCart)
+         if(!inCart){
+          this.items.push({ ...product, qnt: 1 });
           localStorage.setItem('carts', JSON.stringify(this.items));
           this.getQnt();
-          this.isShow = true
-
-          setTimeout(() => {
-            this.isShow = false
-          }, 3000)
+         }else alert('this item already in cart')
+        },
+        removeFromCart(item){
+          this.items = this.items.filter(i => i.id !== item.id);
+          localStorage.setItem('carts', JSON.stringify(this.items));
+          this.getQnt();
         },
 
         getQnt() {
           let totalItems = this.items.reduce((prev, current) => {
             return prev + current.qnt;
-          }, 0)
+          }, 0);
+          this.subtotal = this.items.reduce(function(previousValue, currentValue) {
+            return previousValue + currentValue.qnt * currentValue.price;
+          }, 0);
           console.log(totalItems)
           this.qnt = totalItems;
           
