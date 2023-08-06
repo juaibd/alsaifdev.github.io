@@ -2,7 +2,7 @@
   "name": "Message Book",
   "short_name": "Message Book",
   "start_url": ".",
-  "display": "minimal-ui",
+  "display": "standalone",
   "icons": [
     {
       "src": "https://upload.wikimedia.org/wikipedia/commons/b/be/Facebook_Messenger_logo_2020.svg",
