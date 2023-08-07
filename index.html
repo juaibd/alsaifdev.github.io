@@ -523,6 +523,9 @@
         ordsuccess(e){
           e.preventDefault()
           alert('Order successfully send!');
+          this.items = [];
+          localStorage.setItem('carts', JSON.stringify(this.items));
+          this.getQnt();
           location.reload()
         },
         share(){
