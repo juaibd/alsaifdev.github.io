@@ -385,6 +385,10 @@
           this.items.push({ ...product, qnt: 1 });
           localStorage.setItem('carts', JSON.stringify(this.items));
           this.getQnt();
+          this.isShow = true;
+           setTimeout(() =>{
+             this.isShow = false;
+           },3000)
          }else alert('this item already in cart')
         },
         removeFromCart(item){
