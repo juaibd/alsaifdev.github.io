@@ -513,7 +513,7 @@
         },
         decrement(id){
           this.items = this.items.map(item => {
-            if(item.id === id){
+            if(item.id === id && item.qnt > 1){
               return { ...item, qnt: item.qnt - 1}
             }
           });
@@ -522,7 +522,7 @@
         },
         increment(id){
           this.items = this.items.map(item => {
-            if(item.id === id){
+            if(item.id === id && item.stock > item.qnt){
               return { ...item, qnt: item.qnt + 1}
             }
           });
