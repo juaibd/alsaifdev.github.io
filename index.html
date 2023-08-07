@@ -458,7 +458,97 @@
       </form>
     </div>
 
+    <div ref="orderDtls" tabindex="-1" class="fixed z-50 flex flex-col md:flex-row justify-between w-[calc(100%-2rem)] p-4 -translate-x-1/2 bg-white border border-gray-100 rounded-lg shadow-sm lg:max-w-7xl left-1/2 top-6 dark:bg-gray-700 dark:border-gray-600 hidden">
+      <div class="text-center font-bold text-lg">
+        Thank you. Your order has been received.
+      </div>
+      <div class="w-full max-w-md mt-5 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-1 p-2 rounded">
+        <div class="flex align-center justify-between my-2">
+          <h1 class="text-lg font-semibold">ORDER ID</h1>
+          <span>0162601918q</span>
+        </div>
+        <div class="flex align-center justify-between my-2">
+          <h1 class="text-lg font-semibold">ORDER Date:</h1>
+          <span>August 7, 2023</span>
+        </div>
+        <div class="flex align-center justify-between my-2">
+          <h1 class="text-lg font-semibold">Total:</h1>
+          <span>৳8,489</span>
+        </div>
+        <div class="flex align-center justify-between my-2">
+          <h1 class="text-lg font-semibold">Payment method:
+          </h1>
+          <span>Cash on delivery</span>
+        </div>
+      </div>
 
+      <h1 class="text-lg font-bold mt-5">ORDER DETAILS</h1>
+      <div class="flow-root">
+        <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
+          <li class="py-3 sm:py-4">
+            <div class="flex items-center space-x-4 justify-between">
+              <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                PRODUCT
+              </div>
+              <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                SUBTOTAL
+              </div>
+            </div>
+          </li>
+          <li v-for="item in items" class="pt-3 pb-0 sm:pt-4">
+            <div class="flex items-center space-x-4">
+              <div class="flex-shrink-0">
+                <img class="w-8 h-8 rounded-full" :src="item.thumbnail" alt="Thomas image">
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                  {{item.title}}
+                </p>
+                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                  Quentity - {{item.qnt}}
+                </p>
+              </div>
+              <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                ${{item.price * item.qnt}}
+              </div>
+            </div>
+          </li>
+          <li class="py-3 sm:py-4">
+            <div class="flex items-center space-x-4 justify-between">
+              <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                Subtotal
+              </div>
+              <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                ${{subtotal}}
+              </div>
+            </div>
+          </li>
+          <li class="py-3 sm:py-4">
+            <div class="flex items-center space-x-4 justify-between">
+              <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                Shipping
+              </div>
+              <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                $50
+              </div>
+            </div>
+          </li>
+          <li class="py-3 sm:py-4">
+            <div class="flex items-center space-x-4 justify-between">
+              <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                Total
+              </div>
+              <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                ${{subtotal + 50}}
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <button class="text-white bg-gray-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-3 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" @click="orderSend">
+        Ok
+      </button>
+    </div>
 
     
   </div>
@@ -546,7 +636,11 @@
         },
         ordsuccess(e){
           e.preventDefault()
-          alert('Order successfully send!');
+          this.$refs.pEl.classList.remove('hidden');
+          
+        },
+        orderSend(){
+          this.$refs.pEl.classList.add('hidden');
           this.items = [];
           localStorage.setItem('carts', JSON.stringify(this.items));
           this.getQnt();
