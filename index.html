@@ -515,6 +515,8 @@
           this.items = this.items.map(item => {
             if(item.id === id && item.qnt > 1){
               return { ...item, qnt: item.qnt - 1}
+            }else {
+              return item
             }
           });
           localStorage.setItem('carts', JSON.stringify(this.items));
@@ -524,6 +526,8 @@
           this.items = this.items.map(item => {
             if(item.id === id && item.stock > item.qnt){
               return { ...item, qnt: item.qnt + 1}
+            }else {
+              return item
             }
           });
           localStorage.setItem('carts', JSON.stringify(this.items));
