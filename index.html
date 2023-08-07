@@ -458,22 +458,22 @@
       </form>
     </div>
 
-    <div ref="orderDtls" tabindex="-1" class="fixed top-0 left-0 z-50 flex flex-col md:flex-row justify-between w-full h-full p-4 bg-white border border-gray-100 rounded-lg shadow-sm  dark:bg-gray-700 dark:border-gray-600 hidden">
+    <div ref="orderDtls" tabindex="-1" class="fixed top-0 left-0 z-50  w-full h-full p-4 bg-white border border-gray-100 rounded-lg shadow-sm  dark:bg-gray-700 dark:border-gray-600 hidden">
       <div class="text-center font-bold text-lg">
         Thank you. Your order has been received.
       </div>
       <div class="w-full max-w-md mt-5 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-1 p-2 rounded">
         <div class="flex align-center justify-between my-2">
           <h1 class="text-lg font-semibold">ORDER ID</h1>
-          <span>0162601918q</span>
+          <span>{{orderId}}</span>
         </div>
         <div class="flex align-center justify-between my-2">
           <h1 class="text-lg font-semibold">ORDER Date:</h1>
-          <span>August 7, 2023</span>
+          <span>{{orderDate}}</span>
         </div>
         <div class="flex align-center justify-between my-2">
           <h1 class="text-lg font-semibold">Total:</h1>
-          <span>৳8,489</span>
+          <span>{{subtotal + 50}}</span>
         </div>
         <div class="flex align-center justify-between my-2">
           <h1 class="text-lg font-semibold">Payment method:
@@ -568,7 +568,9 @@
           items: JSON.parse(localStorage.getItem('carts')) || [],
           qnt: 0,
           subtotal: 0,
-          isShow: false
+          isShow: false,
+          orderId: Date.now(),
+          orderDate: new Date()
         }
       },
       methods: {
