@@ -15,8 +15,8 @@
       "sizes": "310x310"
     }
   ],
-  "background_color": "#ffffff",
-  "theme_color": "#ffffff",
+  "background_color": "#1a202c",
+  "theme_color": "#1a2021",
   "screenshots": [
     {
       "src": "https://github.com/alsaifdev/alsaifdev.github.io/blob/main/images/android-icon-144x144.png?raw=true",
