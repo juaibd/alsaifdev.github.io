@@ -52,6 +52,7 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
     import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
+    import { getDatabase, ref as dref, set } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-database.js";
     const firebaseConfig = {
       apiKey: "AIzaSyDppLDCOXQE5zjyS_KaJ6-k1-jyS6qSRzM",
       authDomain: "upload-bf997.firebaseapp.com",
@@ -62,7 +63,7 @@
     };
     const app = initializeApp(firebaseConfig);
     const storage = getStorage(app);
-
+    const db = getDatabase(app);
 
 
 
@@ -132,15 +133,7 @@
 
 
       if (url !== '' || message.value !== '') {
-        fetch("https://upload-bf997-default-rtdb.firebaseio.com/posts.json",
-          {
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            method: "POST",
-            body: JSON.stringify(post)
-          })
+          set(dref(db, 'posts'), post)
           .then(function(res) { 
             url = ''
             message.value = ''
