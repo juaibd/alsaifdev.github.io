@@ -141,7 +141,11 @@
             method: "POST",
             body: JSON.stringify(post)
           })
-          .then(function(res) { console.log(res) })
+          .then(function(res) { 
+            url = ''
+            message.value = ''
+            location.assign('/')
+          })
           .catch(function(res) { console.log(res) })
 
       }
