@@ -133,7 +133,7 @@
 
 
       if (url !== '' || message.value !== '') {
-          set(dref(db, 'posts' + crypto.randomUUID()), post)
+          set(dref(db, 'posts/' + crypto.randomUUID()), post)
           .then(function(res) { 
             url = ''
             message.value = ''
