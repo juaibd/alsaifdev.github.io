@@ -219,7 +219,7 @@
   <script>
     const navbar = document.querySelector("#navbar");
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 80 || document.documentElement.scrollTop > 80) {
+      if (window.scrollY > 0 || document.documentElement.scrollTop > 0) {
         navbar.classList.add("fixed");
       } else {
         navbar.classList.remove("fixed");
