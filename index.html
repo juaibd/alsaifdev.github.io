@@ -146,7 +146,7 @@
                 </div>
               </div>
             </div>
-            <i class="fa-solid fa-share text-2xl text-gray-500"></i>
+            <i class="fa-solid fa-share text-2xl text-gray-500" @click="sharePost(post)"></i>
           </div>
         </div>
       </div>
@@ -269,6 +269,17 @@
             .catch(error => {
               console.log(error);
             })
+        },
+        sharePost({message}){
+          if (navigator.share) {
+          navigator.share({
+          title: 'friendbook',
+          text: message,
+          url: location.href,
+         })
+        .then(() => console.log('Successful share'))
+        .catch((error) => console.log('Error sharing', error));
+          }
         }
       },
       mounted() {
