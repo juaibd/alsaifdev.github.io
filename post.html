@@ -52,7 +52,7 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
     import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
-    import { getDatabase, ref as dref, set } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-database.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
     const firebaseConfig = {
       apiKey: "AIzaSyDppLDCOXQE5zjyS_KaJ6-k1-jyS6qSRzM",
       authDomain: "upload-bf997.firebaseapp.com",
@@ -63,7 +63,7 @@
     };
     const app = initializeApp(firebaseConfig);
     const storage = getStorage(app);
-    const db = getDatabase(app);
+    const db = getFirestore(app);
 
 
 
@@ -120,28 +120,29 @@
     })
 
     postBtn.addEventListener('click', () => {
-      
+      const dbRef = collection(db, "posts");
+      const post = {
+        profile: 'https://scontent.fdac147-1.fna.fbcdn.net/v/t39.30808-1/357383094_103341852822441_5658742508842210048_n.jpg?stp=cp0_dst-jpg_e15_fr_q65&_nc_cat=105&ccb=1-7&_nc_sid=dbb9e7&_nc_ohc=cbqRGi8CiZAAX-C72Tf&_nc_ht=scontent.fdac147-1.fna&oh=00_AfDvDZ7RwWiVMqj8bPOclLtPkCEq5sBQFWpWo4kqcMJPkQ&oe=64D9ACE6',
+        name: 'Abdullah Al Saif',
+        image: url,
+        message: message.value,
+        type: type.value,
+        likes: [],
+        date: new Date().toDateString(),
+        time: new Date().toLocaleTimeString()
+      }
 
 
       if (url !== '' || message.value !== '') {
-          set(dref(db, `posts/${crypto.randomUUID()}`),{
-            profile: 'https://scontent.fdac147-1.fna.fbcdn.net/v/t39.30808-1/357383094_103341852822441_5658742508842210048_n.jpg?stp=cp0_dst-jpg_e15_fr_q65&_nc_cat=105&ccb=1-7&_nc_sid=dbb9e7&_nc_ohc=cbqRGi8CiZAAX-C72Tf&_nc_ht=scontent.fdac147-1.fna&oh=00_AfDvDZ7RwWiVMqj8bPOclLtPkCEq5sBQFWpWo4kqcMJPkQ&oe=64D9ACE6',
-            name: 'Abdullah Al Saif',
-            image: url,
-             message: message.value,
-            type: type.value,
-           likes: [],
-           date: new Date().toDateString(),
-          time: new Date().toLocaleTimeString()
-          })
-          .then(function(res) { 
-            url = ''
-            message.value = ''
-            location.assign('/')
-          })
-          .catch(function(res) { console.log(res) })
-
+        addDoc(dbRef, post)
+        .then(docRef => {
+          console.log("Document has been added successfully");
+        })
+        .catch(error => {
+          console.log(error);
+        })
       }
+      
 
       console.log(post)
     })
