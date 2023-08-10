@@ -143,15 +143,12 @@
       methods: {
         fetcher() {
           onSnapshot(collection(db, "posts"), (snapshot) => {
-            let posts = snapshot.docs.map((doc) => {
-              if (doc.id === this.postId) {
-                return {
-                  id: doc.id,
-                  ...doc.data()
-                }
+            this.post = snapshot.docs.map((doc) => {
+              return {
+                id: doc.id,
+                ...doc.data()
               }
-            })
-            this.post = posts[0]
+            }).find(post => post.id === this.postId)
             this.likes = this.post.likes;
             this.comments = this.post.comments;
             console.log(this.post.comments)
