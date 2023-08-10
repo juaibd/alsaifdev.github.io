@@ -57,6 +57,14 @@
               <span class="block font-medium text-base leading-snug text-gray-300 dark:text-gray-100">{{post.name}}</span>
               <span class="block text-sm text-gray-500 dark:text-gray-400 font-light leading-snug">{{post.date}} at {{post.time}}</span>
             </div>
+             <div class="flex-1 text-right">
+              <i class="fa-solid fa-ellipsis text-2xl text-white" v-bind:data-dropdown-toggle="post.id" data-dropdown-placement="bottom-start"></i>
+              <div v-bind:id="post.id" class="z-10 hidden bg-gray-700 divide-y divide-gray-100 rounded-lg  shadow">
+                <div class="px-4 py-3 text-sm  text-gray-200">
+                  <div @click="deletePost(post.id)">Delete post</div>
+                </div>
+              </div>
+             </div>
           </div>
           <p class="text-gray-300 dark:text-gray-100 leading-snug md:leading-normal">{{post.message}}</p>
           <div class="mt-2">
@@ -148,7 +156,7 @@
 
     <script type='module'>
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-    import { getFirestore, collection, addDoc, updateDoc, doc, arrayUnion, arrayRemove, onSnapshot } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+    import { getFirestore, collection, addDoc, updateDoc, doc, arrayUnion, arrayRemove, onSnapshot,deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
     const firebaseConfig = {
       apiKey: "AIzaSyDppLDCOXQE5zjyS_KaJ6-k1-jyS6qSRzM",
       authDomain: "upload-bf997.firebaseapp.com",
@@ -187,6 +195,17 @@
             .catch(error => {
               console.log(error);
             })
+        },
+        deletePost(id) {
+          const docRef = doc(db, "posts", id);
+
+          deleteDoc(docRef)
+            .then(() => {
+              console.log("Entire Document has been deleted successfully.")
+            })
+            .catch(error => {
+              console.log(error);
+            })
         }
       },
       mounted() {
@@ -196,6 +215,7 @@
 
     app.mount('#app')
   </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
 <script src="src/index.js"></script>
 </body>
 
