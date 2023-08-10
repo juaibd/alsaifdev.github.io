@@ -84,13 +84,16 @@
                   <path fill='white' d='M12.162 7.338c.176.123.338.245.338.674 0 .43-.229.604-.474.725a.73.73 0 01.089.546c-.077.344-.392.611-.672.69.121.194.159.385.015.62-.185.295-.346.407-1.058.407H7.5c-.988 0-1.5-.546-1.5-1V7.665c0-1.23 1.467-2.275 1.467-3.13L7.361 3.47c-.005-.065.008-.224.058-.27.08-.079.301-.2.635-.2.218 0 .363.041.534.123.581.277.732.978.732 1.542 0 .271-.414 1.083-.47 1.364 0 0 .867-.192 1.879-.199 1.061-.006 1.749.19 1.749.842 0 .261-.219.523-.316.666zM3.6 7h.8a.6.6 0 01.6.6v3.8a.6.6 0 01-.6.6h-.8a.6.6 0 01-.6-.6V7.6a.6.6 0 01.6-.6z' />
                 </g>
               </svg>
-              <span class="ml-1 text-gray-500 dark:text-gray-400  font-light">0</span>
+              <span class="ml-1 text-gray-500 dark:text-gray-400  font-light">{{post.likes.length}}</span>
             </div>
             <div class="ml-1 text-gray-500 dark:text-gray-400 font-light">0 comments</div>
           </div>
           <hr class="bg-gray-800 my-3">
           <div class="flex justify-between items-center px-4">
-            <i class="fa-regular fa-thumbs-up text-2xl text-gray-500"></i>
+            <div @click="toggleLike(post)">
+              <i v-if="post.likes.includes('alsaif')" class="fa-solid fa-thumbs-up text-2xl text-blue-500"></i>
+              <i v-else class="fa-regular fa-thumbs-up text-2xl text-gray-500"></i>
+            </div>
             <i class="fa-regular fa-message text-2xl text-gray-500"></i>
             <i class="fa-solid fa-share text-2xl text-gray-500"></i>
           </div>
@@ -143,7 +146,19 @@
     
   </script>
 
-    <script>
+    <script type='module'>
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, updateDoc, doc, arrayUnion, arrayRemove, onSnapshot } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+    const firebaseConfig = {
+      apiKey: "AIzaSyDppLDCOXQE5zjyS_KaJ6-k1-jyS6qSRzM",
+      authDomain: "upload-bf997.firebaseapp.com",
+      projectId: "upload-bf997",
+      storageBucket: "upload-bf997.appspot.com",
+      messagingSenderId: "697464098245",
+      appId: "1:697464098245:web:db49912b77afda789ccfac"
+    };
+    const fbApp = initializeApp(firebaseConfig);
+    const db = getFirestore(fbApp);
     const app = Vue.createApp({
       data() {
         return {
@@ -152,18 +167,25 @@
       },
       methods: {
         fetcher() {
-          fetch('https://upload-bf997-default-rtdb.firebaseio.com/posts.json')
-            .then(ress => ress.json())
-            .then(data => {
-              console.log(data)
-              let posts = Object.entries(data).map(post => {
-                return {
-                  id: post[0],
-                  ...post[1]
-                }
-              }).reverse()
-              console.log(posts)
-              this.posts = posts;
+          onSnapshot(collection(db, "posts"), (snapshot) =>
+            this.posts = snapshot.docs.map((doc) => {
+              return {
+                id: doc.id,
+                ...doc.data()
+              }
+            })
+          );
+        },
+        toggleLike({id, likes}) {
+          const docRef = doc(db, "posts", id);
+          updateDoc(docRef, {
+              likes: likes.includes('alsaif') ? arrayRemove('alsaif') : arrayUnion('alsaif')
+            })
+            .then(docRef => {
+              console.log("A New Document Field has been added to an existing document");
+            })
+            .catch(error => {
+              console.log(error);
             })
         }
       },
