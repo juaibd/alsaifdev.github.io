@@ -178,7 +178,7 @@
               <i v-if="post.likes.includes('alsaif')" class="fa-solid fa-thumbs-up text-2xl text-blue-500"></i>
               <i v-else class="fa-regular fa-thumbs-up text-2xl text-gray-500"></i>
              </div>
-            <i class="fa-regular fa-message text-2xl text-gray-500"></i>
+            <i class="fa-regular fa-message text-2xl text-gray-500" @click='commentPost(post)'></i>
             <i class="fa-solid fa-share text-2xl text-gray-500"></i>
           </div>
         </div>
@@ -251,6 +251,10 @@
           .catch(error => {
           console.log(error);
           })
+        },
+        commentPost({id}){
+          localStorage.setItem('postId', id)
+          location.assign('/viewpost')    
         }
       },
       mounted() {
