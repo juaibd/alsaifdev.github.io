@@ -94,7 +94,7 @@
               </svg>
               <span class="ml-1 text-gray-500 dark:text-gray-400  font-light">{{post.likes.length}}</span>
             </div>
-            <div class="ml-1 text-gray-500 dark:text-gray-400 font-light">0 comments</div>
+            <div class="ml-1 text-gray-500 dark:text-gray-400 font-light">{{post.comments.length}} comments</div>
           </div>
           <hr class="bg-gray-800 my-3">
           <div class="flex justify-between items-center px-4">
@@ -102,7 +102,7 @@
               <i v-if="post.likes.includes('alsaif')" class="fa-solid fa-thumbs-up text-2xl text-blue-500"></i>
               <i v-else class="fa-regular fa-thumbs-up text-2xl text-gray-500"></i>
             </div>
-            <i class="fa-regular fa-message text-2xl text-gray-500"></i>
+            <i class="fa-regular fa-message text-2xl text-gray-500" @click="commentPost(post)"></i>
             <i class="fa-solid fa-share text-2xl text-gray-500"></i>
           </div>
         </div>
@@ -202,6 +202,22 @@
           deleteDoc(docRef)
             .then(() => {
               console.log("Entire Document has been deleted successfully.")
+            })
+            .catch(error => {
+              console.log(error);
+            })
+        },
+        commentPost({ id, name, profile, comments }) {
+
+          const docRef = doc(db, "posts", id);
+          updateDoc(docRef, {
+              comments: [...comments, {
+                name,
+                profile
+              }]
+            })
+            .then(docRef => {
+              console.log("A New Document Field has been added to an existing document");
             })
             .catch(error => {
               console.log(error);
