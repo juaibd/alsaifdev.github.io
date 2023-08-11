@@ -71,7 +71,7 @@
               <i v-else class="fa-regular fa-thumbs-up text-2xl text-gray-500"></i>
             </div>
             <div>
-              <i class="fa-regular fa-message text-2xl text-gray-500"></i>
+              <i class="fa-regular fa-message text-2xl text-gray-500" @click='focusInput'></i>
             </div>
             <i class="fa-solid fa-share text-2xl text-gray-500"></i>
           </div>
@@ -107,7 +107,7 @@
     <div class="w-full h-24 bg-gray-900"></div>
 
     <div class="w-full flex gap-3 px-4 py-2 items-center fixed bottom-0 left-0 right-0 bg-gray-700 text-gray-300">
-      <input type="text" class="rounded-lg flex-1 bg-gray-900 text-white" placeholder="write a comment.." v-model="inpText">
+      <input ref="comInp" type="text" class="rounded-lg flex-1 bg-gray-900 text-white" placeholder="write a comment.." v-model="inpText">
       <button class="bg-blue-700 h-10 px-4 rounded-lg text-xl font-bold" @click="commentPost(post)">Send</button>
     </div>
 
@@ -184,6 +184,9 @@
             .catch(error => {
               console.log(error);
             })
+        },
+        focusInput() {
+          this.$refs.comInp.focus();
         }
       },
       mounted() {
