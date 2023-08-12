@@ -140,6 +140,19 @@
               console.log(error);
             })
         },
+        deletePost(id) {
+          const docRef = doc(db, "posts", id);
+
+          deleteDoc(docRef)
+            .then(() => {
+              console.log("Entire Document has been deleted successfully.")
+              localStorage.removeItem('postId')
+              history.back()
+            })
+            .catch(error => {
+              console.log(error);
+            })
+        },
         commentPost({ id, name, profile, comments }) {
 
           const docRef = doc(db, "posts", id);
