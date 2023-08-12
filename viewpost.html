@@ -5,9 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title></title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-  <script src="https://cdn.tailwindcss.com"></script>
+   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <link rel="manifest" href="/manifest.json" />
   <style>
@@ -29,12 +29,8 @@
               <span class="block text-sm text-gray-500 dark:text-gray-400 font-light leading-snug">{{post.date}} at {{post.time}}</span>
             </div>
             <div class="flex-1 text-right">
-              <i class="fa-solid fa-ellipsis text-2xl text-white" v-bind:data-dropdown-toggle="post.id" data-dropdown-placement="bottom-start"></i>
-              <div v-bind:id="post.id" class="z-10 hidden bg-gray-700 divide-y divide-gray-100 rounded-lg  shadow">
-                <div class="px-4 py-3 text-sm  text-gray-200">
-                  <div @click="deletePost(post.id)">Delete post</div>
-                </div>
-              </div>
+              <i class="bx bxs-trash text-2xl text-white" @click="deletePost(post.id)"></i>
+              
             </div>
           </div>
           <p class="text-gray-300 dark:text-gray-100 leading-snug md:leading-normal">{{post.message}}</p>
@@ -43,7 +39,7 @@
           </div>
           <div class="flex gap-3 items-center mt-3">
             <div @click="toggleLike(post)" class="like-bg py-1 rounded-full px-4 flex items-center gap-3">
-              <i v-if="post.likes.includes('alsaif')" class="bx bxs-heart text-2xl text-rose-400"></i>
+              <i v-if="likes.includes('alsaif')" class="bx bxs-heart text-2xl text-rose-400"></i>
               <i v-else class="bx bx-heart text-2xl text-rose-400"></i>
               <span class="text-md font-bold">{{likes.length}}</span>
             </div>
