@@ -45,11 +45,11 @@
             <div @click="toggleLike(post)" class="like-bg py-1 rounded-full px-4 flex items-center gap-3">
               <i v-if="post.likes.includes('alsaif')" class="bx bxs-heart text-2xl text-rose-400"></i>
               <i v-else class="bx bx-heart text-2xl text-rose-400"></i>
-              <span class="text-md font-bold">{{post.likes.length}}</span>
+              <span class="text-md font-bold">{{likes.length}}</span>
             </div>
             <div class="py-1 rounded-full px-4 flex items-center gap-3" style="background: #a99dc2" @click='commentPost(post)'>
               <i class="bx bxs-message-square text-2xl text-gray-500" style="color: #7b5be3"></i>
-              <span class="text-md font-bold">{{post.comments.length}}</span>
+              <span class="text-md font-bold">{{comments.length}}</span>
             </div>
           </div>
         </div>
