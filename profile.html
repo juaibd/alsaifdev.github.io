@@ -129,32 +129,36 @@
   </div>
 
 
-      <div class="py-3 posts">
-      <div v-for="post in posts" class="post mb-2">
+     <div class="py-2 posts">
+      <div v-for="post in posts" class="post mb-1">
         <div class="px-4 py-4 bg-gray-900 shadow max-w-lg">
-          <div class="flex mb-4">
+          <div class="flex justify-start gap-3 mb-2">
             <img class="w-12 h-12 rounded-full" :src="post.profile" />
-            <div class="ml-2 mt-0.5">
-              <span class="block font-medium text-base leading-snug text-gray-300 dark:text-gray-100">{{post.name}}</span>
-              <span class="block text-sm text-gray-500 dark:text-gray-400 font-light leading-snug">{{post.date}} at {{post.time}}</span>
-            </div>
-            <div class="flex-1 text-right">
-              <i class='bx bx-share bx-flip-horizontal text-2xl text-white' @click="sharePost(post)"></i>
-            </div>
-          </div>
-          <p class="text-gray-300 dark:text-gray-100 leading-snug md:leading-normal">{{post.message}}</p>
-          <div class="mt-2">
-            <img :src="post.image" class="rounded w-full h-auto" />
-          </div>
-          <div class="flex gap-3 items-center mt-3">
-            <div @click="toggleLike(post)" class="like-bg py-1 rounded-full px-4 flex items-center gap-3">
-              <i v-if="post.likes.includes('alsaif')" class="bx bxs-heart text-2xl text-rose-400"></i>
-              <i v-else class="bx bx-heart text-2xl text-rose-400"></i>
-              <span class="text-md font-bold">{{post.likes.length}}</span>
-            </div>
-            <div class="py-1 rounded-full px-4 flex items-center gap-3" style="background: #a99dc2" @click='commentPost(post)'>
-              <i class="bx bxs-message-square text-2xl text-gray-500" style="color: #7b5be3"></i>
-             <span class="text-md font-bold">{{post.comments.length}}</span>
+            <div class="flex-1">
+              <div class="flex items-center">
+                <div class="mt-0.5">
+                  <span class="block font-medium text-base leading-snug text-gray-300 dark:text-gray-100">{{post.name}}</span>
+                  <span class="block text-sm text-gray-500 dark:text-gray-400 font-light leading-snug">{{post.date}} at {{post.time}}</span>
+                </div>
+                <div class="flex-1 text-right">
+                  <i class='bx bx-share bx-flip-horizontal text-2xl text-white' @click="sharePost(post)"></i>
+                </div>
+              </div>
+              <p class="text-gray-300 dark:text-gray-100 leading-snug md:leading-normal mt-3">{{post.message}}</p>
+              <div class="mt-2">
+                <img :src="post.image" class="rounded w-full h-auto" />
+              </div>
+              <div class="flex gap-3 items-center mt-3">
+                <div @click="toggleLike(post)" class="flex items-center gap-1">
+                  <i v-if="post.likes.includes('alsaif')" class="bx bxs-heart text-2xl text-rose-400"></i>
+                  <i v-else class="bx bx-heart text-2xl text-rose-400"></i>
+                  <span class="text-md text-white font-bold">{{post.likes.length}}</span>
+                </div>
+                <div class="flex items-center gap-1" @click='commentPost(post)'>
+                  <i class="bx bxs-message-square text-2xl text-gray-500" style="color: #7b5be3"></i>
+                  <span class="text-md text-white font-bold">{{post.comments.length}}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
