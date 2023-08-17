@@ -156,7 +156,8 @@
       data() {
         return {
           posts: [],
-          inpText: ''
+          inpText: '',
+          audio: new Audio()
         }
       },
       methods: {
@@ -176,6 +177,7 @@
               likes: likes.includes('alsaif') ? arrayRemove('alsaif') : arrayUnion('alsaif')
             })
             .then(docRef => {
+              this.audio.play()
               console.log("A New Document Field has been added to an existing document");
             })
             .catch(error => {
@@ -211,6 +213,7 @@
         }
       },
       mounted() {
+        this.audio.src = 'https://alsaifdev.github.io/src/like.mp3';
         this.fetcher()
       }
     })
