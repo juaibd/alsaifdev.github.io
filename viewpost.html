@@ -5,13 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title></title>
-   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <link rel="manifest" href="/manifest.json" />
   <style>
-   .like-bg {
+    .like-bg {
       background: #f7e1d0;
     }
   </style>
@@ -19,7 +18,7 @@
 
 <body class="bg-gray-900">
   <div id="app">
-     <div class="posts">
+    <div class="posts">
       <div class="post mb-2">
         <div class="px-4 py-4 bg-gray-900 shadow max-w-lg">
           <div class="flex mb-4">
@@ -30,7 +29,7 @@
             </div>
             <div class="flex-1 text-right">
               <i class="bx bxs-trash text-2xl text-white" @click="deletePost(post.id)"></i>
-              
+
             </div>
           </div>
           <p class="text-gray-300 dark:text-gray-100 leading-snug md:leading-normal">{{post.message}}</p>
@@ -38,14 +37,14 @@
             <img :src="post.image" class="rounded w-full h-auto" />
           </div>
           <div class="flex gap-3 items-center mt-3">
-            <div @click="toggleLike(post)" class="like-bg py-1 rounded-full px-4 flex items-center gap-3">
+            <div @click="toggleLike(post)" class="flex items-center gap-1">
               <i v-if="likes.includes('alsaif')" class="bx bxs-heart text-2xl text-rose-400"></i>
               <i v-else class="bx bx-heart text-2xl text-rose-400"></i>
-              <span class="text-md font-bold">{{likes.length}}</span>
+              <span class="text-md text-white font-bold">{{likes.length}}</span>
             </div>
-            <div class="py-1 rounded-full px-4 flex items-center gap-3" style="background: #a99dc2" @click='commentPost(post)'>
+            <div class="flex items-center gap-1" @click='commentPost(post)'>
               <i class="bx bxs-message-square text-2xl text-gray-500" style="color: #7b5be3"></i>
-              <span class="text-md font-bold">{{comments.length}}</span>
+              <span class="text-md text-white font-bold">{{comments.length}}</span>
             </div>
           </div>
         </div>
@@ -77,12 +76,11 @@
 
       </div>
     </div>
-              
+
     <div class="w-full h-24 bg-gray-900"></div>
 
     <div class="w-full flex gap-3 px-4 py-2 items-center fixed bottom-0 left-0 right-0 bg-gray-700 text-gray-300">
-      <input ref="comInp" type="text" class="rounded-lg flex-1 bg-gray-900 text-white" placeholder="write a comment.." v-model="inpText">
-      <button class="bg-blue-700 h-10 px-4 rounded-lg text-xl font-bold" @click="commentPost(post)">Send</button>
+      <input ref="comInp" type="text" class="rounded-full flex-1 bg-gray-900 text-white h-10 pl-4 focus:border-0 focus:outline-0" placeholder="write a comment.." v-model="inpText" @keyup.enter="commentPost(post)">
     </div>
 
   </div>
