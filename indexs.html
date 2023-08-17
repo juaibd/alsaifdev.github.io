@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title></title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css" rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <link rel="manifest" href="/manifest.json" />
-    <style>
+  <style>
     .like-bg {
       background: #f7e1d0;
     }
@@ -18,125 +18,130 @@
     .bottom-icon-active {
       color: #dea694;
     }
-      .no-scrollbar::-webkit-scrollbar {
-            display: none;
-      }
-    </style>
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
 </head>
 
 <body class="bg-gray-700">
   <div id="app">
-  <div id="navbar" class="fixed z-50 w-full h-16 bg-gray-900 top-0 left-0 flex items-center justify-between px-4 border-b border-gray-700">
-    <div class="flex align-center gap-3">
-      <h1 class="text-3xl font-bold text-white h-10 w-10 bg-gray-700 rounded-full flex items-center justify-center">f</h1>
-      <input type="text" id="first_name" class="bg-gray-700 border border-gray-300 text-white text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block  p-2.5  h-10 w-36" placeholder="Search.." required>
+    <div id="navbar" class="fixed z-50 w-full h-16 bg-gray-900 top-0 left-0 flex items-center justify-between px-4 border-b border-gray-700">
+      <div class="flex align-center gap-3">
+        <h1 class="text-3xl font-bold text-white h-10 w-10 bg-gray-700 rounded-full flex items-center justify-center">f</h1>
+        <input type="text" id="first_name" class="bg-gray-700 border border-gray-300 text-white text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block  p-2.5  h-10 w-36" placeholder="Search.." required>
+      </div>
+      <div class="flex align-center gap-3">
+        <i class="bx bx-message-square-dots text-white bg-gray-700 rounded-full w-10 h-10 p-2 text-xl flex items-center justify-center"></i>
+        <i class='bx bxs-cog text-white bg-gray-700 rounded-full w-10 h-10 p-2 text-xl flex items-center justify-center'></i>
+      </div>
     </div>
-    <div class="flex align-center gap-3">
-    <i class="bx bx-message-square-dots text-white bg-gray-700 rounded-full w-10 h-10 p-2 text-xl flex items-center justify-center"></i>
-    <i class='bx bxs-cog text-white bg-gray-700 rounded-full w-10 h-10 p-2 text-xl flex items-center justify-center'></i>
-    </div>
-  </div>
 
 
 
-  <div class="flex gap-3 overflow-x-auto mt-0 p-4 bg-gray-900 mb-1 mt-16 no-scrollbar">
-    <div class="shrink-0 story-item relative hover:opacity-90 cursor-pointer transition duration-200 ease-in-out w-24 text-center">
-      <img src="https://scontent.fdac147-1.fna.fbcdn.net/v/t39.30808-1/357383094_103341852822441_5658742508842210048_n.jpg?stp=cp0_dst-jpg_e15_fr_q65&_nc_cat=105&ccb=1-7&_nc_sid=dbb9e7&_nc_ohc=cbqRGi8CiZAAX-C72Tf&_nc_ht=scontent.fdac147-1.fna&oh=00_AfDvDZ7RwWiVMqj8bPOclLtPkCEq5sBQFWpWo4kqcMJPkQ&oe=64D9ACE6" class="h-24 rounded-full opacity-50 mb-2" />
-      <i class="bx bx-plus text-2xl text-purple-700 absolute bottom-6 right-3 rounded-full"></i>
-      <span class="text-gray-300 font-bold">add to story</span>
+    <div class="flex gap-3 overflow-x-auto mt-0 p-4 bg-gray-900 mb-1 mt-16 no-scrollbar">
+      <div class="shrink-0 story-item relative hover:opacity-90 cursor-pointer transition duration-200 ease-in-out w-24 text-center">
+        <img src="https://alsaifdev.github.io/images/profile.jpg" class="h-24 rounded-full opacity-50 mb-2" />
+        <i class="bx bx-plus text-2xl text-purple-700 absolute bottom-6 right-3 rounded-full"></i>
+        <span class="text-gray-300 font-bold">add to story</span>
+      </div>
+      <div class="shrink-0 story-item relative hover:opacity-90 cursor-pointer transition duration-200 ease-in-out w-24 text-center  rounded-full">
+        <img src="https://alsaifdev.github.io/images/profile.jpg" class="h-24 w-24  opacity-100 mb-2 rounded-full border-2 border-purple-900 p-1" />
+        <span class="text-gray-300 font-bold">asif khan</span>
+      </div>
+      <div class="shrink-0 story-item relative hover:opacity-90 cursor-pointer transition duration-200 ease-in-out w-24 text-center  rounded-full">
+        <img src="https://alsaifdev.github.io/images/profile.jpg" class="h-24 w-24  opacity-100 mb-2 rounded-full border-2 border-purple-900 p-1" />
+        <span class="text-gray-300 font-bold">asif khan</span>
+      </div>
+      <div class="shrink-0 story-item relative hover:opacity-90 cursor-pointer transition duration-200 ease-in-out w-24 text-center  rounded-full">
+        <img src="https://alsaifdev.github.io/images/profile.jpg" class="h-24 w-24  opacity-100 mb-2 rounded-full border-2 border-purple-900 p-1" />
+        <span class="text-gray-300 font-bold">asif khan</span>
+      </div>
+      <div class="shrink-0 story-item relative hover:opacity-90 cursor-pointer transition duration-200 ease-in-out w-24 text-center  rounded-full">
+        <img src="https://alsaifdev.github.io/images/profile.jpg" class="h-24 w-24  opacity-100 mb-2 rounded-full border-2 border-purple-900 p-1" />
+        <span class="text-gray-300 font-bold">asif khan</span>
+      </div>
+      <div class="shrink-0 story-item relative hover:opacity-90 cursor-pointer transition duration-200 ease-in-out w-24 text-center  rounded-full">
+        <img src="https://alsaifdev.github.io/images/profile.jpg" class="h-24 w-24  opacity-100 mb-2 rounded-full border-2 border-purple-900 p-1" />
+        <span class="text-gray-300 font-bold">asif khan</span>
+      </div>
     </div>
-    <div class="shrink-0 story-item relative hover:opacity-90 cursor-pointer transition duration-200 ease-in-out w-24 text-center  rounded-full">
-      <img src="https://scontent.fdac147-1.fna.fbcdn.net/v/t39.30808-1/357383094_103341852822441_5658742508842210048_n.jpg?stp=cp0_dst-jpg_e15_fr_q65&_nc_cat=105&ccb=1-7&_nc_sid=dbb9e7&_nc_ohc=cbqRGi8CiZAAX-C72Tf&_nc_ht=scontent.fdac147-1.fna&oh=00_AfDvDZ7RwWiVMqj8bPOclLtPkCEq5sBQFWpWo4kqcMJPkQ&oe=64D9ACE6" class="h-24 w-24  opacity-100 mb-2 rounded-full border-2 border-purple-900 p-1" />
-      <span class="text-gray-300 font-bold">asif khan</span>
-    </div>
-    <div class="shrink-0 story-item relative hover:opacity-90 cursor-pointer transition duration-200 ease-in-out w-24 text-center  rounded-full">
-      <img src="https://scontent.fdac147-1.fna.fbcdn.net/v/t39.30808-1/357383094_103341852822441_5658742508842210048_n.jpg?stp=cp0_dst-jpg_e15_fr_q65&_nc_cat=105&ccb=1-7&_nc_sid=dbb9e7&_nc_ohc=cbqRGi8CiZAAX-C72Tf&_nc_ht=scontent.fdac147-1.fna&oh=00_AfDvDZ7RwWiVMqj8bPOclLtPkCEq5sBQFWpWo4kqcMJPkQ&oe=64D9ACE6" class="h-24 w-24  opacity-100 mb-2 rounded-full border-2 border-purple-900 p-1" />
-      <span class="text-gray-300 font-bold">asif khan</span>
-    </div>
-    <div class="shrink-0 story-item relative hover:opacity-90 cursor-pointer transition duration-200 ease-in-out w-24 text-center  rounded-full">
-      <img src="https://scontent.fdac147-1.fna.fbcdn.net/v/t39.30808-1/357383094_103341852822441_5658742508842210048_n.jpg?stp=cp0_dst-jpg_e15_fr_q65&_nc_cat=105&ccb=1-7&_nc_sid=dbb9e7&_nc_ohc=cbqRGi8CiZAAX-C72Tf&_nc_ht=scontent.fdac147-1.fna&oh=00_AfDvDZ7RwWiVMqj8bPOclLtPkCEq5sBQFWpWo4kqcMJPkQ&oe=64D9ACE6" class="h-24 w-24  opacity-100 mb-2 rounded-full border-2 border-purple-900 p-1" />
-      <span class="text-gray-300 font-bold">asif khan</span>
-    </div>
-    <div class="shrink-0 story-item relative hover:opacity-90 cursor-pointer transition duration-200 ease-in-out w-24 text-center  rounded-full">
-      <img src="https://scontent.fdac147-1.fna.fbcdn.net/v/t39.30808-1/357383094_103341852822441_5658742508842210048_n.jpg?stp=cp0_dst-jpg_e15_fr_q65&_nc_cat=105&ccb=1-7&_nc_sid=dbb9e7&_nc_ohc=cbqRGi8CiZAAX-C72Tf&_nc_ht=scontent.fdac147-1.fna&oh=00_AfDvDZ7RwWiVMqj8bPOclLtPkCEq5sBQFWpWo4kqcMJPkQ&oe=64D9ACE6" class="h-24 w-24  opacity-100 mb-2 rounded-full border-2 border-purple-900 p-1" />
-      <span class="text-gray-300 font-bold">asif khan</span>
-    </div>
-    <div class="shrink-0 story-item relative hover:opacity-90 cursor-pointer transition duration-200 ease-in-out w-24 text-center  rounded-full">
-      <img src="https://scontent.fdac147-1.fna.fbcdn.net/v/t39.30808-1/357383094_103341852822441_5658742508842210048_n.jpg?stp=cp0_dst-jpg_e15_fr_q65&_nc_cat=105&ccb=1-7&_nc_sid=dbb9e7&_nc_ohc=cbqRGi8CiZAAX-C72Tf&_nc_ht=scontent.fdac147-1.fna&oh=00_AfDvDZ7RwWiVMqj8bPOclLtPkCEq5sBQFWpWo4kqcMJPkQ&oe=64D9ACE6" class="h-24 w-24  opacity-100 mb-2 rounded-full border-2 border-purple-900 p-1" />
-      <span class="text-gray-300 font-bold">asif khan</span>
-    </div>
-  </div>
 
-<div class="py-3 posts">
-      <div v-for="post in posts" class="post mb-2">
+    <div class="py-2 posts">
+      <div v-for="post in posts" class="post mb-1">
         <div class="px-4 py-4 bg-gray-900 shadow max-w-lg">
-          <div class="flex mb-4">
+          <div class="flex justify-start gap-3 mb-2">
             <img class="w-12 h-12 rounded-full" :src="post.profile" />
-            <div class="ml-2 mt-0.5">
-              <span class="block font-medium text-base leading-snug text-gray-300 dark:text-gray-100">{{post.name}}</span>
-              <span class="block text-sm text-gray-500 dark:text-gray-400 font-light leading-snug">{{post.date}} at {{post.time}}</span>
-            </div>
-            <div class="flex-1 text-right">
-              <i class='bx bx-share bx-flip-horizontal text-2xl text-white' @click="sharePost(post)"></i>
-            </div>
-          </div>
-          <p class="text-gray-300 dark:text-gray-100 leading-snug md:leading-normal">{{post.message}}</p>
-          <div class="mt-2">
-            <img :src="post.image" class="rounded w-full h-auto" />
-          </div>
-          <div class="flex gap-3 items-center mt-3">
-            <div @click="toggleLike(post)" class="like-bg py-1 rounded-full px-4 flex items-center gap-3">
-              <i v-if="post.likes.includes('alsaif')" class="bx bxs-heart text-2xl text-rose-400"></i>
-              <i v-else class="bx bx-heart text-2xl text-rose-400"></i>
-              <span class="text-md font-bold">{{post.likes.length}}</span>
-            </div>
-            <div class="py-1 rounded-full px-4 flex items-center gap-3" style="background: #a99dc2" @click='commentPost(post)'>
-              <i class="bx bxs-message-square text-2xl text-gray-500" style="color: #7b5be3"></i>
-             <span class="text-md font-bold">{{post.comments.length}}</span>
+            <div class="flex-1">
+              <div class="flex items-center">
+                <div class="mt-0.5">
+                  <span class="block font-medium text-base leading-snug text-gray-300 dark:text-gray-100">{{post.name}}</span>
+                  <span class="block text-sm text-gray-500 dark:text-gray-400 font-light leading-snug">{{post.date}} at {{post.time}}</span>
+                </div>
+                <div class="flex-1 text-right">
+                  <i class='bx bx-share bx-flip-horizontal text-2xl text-white' @click="sharePost(post)"></i>
+                </div>
+              </div>
+              <p class="text-gray-300 dark:text-gray-100 leading-snug md:leading-normal mt-3">{{post.message}}</p>
+              <div class="mt-2">
+                <img :src="post.image" class="rounded w-full h-auto" />
+              </div>
+              <div class="flex gap-3 items-center mt-3">
+                <div @click="toggleLike(post)" class="flex items-center gap-1">
+                  <i v-if="post.likes.includes('alsaif')" class="bx bxs-heart text-2xl text-rose-400"></i>
+                  <i v-else class="bx bx-heart text-2xl text-rose-400"></i>
+                  <span class="text-md text-white font-bold">{{post.likes.length}}</span>
+                </div>
+                <div class="flex items-center gap-1" @click='commentPost(post)'>
+                  <i class="bx bxs-message-square text-2xl text-gray-500" style="color: #7b5be3"></i>
+                  <span class="text-md text-white font-bold">{{post.comments.length}}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-      
-                
 
 
-  <div class="h-16"></div>
-<div class="fixed z-40 w-full h-16 max-w-lg -translate-x-1/2 bg-gray-900 bottom-0 left-1/2">
-    <div class="grid h-full max-w-lg grid-cols-5 mx-auto">
-      <button type="button" class="flex items-center justify-center">
-        <i class="bx bxs-home text-2xl bottom-icon-active"></i>
-      </button>
-      <button type="button" class=" flex items-center justify-center">
-        <i class='bx bx-search text-2xl text-gray-500'></i>
-      </button>
-      <button type="button" class="absolute -top-5 left-1/2 -translate-x-1/2  flex items-center justify-center w-12 h-12 rounded-lg" style="background: #dea694;">
-       <a href='/post'> <i class="bx bx-plus text-2xl text-gray-500"></i></a>
-      </button>
-      <button type="button" class="flex items-center justify-center">
-        
-      </button>
-      <button type="button" class="flex items-center justify-center">
-        <i class='bx bxs-message-square text-2xl text-gray-500'></i>
-      </button>
-      <button type="button" class="flex items-center justify-center">
-       <a href='/profile'> <i class='bx bxs-user text-2xl text-gray-500'></i></a>
-      </button>
+
+
+    <div class="h-16"></div>
+    <div class="fixed z-40 w-full h-16 max-w-lg -translate-x-1/2 bg-gray-900 bottom-0 left-1/2">
+      <div class="grid h-full max-w-lg grid-cols-5 mx-auto">
+        <button type="button" class="flex items-center justify-center">
+          <i class="bx bxs-home text-2xl bottom-icon-active"></i>
+        </button>
+        <button type="button" class=" flex items-center justify-center">
+          <i class='bx bx-search text-2xl text-gray-500'></i>
+        </button>
+        <button type="button" class="absolute -top-5 left-1/2 -translate-x-1/2  flex items-center justify-center w-12 h-12 rounded-lg" style="background: #dea694;">
+          <a href='/post'> <i class="bx bx-plus text-2xl text-gray-500"></i></a>
+        </button>
+        <button type="button" class="flex items-center justify-center">
+
+        </button>
+        <button type="button" class="flex items-center justify-center">
+          <i class='bx bxs-message-square text-2xl text-gray-500'></i>
+        </button>
+        <button type="button" class="flex items-center justify-center">
+          <a href='/profile'> <i class='bx bxs-user text-2xl text-gray-500'></i></a>
+        </button>
+      </div>
     </div>
-</div>
 
 
-  
-    
+
+
   </div>
-  
-  
 
 
-    <script type='module'>
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-    import { getFirestore, collection, addDoc, updateDoc, doc, arrayUnion, arrayRemove, onSnapshot,deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+
+
+  <script type='module'>
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, updateDoc, doc, arrayUnion, arrayRemove, onSnapshot, deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
     const firebaseConfig = {
       apiKey: "AIzaSyDppLDCOXQE5zjyS_KaJ6-k1-jyS6qSRzM",
       authDomain: "upload-bf997.firebaseapp.com",
@@ -165,7 +170,7 @@
             }).reverse()
           );
         },
-        toggleLike({id, likes}) {
+        toggleLike({ id, likes }) {
           const docRef = doc(db, "posts", id);
           updateDoc(docRef, {
               likes: likes.includes('alsaif') ? arrayRemove('alsaif') : arrayUnion('alsaif')
@@ -188,20 +193,20 @@
               console.log(error);
             })
         },
-        commentPost({id}){
+        commentPost({ id }) {
           localStorage.setItem('postId', id)
-          location.assign('/viewpost');          
+          location.assign('/viewpost');
         },
-        
-        sharePost({message}){
+
+        sharePost({ message }) {
           if (navigator.share) {
-          navigator.share({
-          title: 'friendbook',
-          text: message,
-          url: location.href,
-         })
-        .then(() => console.log('Successful share'))
-        .catch((error) => console.log('Error sharing', error));
+            navigator.share({
+                title: 'friendbook',
+                text: message,
+                url: location.href,
+              })
+              .then(() => console.log('Successful share'))
+              .catch((error) => console.log('Error sharing', error));
           }
         }
       },
@@ -212,8 +217,8 @@
 
     app.mount('#app')
   </script>
-  
-<script src="src/index.js"></script>
+
+  <script src="src/index.js"></script>
 </body>
 
 </html>
