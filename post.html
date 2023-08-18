@@ -55,6 +55,17 @@
 
 
     </div>
+        <div class="px-2 hidden" id="progress">
+
+      <div class="flex justify-between mb-1">
+        <span class="text-base font-medium text-white">Uploading...</span>
+        <span class="text-sm font-medium text-white" id="progress-value">45%</span>
+      </div>
+      <div class="w-full rounded-full h-2 bg-gray-700">
+        <div class="bg-blue-600 h-2.5 rounded-full" id="progress-bar"></div>
+      </div>
+
+        </div>
   </div>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
@@ -80,6 +91,9 @@
     const imageArea = document.querySelector("#imageArea");
     const type = document.querySelector("#type");
     const postBtn = document.querySelector("#postBtn");
+    const progress = document.querySelector("#progress");
+    const progressBar = document.querySelector("#progress-bar");
+    const progressValue = document.querySelector("#progress-value");
     window.addEventListener("scroll", () => {
       if (window.scrollY > 0 || document.documentElement.scrollTop > 0) {
         navbar.classList.add("fixed");
@@ -98,16 +112,9 @@
 
       uploadTask.on('state_changed',
         (snapshot) => {
-          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log('Upload is ' + progress + '% done');
-          switch (snapshot.state) {
-            case 'paused':
-              console.log('Upload is paused');
-              break;
-            case 'running':
-              console.log('Upload is running');
-              break;
-          }
+          const value = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          progressBar.style.width = `${value}%`
+          progressValue.innerHTML =  `${value}%`
         },
         (error) => {
           console.log(error)
@@ -116,8 +123,8 @@
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             console.log('File available at', downloadURL);
             url = downloadURL;
+            progress.classList.add('hidden')
             imageArea.classList.replace('h-80', 'h-auto')
-
             imageArea.innerHTML = `
             <img src="${url}" class="w-full">
                       `;
