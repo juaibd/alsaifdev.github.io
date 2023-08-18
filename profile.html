@@ -161,6 +161,13 @@
                   <i class="bx bxs-message-square text-2xl text-gray-500" style="color: #7b5be3"></i>
                   <span class="text-md text-white font-bold">{{post.comments.length}}</span>
                 </div>
+                 <div class="flex items-center gap-1.5" @click='commentPost(post)'>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-eye-fill w-6 h-6 text-blue-500" aria-hidden="true" viewBox="0 0 16 16">
+                    <path stroke="currentColor" d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                    <path stroke="currentColor" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                  </svg>
+                  <span class="text-md text-white font-bold">{{post.view}}</span>
+                 </div>
               </div>
             </div>
           </div>
