@@ -127,6 +127,7 @@
             }).find(post => post.id === this.postId)
             this.likes = this.post.likes;
             this.comments = this.post.comments;
+            this.updateView(this.post)
             console.log(this.post.comments)
           });
         },
@@ -169,6 +170,18 @@
             .then(docRef => {
               console.log("A New Document Field has been added to an existing document");
               this.inpText = '';
+            })
+            .catch(error => {
+              console.log(error);
+            })
+        },
+        updateView({ id, view }) {
+          const docRef = doc(db, "posts", id);
+          updateDoc(docRef, {
+              view : Number(view) + 1
+            })
+            .then(docRef => {
+              console.log("A New Document Field has been added to an existing document");
             })
             .catch(error => {
               console.log(error);
