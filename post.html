@@ -109,7 +109,7 @@
       const storageRef = ref(storage, `images/${file.name}`);
 
       const uploadTask = uploadBytesResumable(storageRef, file);
-
+      progress.classList.remove('hidden')
       uploadTask.on('state_changed',
         (snapshot) => {
           const value = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
