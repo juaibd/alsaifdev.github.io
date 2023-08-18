@@ -186,7 +186,7 @@
         updateView(id) {
           const docRef = doc(db, "posts", id);
           updateDoc(docRef, {
-              view : view: arrayUnion(crypto.randomUUID())
+              view: arrayUnion(crypto.randomUUID())
             })
             .then(docRef => {
               console.log("A New Document Field has been added to an existing document");
