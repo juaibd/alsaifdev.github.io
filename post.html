@@ -115,10 +115,11 @@
       imageArea.innerHTML = `
                   <img src="${imgurl}" class="w-full">
                             `;
+                 
     })
 
     function uploadImg() {
-      const storageRef = ref(storage, `images/${file.name}`);
+      const storageRef = ref(storage, `uploadedFile/${file.name}`);
 
       const uploadTask = uploadBytesResumable(storageRef, file);
       progress.classList.remove('hidden')
@@ -150,7 +151,8 @@
       const post = {
         profile: 'https://alsaifdev.github.io/images/profile.jpg',
         name: 'Abdullah Al Saif',
-        image: url,
+        postUrl: url,
+        postUrlType: file.type,
         message: message.value,
         type: type.value,
         likes: [],
