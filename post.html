@@ -112,9 +112,12 @@
       file = e.target.files[0];
       let imgurl = URL.createObjectURL(e.target.files[0]);
       imageArea.classList.replace('h-80', 'h-auto')
-      imageArea.innerHTML = `
-                  <img src="${imgurl}" class="w-full">
-                            `;
+            ${ 
+         file.type.includes('image') &&  `<img src="${imgurl}" class="w-full">` ||
+         file.type.includes('video') &&  `<video controls src="${imgurl}" class="w-full"></video>`
+         
+      }
+       `;
                  
     })
 
