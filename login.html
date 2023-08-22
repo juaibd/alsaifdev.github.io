@@ -57,7 +57,7 @@
       const app = initializeApp(firebaseConfig);
       const storage = getStorage(app);
       const db = getFirestore(app);
-      const auth = getAuth();
+      const auth = getAuth(app);
 
 
       let email = $('#email');
@@ -74,7 +74,7 @@
             const docSnap = getDoc(docRef);
 
             if (docSnap.exists()) {
-              console.log("Document data:", docSnap.data());
+              alert("Document data:", docSnap.data());
             } else {
               // docSnap.data() will be undefined in this case
               console.log("No such document!");
