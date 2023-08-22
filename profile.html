@@ -245,7 +245,7 @@
                 id: doc.id,
                 ...doc.data()
               }
-            })
+            }).filter(post => post.userId === this.user.id)
           );
         },
         toggleLike({id, likes}) {
