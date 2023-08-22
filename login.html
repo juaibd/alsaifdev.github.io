@@ -44,7 +44,7 @@
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
       import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
-      import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+      import { getFirestore, doc, collection ,get ,} from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
       import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
       const firebaseConfig = {
         apiKey: "AIzaSyDppLDCOXQE5zjyS_KaJ6-k1-jyS6qSRzM",
@@ -70,18 +70,14 @@
             const user = userCredential.user;
             console.log(user)
             
-            const docRef = doc(db, "users", email.value.split('@')[0]);
-            const docSnap = getDoc(docRef);
-
-            if (docSnap) {
-              alert("Document data:", docSnap.data());
-              localStorage.setItem('user', JSON.stringify(docSnap.data()))
+            db.collection("users")
+             .doc(email.value.split('@')[0])
+             .get()
+              .then(doc => {
+             alert(doc.data()) 
+                localStorage.setItem('user', JSON.stringify(doc.data()))
               location.assign('/')
-            } else {
-              // docSnap.data() will be undefined in this case
-              console.log("No such document!");
-            }
-
+             })
             // ...
           })
           .catch((error) => {
