@@ -73,7 +73,7 @@
             const docSnap = await getDoc(docRef);
 
             if (docSnap.exists()) {
-              console.log("Document data:", docSnap.data());
+              alert("Document data:", docSnap.data());
               localStorage.setItem('user', JSON.stringify(docSnap.data()))
               location.assign('/')
             } else {
