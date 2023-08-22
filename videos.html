@@ -16,6 +16,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link href="https://vjs.zencdn.net/8.5.2/video-js.css" rel="stylesheet" />
   <link rel="manifest" href="/manifest.json" />
   <style>
     .like-bg {
@@ -63,7 +64,7 @@
               </div>
               <p class="text-gray-300 dark:text-gray-100 leading-snug md:leading-normal mt-3">{{post.message}}</p>
               <div class="mt-2">
-                <video controls v-if="post.postUrlType.includes('video')" :src="post.postUrl" class="rounded w-full h-auto"></video>
+                <video controls preload="auto" data-setup="{}"  v-if="post.postUrlType.includes('video')" :src="post.postUrl" class="rounded w-full h-auto video-js"></video>
                 <img v-if="post.postUrlType.includes('image')" :src="post.postUrl" class="rounded w-full h-auto" @dblclick="toggleLike(post)" />
               </div>
               <div class="flex gap-3 items-center mt-3">
@@ -210,7 +211,7 @@
   </script>
 
   
-                
+      <script src="https://vjs.zencdn.net/8.5.2/video.min.js"></script>            
 
   <script src="src/index.js"></script>
 </body>
