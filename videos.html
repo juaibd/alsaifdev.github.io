@@ -125,9 +125,7 @@
   </div>
 
 
-
-
-  <script type='module'>
+<script type='module'>
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
     import { getFirestore, collection, addDoc, updateDoc, doc, arrayUnion, arrayRemove, onSnapshot, deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
     const firebaseConfig = {
@@ -143,7 +141,7 @@
     const app = Vue.createApp({
       data() {
         return {
-          user:{},
+          user: {},
           posts: [],
           inpText: '',
           audio: new Audio()
@@ -151,15 +149,14 @@
       },
       methods: {
         fetcher() {
-          onSnapshot(collection(db, "posts"), (snapshot) =>{
+          onSnapshot(collection(db, "posts"), (snapshot) =>
             this.posts = snapshot.docs.map((doc) => {
               return {
                 id: doc.id,
                 ...doc.data()
               }
             }).reverse()
-            console.log(this.posts)
-          });
+          );
         },
         toggleLike({ id, likes }) {
           const docRef = doc(db, "posts", id);
@@ -215,6 +212,9 @@
 
     app.mount('#app')
   </script>
+
+  
+                
 
   <script src="src/index.js"></script>
 </body>
