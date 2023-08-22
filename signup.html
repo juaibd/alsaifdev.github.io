@@ -149,6 +149,7 @@
             // Signed in 
             const user = userCredential.user;
             console.log(user)
+            alert('success')
             uploadImg()
             // ...
           })
@@ -156,6 +157,7 @@
             const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorMessage)
+            alert(errorMessage)
             // ..
           });
       })
