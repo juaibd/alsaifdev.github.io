@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>profile</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+  <link rel="manifest" href="/manifest.json" />
+</head>
+
+<body class="bg-gray-900 w-full h-screen flex items-center justify-center p-4 text-white">
+
+  <div class="w-full">
+    <h1 class="text-white text-3xl text-bold text-center mb-4">Create an account</h1>
+    <div class="flex justify-center my-4">
+      <div class="relative w-24 h-24 bg-gray-600 rounded-full">
+        <svg class="absolute w-22 h-22 text-gray-400 left-0 -top-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+        </svg>
+        <i class="bx bx-plus absolute bottom-0 right-0.5 text-white z-50 text-3xl"></i>
+      </div>
+      <input type="file" name="file" id="file">
+    </div>
+    <div class="mb-4">
+      <label for="first_name" class="block mb-2 text-md font-medium text-white">First name</label>
+      <input type="text" id="first_name" class="border  text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 shadow-sm-light" placeholder="John" required>
+    </div>
+    <div class="mb-4">
+      <label for="last_name" class="block mb-2 text-mf font-medium text-white">Last name</label>
+      <input type="text" id="last_name" class="border  text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 shadow-sm-light" placeholder="Doe" required>
+    </div>
+    <div>
+      <div class="mb-4">
+        <label for="email" class="block mb-2 text-md font-medium text-white">Your email</label>
+        <input type="email" id="email" class="border  text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 shadow-sm-light" placeholder="name@example.com" required>
+      </div>
+      <div class="mb-4">
+        <label for="password" class="block mb-2 text-md font-medium text-white">Your password</label>
+        <input type="password" id="password" class="border  text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 shadow-sm-light" required>
+      </div>
+      <div class="mb-4">
+        <label for="repeat-password" class="block mb-2 text-md font-medium text-white">Confirm password</label>
+        <input type="password" id="confirm_password" class="border  text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 shadow-sm-light" required>
+      </div>
+      <div class="flex items-center mb-4">
+        <div class="flex items-center h-5">
+          <input id="terms" type="checkbox" value="" class="w-4 h-4 border bg-gray-700 border-gray-600 focus:ring-blue-600 ring-offset-gray-800 focus:ring-offset-gray-800" required>
+        </div>
+        <label for="terms" class="ml-2 text-sm font-medium text-gray-300">I agree with the <a href="#" class="hover:underline text-blue-500">terms and conditions</a></label>
+      </div>
+      <div class="flex items-center justify-between">
+        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" id="signbtn">Register new account</button>
+        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login to your account</button>
+      </div>
+    </div>
+
+
+
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+      import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
+      import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+      import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+      const firebaseConfig = {
+        apiKey: "AIzaSyDppLDCOXQE5zjyS_KaJ6-k1-jyS6qSRzM",
+        authDomain: "upload-bf997.firebaseapp.com",
+        projectId: "upload-bf997",
+        storageBucket: "upload-bf997.appspot.com",
+        messagingSenderId: "697464098245",
+        appId: "1:697464098245:web:db49912b77afda789ccfac"
+      };
+      const app = initializeApp(firebaseConfig);
+      const storage = getStorage(app);
+      const db = getFirestore(app);
+      const auth = getAuth();
+
+      let first_name = $('#first_name');
+      let last_name = $('#last_name');
+      let email = $('#email');
+      let password = $('#password')
+      let confirm_password = $('#confirm_password')
+      let url = '';
+      let file;
+
+
+
+      $('#file').addEventListener('change', (e) => {
+        file = e.target.files[0];
+
+        console.log(name)
+      })
+
+      function uploadImg() {
+        const storageRef = ref(storage, `profiles/${email.value.split('@')[0]}`);
+
+        const uploadTask = uploadBytesResumable(storageRef, file);
+
+        uploadTask.on('state_changed',
+          (snapshot) => {
+            console.log('uploading')
+          },
+          (error) => {
+            console.log(error)
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              console.log('File available at', downloadURL);
+              uplodData(downloadURL)
+            });
+          }
+        );
+      }
+
+      function uplodData(url) {
+        const dbRef = doc(db, 'users', email.value.split('@')[0]);
+        const user = {
+          profile: url,
+          name: first_name.value + ' ' + last_name.value,
+          email: email.value,
+          first_name: first_name.value,
+          last_name: last_name.value,
+          date: new Date().toDateString(),
+          time: new Date().toLocaleTimeString()
+        }
+
+
+
+        setDoc(dbRef, user)
+          .then(docRef => {
+            console.log("Document has been added successfully");
+            //location.assign('/')
+          })
+          .catch(error => {
+            console.log(error);
+          })
+
+
+
+        console.log(user)
+      }
+
+      $('#signbtn').addEventListener('click', () => {
+        createUserWithEmailAndPassword(auth, email.value, password.value)
+          .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            console.log(user)
+            uploadImg()
+            // ...
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorMessage)
+            // ..
+          });
+      })
+
+      function $(elm) {
+        return document.querySelector(elm);
+      }
+    </script>
+
+    <script src="src/index.js"></script>
+</body>
+
+          </html>
