@@ -16,13 +16,13 @@
   <div class="w-full">
     <h1 class="text-white text-3xl text-bold text-center mb-4">Create an account</h1>
     <div class="flex justify-center my-4">
-      <div class="relative w-24 h-24 bg-gray-600 rounded-full">
+      <div class="relative w-24 h-24 bg-gray-600 rounded-full" id='file-picker'>
         <svg class="absolute w-22 h-22 text-gray-400 left-0 -top-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
         </svg>
         <i class="bx bx-plus absolute bottom-0 right-0.5 text-white z-50 text-3xl"></i>
       </div>
-      <input type="file" name="file" id="file">
+      <input type="file" name="file" id="file" hidden>
     </div>
     <div class="mb-4">
       <label for="first_name" class="block mb-2 text-md font-medium text-white">First name</label>
@@ -86,12 +86,12 @@
       let url = '';
       let file;
 
-
+      $('#file-picker').addEventListener('click', (e) => {
+        $('#file').click()    
+      })
 
       $('#file').addEventListener('change', (e) => {
-        file = e.target.files[0];
-
-        
+        file = e.target.files[0];      
       })
 
       function uploadImg() {
