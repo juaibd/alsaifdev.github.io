@@ -64,13 +64,13 @@
       let password = $('#password')
 
       $('#signbtn').addEventListener('click', () => {
-       async signInWithEmailAndPassword(auth, email.value, password.value)
+        signInWithEmailAndPassword(auth, email.value, password.value)
           .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
             alert(user)
             const docRef = doc(db, "users", email.value.split('@')[0]);
-            const docSnap = await getDoc(docRef);
+            const docSnap =  getDoc(docRef);
 
             if (docSnap.exists()) {
               alert("Document data:", docSnap.data());
