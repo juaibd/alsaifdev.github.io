@@ -183,7 +183,7 @@
         toggleLike({ id, likes }) {
           const docRef = doc(db, "posts", id);
           updateDoc(docRef, {
-              likes: likes.includes('alsaif') ? arrayRemove('alsaif') : arrayUnion('alsaif')
+              likes: likes.includes(this.user.email) ? arrayRemove(this.user.email) : arrayUnion(this.user.email)
             })
             .then(docRef => {
               this.audio.play()
