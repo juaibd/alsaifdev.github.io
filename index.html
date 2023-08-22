@@ -42,7 +42,7 @@
 
     <div class="flex gap-3 overflow-x-auto mt-0 p-4 bg-gray-900 mb-1 mt-16 no-scrollbar">
       <div class="shrink-0 story-item relative hover:opacity-90 cursor-pointer transition duration-200 ease-in-out w-24 text-center">
-        <img src="https://alsaifdev.github.io/images/profile.jpg" class="h-24 rounded-full opacity-50 mb-2" />
+        <img :src="user.profile" class="h-24 rounded-full opacity-50 mb-2" />
         <i class="bx bx-plus text-2xl text-purple-700 absolute bottom-6 right-3 rounded-full"></i>
         <span class="text-gray-300 font-bold">add to story</span>
       </div>
@@ -90,7 +90,7 @@
               </div>
               <div class="flex gap-3 items-center mt-3">
                 <div @click="toggleLike(post)" class="flex items-center gap-1">
-                  <i v-if="post.likes.includes('alsaif')" class="bx bxs-heart text-2xl text-rose-400"></i>
+                  <i v-if="post.likes.includes(user.email)" class="bx bxs-heart text-2xl text-rose-400"></i>
                   <i v-else class="bx bx-heart text-2xl text-rose-400"></i>
                   <span class="text-md text-white font-bold">{{post.likes.length}}</span>
                 </div>
@@ -163,6 +163,7 @@
     const app = Vue.createApp({
       data() {
         return {
+          user: {}
           posts: [],
           inpText: '',
           audio: new Audio()
@@ -221,6 +222,7 @@
         }
       },
       mounted() {
+        this.user = JSON.parse(localStorage.getItem('user'))
         this.audio.src = 'https://alsaifdev.github.io/src/facebook-like.mp3';
         this.fetcher()
       }
