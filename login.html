@@ -44,7 +44,7 @@
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
       import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
-      import { getFirestore, doc, collection  } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+      import { getFirestore, doc, getDoc  } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
       import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
       const firebaseConfig = {
         apiKey: "AIzaSyDppLDCOXQE5zjyS_KaJ6-k1-jyS6qSRzM",
@@ -63,26 +63,25 @@
       let email = $('#email');
       let password = $('#password')
 
-      $('#signbtn').addEventListener('click', () => {
+      $('#signbtn').addEventListener('click', async () => {
         signInWithEmailAndPassword(auth, email.value, password.value)
           .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
             alert(user)
-            
-            db.collection("users")
-             .doc(email.value.split('@')[0])
-             .get()
-              .then(doc => {
-             alert(doc.data()) 
-                localStorage.setItem('user', JSON.stringify(doc.data()))
+            const docRef = doc(db, "users", email.value.split('@')[0]);
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+              console.log("Document data:", docSnap.data());
+              localStorage.setItem('user', JSON.stringify(docSnap.data()))
               location.assign('/')
-             }).catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            alert(errorMessage)
-            // ..
-          })
+            } else {
+            // docSnap.data() will be undefined in this case
+            console.log("No such document!");
+            }
+            
+          
             
             // ...
           })
