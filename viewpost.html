@@ -94,7 +94,7 @@
     <div class="w-full h-24 bg-gray-900"></div>
 
     <div class="w-full flex gap-3 px-4 py-2 items-center fixed bottom-0 left-0 right-0 bg-gray-700 text-gray-300">
-      <img src="user.profile" class="h-10 w-10 rounded-full" />
+      <img :src="user.profile" class="h-10 w-10 rounded-full" />
       <input ref="comInp" type="text" class="rounded-full flex-1 bg-gray-900 text-white h-10 pl-4 focus:border-0 focus:outline-0" placeholder="write a comment.." v-model="inpText" @keyup.enter="commentPost(post)">
     </div>
 
