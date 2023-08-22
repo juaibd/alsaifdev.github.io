@@ -68,7 +68,7 @@
           .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            console.log(user)
+            alert(user)
             
             db.collection("users")
              .doc(email.value.split('@')[0])
