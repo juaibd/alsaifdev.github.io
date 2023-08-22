@@ -46,8 +46,8 @@
     </div>
 
 
-    <div class="py-2 posts">
-      <div v-for="post in posts" class="post mb-1" v-show="post.type === 'public'">
+    <div class="py-2 posts mt-16">
+      <div v-for="post in posts" class="post mb-1" v-show="post.type === 'public' || post.postUrlType.includes('video')">
         <div class="px-4 py-4 bg-gray-900 shadow max-w-lg">
           <div class="flex justify-start gap-3 mb-2">
             <img class="w-12 h-12 rounded-full" :src="post.profile" />
