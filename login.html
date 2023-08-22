@@ -73,7 +73,7 @@
             const docRef = doc(db, "users", email.value.split('@')[0]);
             const docSnap = getDoc(docRef);
 
-            if (docSnap.exists()) {
+            if (docSnap) {
               alert("Document data:", docSnap.data());
               localStorage.setItem('user', JSON.stringify(docSnap.data()))
               location.assign('/')
