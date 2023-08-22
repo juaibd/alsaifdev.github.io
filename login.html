@@ -63,8 +63,8 @@
       let email = $('#email');
       let password = $('#password')
 
-      $('#signbtn').addEventListener('click', async () => {
-        signInWithEmailAndPassword(auth, email.value, password.value)
+      $('#signbtn').addEventListener('click', () => {
+       async signInWithEmailAndPassword(auth, email.value, password.value)
           .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
