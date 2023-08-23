@@ -184,7 +184,11 @@
                 id: doc.id,
                 ...doc.data()
               }
-            }).reverse()
+            }).sort(function(x, y) {
+              let a = new Date(x.date + ',' + x.time),
+                b = new Date(y.date + ',' + x.time);
+              return b - a;
+            });
           );
         },
         toggleLike({ id, likes }) {
