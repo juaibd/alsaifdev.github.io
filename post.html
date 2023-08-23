@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>profile</title>
+  <title>post page</title>
   <script>
       let user = JSON.parse(localStorage.getItem('user'))
       
@@ -12,12 +12,20 @@
         location.assign('/login')
       }
   </script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.1/dist/full.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <link rel="manifest" href="/manifest.json" />
+  <style>
+    .chat-details p {
+      white-space: pre-wrap;
+      font-size: 1.05rem;
+      word-break: break-word;
+    }
+  </style>
 </head>
 
-<body class="bg-gray-900">
+<body class="bg-gray-900 h-screen">
   <div id="navbar" class=" z-50 w-full h-16 bg-gray-900 top-0 left-0 flex items-center justify-between px-4 border-b border-gray-700">
     <a href="/" class="text-3xl font-bold text-white h-10 w-10 rounded-full flex items-center justify-center">
       <i class="fa-solid fa-arrow-left"></i>
@@ -25,13 +33,13 @@
     <div>
       <button onclick="location.reload()" type="button" class="text-white bg-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-0">Cancel</button>
       <button id="postBtn" type="button" class="text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-0">Post</button>
-    </div> 
+    </div>
   </div>
 
   <div id="drawer-swipe" class="bg-gray-900">
     <div class="p-4 cursor-pointer flex justify-between items-center">
       <div class="flex mb-2">
-        <img class="w-12 h-12 rounded-full" id="profileImg"/>
+        <img class="w-12 h-12 rounded-full" id="profileImg" />
         <div class="ml-2 mt-0">
           <span class="block font-medium text-base leading-snug text-gray-300 dark:text-gray-100" id="profileName"></span>
           <select id="type" class="bg-gray-700 text-gray-200 text-sm rounded-lg focus:ring-0 focus:border-0 block w-full p-1">
@@ -46,7 +54,9 @@
 
     </div>
     <div class="p-2">
-      <textarea id="message" class="block p-2.5 w-full text-sm text-gray-200 border-0 focus:ring-0 focus:border-0 mb-2 bg-gray-900" placeholder="Write your thoughts here..."></textarea>
+      <div contenteditable="true" id="message" class="chat-details block p-2.5 w-full text-md text-gray-200 border-0 focus:ring-0 focus:border-0 mb-2 bg-gray-900">
+        what's your mind?
+      </div>
 
       <div class="w-full h-80" id="imageArea">
         <div class="flex items-center justify-center w-full">
@@ -65,7 +75,7 @@
 
 
     </div>
-        <div class="px-2 hidden" id="progress">
+    <div class="px-2 hidden" id="progress">
 
       <div class="flex justify-between mb-1">
         <span class="text-base font-medium text-white">Uploading...</span>
@@ -75,7 +85,13 @@
         <div class="bg-blue-600 h-2.5 rounded-full" id="progress-bar"></div>
       </div>
 
-        </div>
+    </div>
+    <div class="px-3">
+      <h1 class="text-justify text-white text-xl font-bold" id="success-sms">You can also use AI to write an article or others</h1>
+
+      <input type="text" placeholder="write your command here..." class="bg-gray-900 text-white border border-gray-700 rounded focus:ring-0 focus:border-0 w-full h-12 px-2 mt-3" id="chat-input">
+    </div>
+
   </div>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
@@ -94,7 +110,7 @@
     const db = getFirestore(app);
 
     let user = JSON.parse(localStorage.getItem('user'))
-    
+
 
     const navbar = document.querySelector("#navbar");
     const dropzoneFile = document.querySelector("#dropzone-file");
@@ -107,6 +123,45 @@
     const progress = document.querySelector("#progress");
     const progressBar = document.querySelector("#progress-bar");
     const progressValue = document.querySelector("#progress-value");
+    const successSms = document.querySelector("#success-sms");
+    const API_KEY = "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";
+
+    const chatInput = document.querySelector("#chat-input");
+
+    chatInput.addEventListener("keydown", async (e) => {
+      if (e.key === "Enter" && e.target.value !== '') {
+        const pElement = document.createElement("p");
+        successSms.innerHTML = '<span class="loading loading-dots loading-lg"></span>';
+        const API_URL = "https://api.openai.com/v1/completions";
+        const requestOptions = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${API_KEY}`
+          },
+          body: JSON.stringify({
+            model: "text-davinci-003",
+            prompt: e.target.value,
+            max_tokens: 2048,
+            temperature: 0.2,
+            n: 1,
+            stop: null
+          })
+        }
+        try {
+          const response = await (await fetch(API_URL, requestOptions)).json();
+          pElement.textContent = response.choices[0].text.trim();
+          chatInput.value = '';
+          successSms.innerHTML = 'You can also use AI to write an article or others';
+          message.appendChild(pElement);
+        } catch (error) {
+          successSms.innerHTML = "Oops! Something went wrong while retrieving the response. Please try again.";
+        }
+      }
+    });
+
+
+
     window.addEventListener("scroll", () => {
       if (window.scrollY > 0 || document.documentElement.scrollTop > 0) {
         navbar.classList.add("fixed");
@@ -131,7 +186,7 @@
          file.type.includes('video') &&  `<video controls src="${imgurl}" class="w-full"></video>`      
       }
        `;
-                 
+
     })
 
     function uploadImg() {
@@ -143,8 +198,8 @@
       uploadTask.on('state_changed',
         (snapshot) => {
           const percent = Math.round(
-                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-                );
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
           progressBar.style.width = `${percent}%`
           progressValue.innerHTML = `${percent}%`
 
@@ -170,7 +225,7 @@
         userId: user.id,
         postUrl: url,
         postUrlType: file.type,
-        message: message.value,
+        message: message.innerHTML,
         type: type.value,
         likes: [],
         comments: [],
