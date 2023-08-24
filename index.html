@@ -12,7 +12,7 @@
         location.assign('/login')
       }
   </script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.1/dist/full.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -99,7 +99,9 @@
                 <div @click="toggleLike(post)" class="flex items-center gap-1">
                   <i v-if="post.likes.includes(user.email)" class="bx bxs-heart text-2xl text-rose-400"></i>
                   <i v-else class="bx bx-heart text-2xl text-rose-400"></i>
-                  <span class="text-md text-white font-bold">{{post.likes.length}}</span>
+                  <span class="text-md text-white font-bold countdown">
+                    <span :style="{ '--value': post.likes.length }"></span>
+                  </span>
                 </div>
                 <div class="flex items-center gap-1" @click='commentPost(post)'>
                   <i class="bx bxs-message-square text-2xl text-gray-500" style="color: #7b5be3"></i>
