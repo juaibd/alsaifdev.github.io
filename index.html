@@ -16,6 +16,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
   <link rel="manifest" href="/manifest.json" />
   <style>
     .like-bg {
@@ -41,8 +42,24 @@
       </div>
       <div class="flex align-center gap-3">
         <i class="bx bx-message-square-dots text-white bg-gray-700 rounded-full w-10 h-10 p-2 text-xl flex items-center justify-center"></i>
-        <i @click='logout' class='bx bx-log-out text-white bg-gray-700 rounded-full w-10 h-10 p-2 text-xl flex items-center justify-center'></i>
-      </div>
+                <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-10 h-10 rounded-full cursor-pointer" :src="user.profile" alt="User dropdown">
+
+        <!-- Dropdown menu -->
+        <div id="userDropdown" class="z-10 hidden  divide-y divide-gray-600 rounded-lg shadow w-44 bg-gray-700">
+          <div class="px-4 py-3 text-sm text-gray-900 text-white">
+            <div>{{user.name}}</div>
+            <div class="font-medium truncate">{{user.email}}</div>
+          </div>
+          <ul class="py-2 text-sm text-gray-200" aria-labelledby="avatarButton">
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 hover:bg-gray-600 hover:text-white">Settings</a>
+            </li>
+          </ul>
+          <div class="py-1">
+            <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white" @click='logout'>Sign out</a>
+          </div>
+        </div>
+       </div>
     </div>
 
 
