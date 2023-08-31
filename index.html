@@ -282,6 +282,15 @@
         this.status = type === 'online'
         }
       },
+      watch: {
+        onLine(v) {
+         if (v) {
+          this.status = true
+         }else{
+           this.status = false
+         }
+       }
+      },
       mounted() {
         this.user = JSON.parse(localStorage.getItem('user'))
         this.audio.src = 'https://alsaifdev.github.io/src/facebook-like.mp3';
