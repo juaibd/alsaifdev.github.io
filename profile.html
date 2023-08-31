@@ -5,14 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>profile</title>
-  <script>
+   <script>
       let user = JSON.parse(localStorage.getItem('user'))
       
       if(!user){
         location.assign('/login')
       }
   </script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <script src="https://cdn.tailwindcss.com"></script>
@@ -26,194 +26,241 @@
     .bottom-20 {
       bottom: -40px;
     }
+
     .like-bg {
       background: #f7e1d0;
     }
+
     .bottom-icon-active {
       color: #dea694;
     }
   </style>
 </head>
 
-<body class="bg-gray-700">
-   <div id="app">
-  <div id="navbar" class=" z-50 w-full h-16 bg-gray-900 top-0 left-0 flex items-center justify-between px-4 border-b border-gray-700">
-    <a href="/" class="text-3xl font-bold text-white h-10 w-10 rounded-full flex items-center justify-center">
-      <i class="fa-solid fa-arrow-left"></i>
-    </a>
-    <input type="text" id="first_name" class="bg-gray-700 flex-1 border border-gray-300 text-white text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block  p-2.5  h-10 w-36" placeholder="Search.." required>
-  </div>
+<body class="bg-gray-900">
+  <div id="app">
+    <div class="flex justify-between items-center px-4 py-3">
+      <i class='bx bx-chevron-left text-gray-300 text-4xl'></i>
+      <div>
+        <i class='bx bx-search text-gray-300 text-2xl'></i>
+        <i class='bx bx-menu-alt-right text-gray-300 text-3xl'></i>
+      </div>
+    </div>
 
-  <div class="w-full shadow bg-gray-900">
-    <a class="relative bg-gray-900">
-      <img class="w-full h-56 bg-gray-900" src="https://flowbite.com/docs/images/blog/image-1.jpg" alt="" />
-      <i class="fa-solid fa-camera absolute bottom-5 right-5 bg-gray-400 text-gray-300 w-10 h-10 rounded-full p-3"></i>
-
-      <img class="w-48 h-48 rounded-full absolute  -bottom-6 bg-gray-700 p-1.5 left-2" :src="user.profile" alt="" />
-
-    </a>
-    <div class="p-5 mt-10">
-      <a>
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-200 dark:text-white">{{user.name}}</h5>
+    <div class="w-full flex justify-center shadow bg-gray-900 py-2">
+      <img class="w-40 h-40 rounded-lg p-2.5" style="background:#dea694 " src="user.profile" alt="" />
+    </div>
+    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-200 dark:text-white text-center">{{user.name}}</h5>
+    <p class="text-gray-500 px-8 text-justify mb-2">Saif is a talented programmer known for creating elegant solutions to complex problems.</p>
+    <div class="w-full flex items-center justify-center gap-3">
+      <a class="inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg gap-3 h-10 w-40">
+        Follow
       </a>
-      <div class="flex items-center justify-between gap-3">
-        <a class="inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg gap-3 h-10 flex-1">
-          <i class="fa-solid fa-plus"></i>
-          Add to story
+      <a class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg gap-2 h-10">
+        <i class="fa-solid fa-pen"></i>
+        Message
+      </a>
+    </div>
+
+    <div class="mb-4 border-b  border-gray-700 mt-3 px-2.5">
+      <ul class="flex justify-between -mb-px text-sm font-medium text-center" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
+        <li class="mr-2" role="presentation">
+          <button class="inline-block p-4 border-b-2 rounded-t-lg text-gray-200" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+        </li>
+        <li class="mr-2" role="presentation">
+          <button class="inline-block p-4 border-b-2 rounded-t-lg text-gray-200" id="friends-tab" data-tabs-target="#friends" type="button" role="tab" aria-controls="friends" aria-selected="false">Friends</button>
+        </li>
+        <li class="mr-2" role="presentation">
+          <button class="inline-block p-4 border-b-2 rounded-t-lg text-gray-200" id="posts-tab" data-tabs-target="#posts" type="button" role="tab" aria-controls="posts" aria-selected="true">Posts</button>
+        </li>
+        <li class="mr-0" role="presentation">
+          <button class="inline-block p-4 border-b-2 rounded-t-lg text-gray-200" id="story-tab" data-tabs-target="#story" type="button" role="tab" aria-controls="story" aria-selected="false">Stories</button>
+        </li>
+      </ul>
+    </div>
+
+    <div id="myTabContent">
+      <div class="hidden w-full p-4 bg-gray-900 shadow my-2" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <h1 class="text-2xl text-gray-200 font-bold mb-3">Details</h1>
+        <ul class="w-full text-sm font-medium text-gray-400 bg-gray-900">
+          <li class="w-full py-2 flex items-center gap-2 text-xl">
+            <i class="fa-solid fa-house"></i>Live in Meherpur,Dhaka
+          </li>
+          <li class="w-full py-2 flex items-center gap-2 text-xl">
+            <i class="fa-solid fa-location-dot"></i>From Meherpur,Dhaka
+          </li>
+          <li class="w-full py-2 flex items-center gap-2 text-xl">
+            <i class="fa-solid fa-star"></i>
+            Workplace
+          </li>
+          <li class="w-full py-2 flex items-center gap-2 text-xl">
+            <i class="fa-solid fa-ellipsis"></i>
+            see your about info
+          </li>
+        </ul>
+        <a class="w-full my-4 inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-center text-blue-600 bg-gray-700 rounded-lg gap-2 h-10">
+          Edit profile info
         </a>
-        <a class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg gap-2 h-10">
-          <i class="fa-solid fa-pen"></i>
-          Edit profile
+      </div>
+
+      <div class="hidden p-4 bg-gray-900" id="friends" role="tabpanel" aria-labelledby="friends-tab">
+        <div class="flex justify-between items-start">
+          <div>
+            <h1 class="text-2xl text-gray-200 font-bold">Friends</h1>
+            <h1 class="text-md text-gray-500 font-bold mb-3">50 Friends</h1>
+          </div>
+          <h1 class="text-md text-blue-600 font-bold mb-3">Find Friend</h1>
+        </div>
+        <div class="grid grid-cols-3 gap-2">
+          <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+            <h1 class="text-md text-gray-500 font-bold my-2">Abir khan</h1>
+          </div>
+          <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt="">
+            <h1 class="text-md text-gray-500 font-bold my-2">Abir khan</h1>
+          </div>
+          <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" alt="">
+            <h1 class="text-md text-gray-500 font-bold my-2">Abir khan</h1>
+          </div>
+          <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
+            <h1 class="text-md text-gray-500 font-bold my-2">Abir khan</h1>
+          </div>
+        </div>
+        <a class="w-full my-4 inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg gap-2 h-10">
+          See all friends
         </a>
-        <a class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg h-10">
-          <i class="fa-solid fa-ellipsis"></i>
-        </a>
       </div>
-    </div>
-  </div>
 
-  <div class="w-full p-4 bg-gray-900 shadow my-2">
-    <h1 class="text-2xl text-gray-200 font-bold mb-3">Details</h1>
-    <ul class="w-full text-sm font-medium text-gray-400 bg-gray-900">
-      <li class="w-full py-2 flex items-center gap-2 text-xl">
-        <i class="fa-solid fa-house"></i>Live in Meherpur,Dhaka
-      </li>
-      <li class="w-full py-2 flex items-center gap-2 text-xl">
-        <i class="fa-solid fa-location-dot"></i>From Meherpur,Dhaka
-      </li>
-      <li class="w-full py-2 flex items-center gap-2 text-xl">
-        <i class="fa-solid fa-star"></i>
-        Workplace
-      </li>
-      <li class="w-full py-2 flex items-center gap-2 text-xl">
-        <i class="fa-solid fa-ellipsis"></i>
-        see your about info
-      </li>
-    </ul>
-    <a class="w-full my-4 inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-center text-blue-600 bg-gray-700 rounded-lg gap-2 h-10">
-      Edit profile info
-    </a>
-  </div>
-
-  <div class="p-4 bg-gray-900">
-    <div class="flex justify-between items-start">
-      <div>
-        <h1 class="text-2xl text-gray-200 font-bold">Friends</h1>
-        <h1 class="text-md text-gray-500 font-bold mb-3">50 Friends</h1>
-      </div>
-      <h1 class="text-md text-blue-600 font-bold mb-3">Find Friend</h1>
-    </div>
-    <div class="grid grid-cols-3 gap-2">
-      <div>
-        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-        <h1 class="text-md text-gray-500 font-bold my-2">Abir khan</h1>
-      </div>
-      <div>
-        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt="">
-        <h1 class="text-md text-gray-500 font-bold my-2">Abir khan</h1>
-      </div>
-      <div>
-        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" alt="">
-        <h1 class="text-md text-gray-500 font-bold my-2">Abir khan</h1>
-      </div>
-      <div>
-        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
-        <h1 class="text-md text-gray-500 font-bold my-2">Abir khan</h1>
-      </div>
-    </div>
-    <a class="w-full my-4 inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg gap-2 h-10">
-      See all friends
-    </a>
-  </div>
-
-  <div class="p-4 bg-gray-900 mt-2">
-    <div class="flex justify-between items-start">
-      <h1 class="text-2xl text-gray-200 font-bold">Posts</h1>
-      <h1 class="text-md text-blue-600 font-bold mb-3">Filter</h1>
-    </div>
-    <div class="w-full flex items-center justify-between pb-2 border-b border-gray-700 gap-3">
-      <img class="w-10 h-10 rounded-full" :src="user.profile" />
-     <a href='/post' class="flex-1"> <input type="text" id="first_name" class="w-full bg-gray-700 border border-gray-300 text-white text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block  p-2.5  h-10" placeholder="What's your mind" disabled /></a>
-      <i class="fa-solid fa-file-image text-2xl text-blue-400"></i>
-    </div>
-  </div>
-
-
-     <div class="py-2 posts">
-      <div v-for="post in posts" class="post mb-1">
-        <div class="px-4 py-4 bg-gray-900 shadow max-w-lg">
-          <div class="flex justify-start gap-3 mb-2">
-            <img class="w-12 h-12 rounded-full" :src="post.profile" />
-            <div class="flex-1">
-              <div class="flex items-center">
-                <div class="mt-0.5">
-                  <span class="block font-medium text-base leading-snug text-gray-300 dark:text-gray-100">{{post.name}}</span>
-                  <span class="block text-sm text-gray-500 dark:text-gray-400 font-light leading-snug">{{post.date}} at {{post.time}}</span>
+      <div class="hidden py-2 posts" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+        <div v-for="post in posts" class="post mb-1">
+          <div class="px-4 py-4 bg-gray-900 shadow max-w-lg">
+            <div class="flex justify-start gap-3 mb-2">
+              <img class="w-12 h-12 rounded-full" :src="post.profile" />
+              <div class="flex-1">
+                <div class="flex items-center">
+                  <div class="mt-0.5">
+                    <span class="block font-medium text-base leading-snug text-gray-300 dark:text-gray-100">{{post.name}}</span>
+                    <span class="block text-sm text-gray-500 dark:text-gray-400 font-light leading-snug">{{post.date}} at {{post.time}}</span>
+                  </div>
+                  <div class="flex-1 text-right">
+                    <i class='bx bx-share bx-flip-horizontal text-2xl text-white' @click="sharePost(post)"></i>
+                  </div>
                 </div>
-                <div class="flex-1 text-right">
-                  <i class='bx bx-share bx-flip-horizontal text-2xl text-white' @click="sharePost(post)"></i>
+                <p class="text-gray-300 dark:text-gray-100 leading-snug md:leading-normal mt-3">{{post.message}}</p>
+                <div class="mt-2">
+                  <video width="320" height="240" controls v-if="post.postUrlType.includes('video')" class="rounded w-full h-auto">
+                    <source :src="post.postUrl" type="video/mp4">
+                  </video>
+                  <img v-if="post.postUrlType.includes('image')" :src="post.postUrl" class="rounded w-full h-auto" @dblclick="toggleLike(post)" />
                 </div>
-              </div>
-              <p class="text-gray-300 dark:text-gray-100 leading-snug md:leading-normal mt-3">{{post.message}}</p>
-              <div class="mt-2">
-                <video width="320" height="240" controls v-if="post.postUrlType.includes('video')"
-                  class="rounded w-full h-auto">
-                  <source :src="post.postUrl" type="video/mp4">
-                </video>
-                <img v-if="post.postUrlType.includes('image')" :src="post.postUrl" class="rounded w-full h-auto" @dblclick="toggleLike(post)" />
-              </div>
-              <div class="flex gap-3 items-center mt-3">
-                <div @click="toggleLike(post)" class="flex items-center gap-1">
-                  <i v-if="post.likes.includes(user.email)" class="bx bxs-heart text-2xl text-rose-400"></i>
-                  <i v-else class="bx bx-heart text-2xl text-rose-400"></i>
-                  <span class="text-md text-white font-bold">{{post.likes.length}}</span>
+                <div class="flex gap-3 items-center mt-3">
+                  <div @click="toggleLike(post)" class="flex items-center gap-1">
+                    <i v-if="post.likes.includes(user.email)" class="bx bxs-heart text-2xl text-rose-400"></i>
+                    <i v-else class="bx bx-heart text-2xl text-rose-400"></i>
+                    <span class="text-md text-white font-bold">{{post.likes.length}}</span>
+                  </div>
+                  <div class="flex items-center gap-1" @click='commentPost(post)'>
+                    <i class="bx bxs-message-square text-2xl text-gray-500" style="color: #7b5be3"></i>
+                    <span class="text-md text-white font-bold">{{post.comments.length}}</span>
+                  </div>
+                  <div class="flex items-center gap-1.5" @click='commentPost(post)'>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-eye-fill w-6 h-6 text-blue-500" aria-hidden="true" viewBox="0 0 16 16">
+                      <path stroke="currentColor" d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                      <path stroke="currentColor" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                    </svg>
+                    <span class="text-md text-white font-bold">{{post.view.length}}</span>
+                  </div>
                 </div>
-                <div class="flex items-center gap-1" @click='commentPost(post)'>
-                  <i class="bx bxs-message-square text-2xl text-gray-500" style="color: #7b5be3"></i>
-                  <span class="text-md text-white font-bold">{{post.comments.length}}</span>
-                </div>
-                 <div class="flex items-center gap-1.5" @click='commentPost(post)'>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-eye-fill w-6 h-6 text-blue-500" aria-hidden="true" viewBox="0 0 16 16">
-                    <path stroke="currentColor" d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
-                    <path stroke="currentColor" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
-                  </svg>
-                  <span class="text-md text-white font-bold">{{post.view.length}}</span>
-                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="hidden p-4 bg-gray-900" id="story" role="tabpanel" aria-labelledby="story-tab">
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="grid gap-4">
+            <div>
+              <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" alt="">
+            </div>
+            <div>
+              <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" alt="">
+            </div>
+            <div>
+              <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" alt="">
+            </div>
+          </div>
+          <div class="grid gap-4">
+            <div>
+              <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" alt="">
+            </div>
+            <div>
+              <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" alt="">
+            </div>
+            <div>
+              <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" alt="">
+            </div>
+          </div>
+          <div class="grid gap-4">
+            <div>
+              <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt="">
+            </div>
+            <div>
+              <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt="">
+            </div>
+            <div>
+              <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt="">
+            </div>
+          </div>
+          <div class="grid gap-4">
+            <div>
+              <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt="">
+            </div>
+            <div>
+              <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
+            </div>
+            <div>
+              <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" alt="">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </div>
 
-         <div class="h-16"></div>
+
+
+    <div class="h-16"></div>
     <div class="fixed z-40 w-full h-16 max-w-lg -translate-x-1/2 bg-gray-900 bottom-0 left-1/2">
       <div class="grid h-full max-w-lg grid-cols-5 mx-auto">
         <button type="button" class="flex items-center justify-center">
-         <a href='/'> <i class="bx bxs-home text-2xl text-gray-500"></i></a>
+          <i class="bx bxs-home text-2xl text-gray-500"></i>
         </button>
         <button type="button" class=" flex items-center justify-center">
           <i class='bx bx-search text-2xl text-gray-500'></i>
         </button>
-        <button type="button" class="absolute -top-5 left-1/2 -translate-x-1/2  flex items-center justify-center w-12 h-12 rounded-lg" style="background: #dea694;">
-          <a href='/post'> <i class="bx bx-plus text-2xl text-gray-500"></i></a>
+        <button type="button" class="flex items-center justify-center">
+          <div class="flex items-center justify-center w-12 h-12 rounded-lg" style="background: #dea694;">
+            <a href='/post'> <i class="bx bx-plus text-4xl text-gray-400"></i></a>
+          </div>
         </button>
         <button type="button" class="flex items-center justify-center">
-
-        </button>
-        <button type="button" class="flex items-center justify-center">
-        <a href='/videos'>  <i class='bx bxs-videos text-2xl text-gray-500'></i></a>
+          <a href='/videos'> <i class='bx bxs-videos text-2xl text-gray-500'></i></a>
         </button>
         <button type="button" class="flex items-center justify-center">
           <a href='/profile'> <i class='bx bxs-user text-2xl bottom-icon-active'></i></a>
         </button>
       </div>
     </div>
-    
-                
-    
-   </div>
-      <script>
+
+
+
+  </div>
+  <script>
     const navbar = document.querySelector("#navbar");
     window.addEventListener("scroll", () => {
       if (window.scrollY > 0 || document.documentElement.scrollTop > 0) {
@@ -225,7 +272,7 @@
   </script>
   <script type='module'>
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-    import { getFirestore, collection, addDoc, updateDoc, doc, arrayUnion, arrayRemove, onSnapshot ,deleteDoc} from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+    import { getFirestore, collection, addDoc, updateDoc, doc, arrayUnion, arrayRemove, onSnapshot, deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
     const firebaseConfig = {
       apiKey: "AIzaSyDppLDCOXQE5zjyS_KaJ6-k1-jyS6qSRzM",
       authDomain: "upload-bf997.firebaseapp.com",
@@ -239,7 +286,7 @@
     const app = Vue.createApp({
       data() {
         return {
-          user:{},
+          user: {},
           posts: [],
           audio: new Audio()
         }
@@ -255,7 +302,7 @@
             }).filter(post => post.userId === this.user.id)
           );
         },
-        toggleLike({id, likes}) {
+        toggleLike({ id, likes }) {
           const docRef = doc(db, "posts", id);
           updateDoc(docRef, {
               likes: likes.includes(this.user.email) ? arrayRemove(this.user.email) : arrayUnion(this.user.email)
@@ -268,20 +315,20 @@
               console.log(error);
             })
         },
-        deletePost(id){
+        deletePost(id) {
           const docRef = doc(db, "posts", id);
 
           deleteDoc(docRef)
-           .then(() => {
-           console.log("Entire Document has been deleted successfully.")
-           })
-          .catch(error => {
-          console.log(error);
-          })
+            .then(() => {
+              console.log("Entire Document has been deleted successfully.")
+            })
+            .catch(error => {
+              console.log(error);
+            })
         },
-        commentPost({id}){
+        commentPost({ id }) {
           localStorage.setItem('postId', id)
-          location.assign('/viewpost')    
+          location.assign('/viewpost')
         }
       },
       mounted() {
@@ -294,7 +341,7 @@
     app.mount('#app')
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
-  
+
   <script src="src/index.js"></script>
 </body>
 
