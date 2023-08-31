@@ -277,30 +277,22 @@
           localStorage.removeItem('user')
           location.assign('/login')
         },
-        observe(){
-          // Get references to all video elements with the common class
-const videos = document.querySelectorAll('.dynamic-video');
-
-// Add event listeners to each video
-videos.forEach(video => {
-  video.addEventListener('play', function() {
-    const group = this.getAttribute('data-group');
-    videos.forEach(otherVideo => {
-      if (otherVideo !== this && otherVideo.getAttribute('data-group') === group) {
-        otherVideo.pause();
-      }
-    });
-  });
-});
-          
+        updateOnlineStatus(e) {
+        const { type } = e
+        this.status = type === 'online'
         }
-        
       },
       mounted() {
         this.user = JSON.parse(localStorage.getItem('user'))
         this.audio.src = 'https://alsaifdev.github.io/src/facebook-like.mp3';
         this.fetcher()
         this.observe()
+        window.addEventListener('online', this.updateOnlineStatus)
+        window.addEventListener('offline', this.updateOnlineStatus)
+      },
+      beforeDestroy() {
+        window.removeEventListener('online', this.updateOnlineStatus)
+        window.removeEventListener('offline', this.updateOnlineStatus)
       }
     })
 
