@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <!--  <script>
+      let user = JSON.parse(localStorage.getItem('user'))
+      
+      if(!user){
+        location.assign('/login')
+      }
+  </script>-->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.1/dist/full.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+  <link rel="manifest" href="/manifest.json" />
+  <style>
+    .like-bg {
+      background: #f7e1d0;
+    }
+
+    .bottom-icon-active {
+      color: #dea694;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-900">
+  <div id="app">
+    <div id="navbar" class="fixed z-50 w-full h-16 bg-gray-900 top-0 left-0 flex items-center justify-between px-4 border-b border-gray-700">
+      <div class="flex align-center gap-3">
+        <h1 class="text-3xl font-bold text-white h-10 w-10 bg-gray-700 rounded-full flex items-center justify-center">f</h1>
+        <h1 class="text-2xl font-bold text-white">Stories</h1>
+      </div>
+      <div class="flex align-center gap-3">
+        <i class="bx bx-bell text-white bg-gray-700 rounded-full w-10 h-10 p-2 text-xl flex items-center justify-center"></i>
+        <div class="avatar" :class="{online : status}">
+          <div class="w-10 h-10 rounded-full">
+            <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-full h-full rounded-full cursor-pointer" :src="user.profile" alt="User dropdown">
+          </div>
+        </div>
+        <!-- Dropdown menu -->
+        <div id="userDropdown" class="z-10 hidden  divide-y divide-gray-600 rounded-lg shadow w-44 bg-gray-700">
+          <div class="px-4 py-3 text-sm text-gray-900 text-white">
+            <div>{{user.name}}</div>
+            <div class="font-medium truncate">{{user.email}}</div>
+          </div>
+          <ul class="py-2 text-sm text-gray-200" aria-labelledby="avatarButton">
+            <li>
+              <a href="/profile" class="block px-4 py-2 hover:bg-gray-100 hover:bg-gray-600 hover:text-white">
+                Your Account
+              </a>
+            </li>
+            <li>
+              <a class="block px-4 py-2 hover:bg-gray-100 hover:bg-gray-600 hover:text-white flex items-center justify-between">
+                <span>Dark mode</span>
+                <input type="checkbox" class="toggle toggle-sm" checked />
+              </a>
+            </li>
+            <li>
+              <a class="block px-4 py-2 hover:bg-gray-100 hover:bg-gray-600 hover:text-white flex items-center justify-between">
+                <span>Active status</span>
+                <input type="checkbox" class="toggle toggle-success toggle-sm" :checked="status" @change="online" />
+              </a>
+            </li>
+          </ul>
+          <div class="py-1">
+            <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white" @click='logout'>Sign out</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-2 p-4 mt-16 bg-gray-900">
+      <div class="relative">
+        <i class="bx bx-plus absolute top-4 left-4 bg-white w-10 h-10 rounded-full flex items-center justify-center text-xl"></i>
+        <span class="absolute bottom-4 left-4 text-white text-md">Add to story</span>
+        <img class="h-72 max-w-full rounded-lg" :src="user.profile" alt="">
+      </div>
+      <div class="relative">
+        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
+        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
+        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+      </div>
+      <div class="relative">
+        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
+        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
+        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+      </div>
+      <div class="relative">
+        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
+        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
+        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+      </div>
+      <div class="relative">
+        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
+        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
+        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+      </div>
+      <div class="relative">
+        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
+        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
+        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+      </div>
+      <div class="relative">
+        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
+        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
+        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+      </div>
+      <div class="relative">
+        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
+        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
+        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+      </div>
+      <div class="relative">
+        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
+        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
+        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+      </div>
+      <div class="relative">
+        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
+        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
+        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+      </div>
+    </div>
+
+
+
+    <div class="h-16"></div>
+    <div class="fixed z-40 w-full h-16 max-w-lg -translate-x-1/2 bg-gray-900 bottom-0 left-1/2">
+      <div class="grid h-full max-w-lg grid-cols-5 mx-auto">
+        <button type="button" class="flex items-center justify-center">
+          <i class="bx bxs-home text-3xl text-gray-500 "></i>
+        </button>
+        <button type="button" class=" flex items-center justify-center">
+          <i class='bx bx-search text-3xl text-gray-500'></i>
+        </button>
+        <button type="button" class="flex items-center justify-center">
+          <i class='bx bxs-carousel text-3xl bottom-icon-active'></i>
+        </button>
+        <button type="button" class="flex items-center justify-center">
+          <a href='/videos'> <i class='bx bxs-videos text-3xl text-gray-500'></i></a>
+        </button>
+        <button type="button" class="flex items-center justify-center">
+          <a href='/profile'> <i class='bx bxs-user text-3xl text-gray-500'></i></a>
+        </button>
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+
+  <script type='module'>
+    const app = Vue.createApp({
+      data() {
+        return {
+          user: {},
+          status: true
+        }
+      },
+      methods: {
+        online() {
+          this.status = !this.status
+        },
+        logout() {
+          localStorage.removeItem('user')
+          location.assign('/login')
+        }
+      },
+      mounted() {
+        this.user = JSON.parse(localStorage.getItem('user'))
+      },
+    })
+
+    app.mount('#app')
+  </script>
+
+  <script src="src/index.js"></script>
+</body>
+
+            </html>
