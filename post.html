@@ -60,13 +60,7 @@
 
         <div class="w-full h-80" ref="imageArea">
         </div>
-        <div class="p-2" v-show="emojiShow">
-          <div class="bg-gray-800 grid grid-cols-7 rounded-md">
-            <span class="text-xl text-center py-2" v-for="emoji in emojis" @click="picker">
-              {{String.fromCodePoint(emoji)}}
-            </span>
-          </div>
-        </div>
+        
         <div class="w-96 fixed bottom-6 left-5 p-2 flex gap-2 items-center text-white bg-gray-800 shadow-xl rounded-md">
           <!-- <div class="absolute top-0 left-0 right-0 w-1/2 h-full bg-blue-800 opacity-50 rounded-md"></div>-->
           <div class="h-10 px-3 bg-blue-800 flex justify-center items-center gap-2 rounded-md text-lg font-bold">
@@ -82,7 +76,8 @@
             <input ref="cameraSlt" type="file" @change="imgPicker" accept="image/*" capture="camera" hidden>
           </div>
           <div class="flex-1 text-right">
-            <i class='bx bx-happy-heart-eyes text-gray-600 text-2xl' @click="showEmoji"></i>
+            <i class='bx bx-revision bx-rotate-90 text-gray-600 text-2xl' @click="refreshFile"></i>
+            
           </div>
         </div>
 
@@ -110,20 +105,19 @@
       data() {
         return {
           user: {},
-          emojis: [0x1F600, 0x1F604, 0x1F34A, 0x1F344, 0x1F37F, 0x1F363, 0x1F370, 0x1F355,
-              0x1F354, 0x1F35F, 0x1F6C0, 0x1F48E, 0x1F5FA, 0x23F0, 0x1F579, 0x1F4DA,
-              0x1F431, 0x1F42A, 0x1F439, 0x1F424],
-          emojiShow: false,
           message: '',
-          type: 'public'
+          type: 'public',
+          file: null
         }
       },
       methods: {
         addStoryBtn() {
           this.$refs.fileInp.click()
         },
-        showEmoji() {
-          this.emojiShow = !this.emojiShow
+        refreshFile() {
+          this.$refs.imageArea.classList.add('h-80')
+          this.$refs.imageArea.innerHTML = ''
+          this.file = null
         },
         picker(e) {
           let emoji = e.target.innerHTML;
