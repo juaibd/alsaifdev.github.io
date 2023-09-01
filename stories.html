@@ -183,8 +183,8 @@
                 console.log('File available at', downloadURL);
                 const dbRef = collection(db, "stories");
                 const story = {
-                  profile: 'https://alsaifdev.github.io/images/profile.jpg',
-                  name: 'Abdullah Al Saif',
+                  profile: this.user.profile,
+                  name: this.user.name,
                   image: downloadURL,
                   likes: [],
                   comments: [],
@@ -209,6 +209,7 @@
         }
       },
       mounted() {
+        this.fetcher()
         this.user = JSON.parse(localStorage.getItem('user'))
       },
     })
