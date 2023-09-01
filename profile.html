@@ -39,7 +39,7 @@
 <body class="bg-gray-900">
   <div id="app">
         <div class="flex justify-between items-center px-4 py-3">
-      <i class='bx bx-chevron-left text-gray-300 text-4xl'></i>
+      <i class='bx bx-chevron-left text-gray-300 text-4xl' onclick="history.back()"></i>
       <div class="flex items-center gap-4">
         <i class='bx bx-search text-gray-300 text-2xl'></i>
         <div class="avatar" :class="{online : status}">
@@ -322,7 +322,8 @@
         return {
           user: {},
           posts: [],
-          audio: new Audio()
+          audio: new Audio(),
+          status: true
         }
       },
       methods: {
@@ -335,6 +336,9 @@
               }
             }).filter(post => post.userId === this.user.id)
           );
+        },
+        online() {
+          this.status = !this.status
         },
         toggleLike({ id, likes }) {
           const docRef = doc(db, "posts", id);
