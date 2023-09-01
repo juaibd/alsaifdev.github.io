@@ -76,7 +76,7 @@
             <input ref="cameraSlt" type="file" @change="imgPicker" accept="image/*" capture="camera" hidden>
           </div>
           <div class="flex-1 text-right">
-            <i class='bx bx-revision bx-rotate-90 text-gray-600 text-2xl' @click="refreshFile"></i>
+            <i v-show='!uploading' class='bx bx-revision bx-rotate-90 text-gray-600 text-2xl' @click="refreshFile"></i>
             
           </div>
         </div>
@@ -107,7 +107,8 @@
           user: {},
           message: '',
           type: 'public',
-          file: ''
+          file: null,
+          uploading: false
         }
       },
       methods: {
@@ -149,10 +150,10 @@
 
           uploadTask.on('state_changed',
             (snapshot) => {
-              console.log('uploading')
+              this.uploading = true
             },
             (error) => {
-              console.log(error)
+              alert(error)
             },
             () => {
               getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
@@ -179,7 +180,7 @@
           
                   })
                   .catch(error => {
-                    console.log(error);
+                    alert(error);
                   })
 
               });
