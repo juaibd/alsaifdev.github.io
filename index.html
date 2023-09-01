@@ -79,37 +79,11 @@
        </div>
     </div>
 
-
-
-    <div class="flex gap-3 overflow-x-auto mt-0 p-4 bg-gray-900 mb-1 mt-16 no-scrollbar">
-      <div class="shrink-0 story-item relative hover:opacity-90 cursor-pointer transition duration-200 ease-in-out w-24 text-center">
-        <img :src="user.profile" class="h-24 rounded-full opacity-50 mb-2" />
-        <i class="bx bx-plus text-2xl text-purple-700 absolute bottom-6 right-3 rounded-full"></i>
-        <span class="text-gray-300 font-bold">add to story</span>
-      </div>
-      <div class="shrink-0 story-item relative hover:opacity-90 cursor-pointer transition duration-200 ease-in-out w-24 text-center  rounded-full">
-        <img src="https://alsaifdev.github.io/images/profile.jpg" class="h-24 w-24  opacity-100 mb-2 rounded-full border-2 border-purple-900 p-1" />
-        <span class="text-gray-300 font-bold">asif khan</span>
-      </div>
-      <div class="shrink-0 story-item relative hover:opacity-90 cursor-pointer transition duration-200 ease-in-out w-24 text-center  rounded-full">
-        <img src="https://alsaifdev.github.io/images/profile.jpg" class="h-24 w-24  opacity-100 mb-2 rounded-full border-2 border-purple-900 p-1" />
-        <span class="text-gray-300 font-bold">asif khan</span>
-      </div>
-      <div class="shrink-0 story-item relative hover:opacity-90 cursor-pointer transition duration-200 ease-in-out w-24 text-center  rounded-full">
-        <img src="https://alsaifdev.github.io/images/profile.jpg" class="h-24 w-24  opacity-100 mb-2 rounded-full border-2 border-purple-900 p-1" />
-        <span class="text-gray-300 font-bold">asif khan</span>
-      </div>
-      <div class="shrink-0 story-item relative hover:opacity-90 cursor-pointer transition duration-200 ease-in-out w-24 text-center  rounded-full">
-        <img src="https://alsaifdev.github.io/images/profile.jpg" class="h-24 w-24  opacity-100 mb-2 rounded-full border-2 border-purple-900 p-1" />
-        <span class="text-gray-300 font-bold">asif khan</span>
-      </div>
-      <div class="shrink-0 story-item relative hover:opacity-90 cursor-pointer transition duration-200 ease-in-out w-24 text-center  rounded-full">
-        <img src="https://alsaifdev.github.io/images/profile.jpg" class="h-24 w-24  opacity-100 mb-2 rounded-full border-2 border-purple-900 p-1" />
-        <span class="text-gray-300 font-bold">asif khan</span>
-      </div>
-    </div>
-
-    <div class="py-2 posts">
+    <a href="/post" class="bg-gray-900 p-4 mt-16 flex items-center gap-3">
+      <img src="https://alsaifdev.github.io/images/profile.jpg" class="h-10 w-10 rounded-lg" />
+      <h1 class="text-gray-300 font-bold text-md">What's on your mind?</h1>
+    </a>
+    <div class="py-0.5 posts">
       <div v-for="post in posts" class="post mb-1" v-show="post.type === 'public'">
         <div class="px-4 py-4 bg-gray-900 shadow max-w-lg">
           <div class="flex justify-start gap-3 mb-2">
