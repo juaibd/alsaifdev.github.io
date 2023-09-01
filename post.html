@@ -18,10 +18,31 @@
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <link rel="manifest" href="/manifest.json" />
   <style>
-    .chat-details p {
-      white-space: pre-wrap;
-      font-size: 1.05rem;
-      word-break: break-word;
+        .circular-progress {
+      position: relative;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      background: conic-gradient(#7d2ae8 3.6deg, #ededed 0deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .circular-progress::before {
+      content: "";
+      position: absolute;
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      background-color: #fff;
+    }
+
+    .progress-value {
+      position: relative;
+      font-size: 12px;
+      font-weight: 600;
+      color: #7d2ae8;
     }
   </style>
 </head>
@@ -61,7 +82,7 @@
         <div class="w-full h-80" ref="imageArea">
         </div>
         
-        <div class="w-96 fixed bottom-6 left-5 p-2 flex gap-2 items-center text-white bg-gray-800 shadow-xl rounded-md">
+        <div class="w-96 fixed bottom-6 left-5 p-2 flex gap-2 items-center justify-center text-white bg-gray-800 shadow-xl rounded-md">
         <div class="flex gap-2 items-center">
           <div class="h-10 px-3 bg-blue-800 flex justify-center items-center gap-2 rounded-md text-lg font-bold">
             <i class='bx bxs-image-alt' @click="imageSlt"></i>
