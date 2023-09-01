@@ -107,7 +107,7 @@
           user: {},
           message: '',
           type: 'public',
-          file: null
+          file: ''
         }
       },
       methods: {
@@ -115,9 +115,7 @@
           this.$refs.fileInp.click()
         },
         refreshFile() {
-          this.$refs.imageArea.classList.add('h-80')
-          this.$refs.imageArea.innerHTML = ''
-          this.file = null
+          location.reload()
         },
         picker(e) {
           let emoji = e.target.innerHTML;
