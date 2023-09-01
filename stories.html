@@ -80,58 +80,19 @@
     </div>
 
 
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-2 p-4 mt-16 bg-gray-900">
+     <div class="grid grid-cols-2 md:grid-cols-3 gap-2 p-4 mt-16 bg-gray-900">
       <div class="relative">
-        <i class="bx bx-plus absolute top-4 left-4 bg-white w-10 h-10 rounded-full flex items-center justify-center text-xl"></i>
+        <i class="bx bx-plus absolute top-4 left-4 bg-white w-10 h-10 rounded-full flex items-center justify-center text-xl" @click="addStoryBtn"></i>
         <span class="absolute bottom-4 left-4 text-white text-md">Add to story</span>
         <img class="h-72 max-w-full rounded-lg" :src="user.profile" alt="">
+        <input type="file" hidden @change="addStory" ref="fileInp" />
       </div>
-      <div class="relative">
+      <div class="relative" v-for="story in stories">
         <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
-        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
+        <span class="absolute bottom-4 left-4 text-white text-md">{{story.name}}</span>
         <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
       </div>
-      <div class="relative">
-        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
-        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
-        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-      </div>
-      <div class="relative">
-        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
-        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
-        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-      </div>
-      <div class="relative">
-        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
-        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
-        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-      </div>
-      <div class="relative">
-        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
-        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
-        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-      </div>
-      <div class="relative">
-        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
-        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
-        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-      </div>
-      <div class="relative">
-        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
-        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
-        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-      </div>
-      <div class="relative">
-        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
-        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
-        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-      </div>
-      <div class="relative">
-        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
-        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
-        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-      </div>
-    </div>
+     </div>
 
 
 
@@ -163,6 +124,20 @@
 
 
   <script type='module'>
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+    import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
+    import { getFirestore, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+    const firebaseConfig = {
+      apiKey: "AIzaSyDppLDCOXQE5zjyS_KaJ6-k1-jyS6qSRzM",
+      authDomain: "upload-bf997.firebaseapp.com",
+      projectId: "upload-bf997",
+      storageBucket: "upload-bf997.appspot.com",
+      messagingSenderId: "697464098245",
+      appId: "1:697464098245:web:db49912b77afda789ccfac"
+    };
+    const fbapp = initializeApp(firebaseConfig);
+    const storage = getStorage(fbapp);
+    const db = getFirestore(fbapp);
     const app = Vue.createApp({
       data() {
         return {
@@ -174,6 +149,59 @@
         online() {
           this.status = !this.status
         },
+        fetcher() {
+          onSnapshot(collection(db, "stories"), (snapshot) => {
+            this.stories = snapshot.docs.map((doc) => {
+              return {
+                id: doc.id,
+                ...doc.data()
+              }
+            })
+
+            console.log(this.stories)
+          });
+        },
+        addStoryBtn() {
+          this.$refs.fileInp.click()
+        },
+        addStory(e) {
+          let file = e.target.files[0];
+          const storageRef = ref(storage, `stories/${file.name}`);
+
+          const uploadTask = uploadBytesResumable(storageRef, file);
+
+          uploadTask.on('state_changed',
+            (snapshot) => {
+              console.log('uploading')
+            },
+            (error) => {
+              console.log(error)
+            },
+            () => {
+              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                console.log('File available at', downloadURL);
+                const dbRef = collection(db, "stories");
+                const story = {
+                  profile: 'https://alsaifdev.github.io/images/profile.jpg',
+                  name: 'Abdullah Al Saif',
+                  image: downloadURL,
+                  likes: [],
+                  comments: [],
+                  date: new Date().toDateString(),
+                  time: new Date().toLocaleTimeString()
+                }
+                addDoc(dbRef, story)
+                  .then(docRef => {
+                    alert("Document has been added successfully");
+                  })
+                  .catch(error => {
+                    console.log(error);
+                  })
+
+              });
+            }
+          );
+            },
         logout() {
           localStorage.removeItem('user')
           location.assign('/login')
