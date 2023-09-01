@@ -88,9 +88,9 @@
         <input type="file" hidden @change="addStory" ref="fileInp" />
       </div>
       <div class="relative" v-for="story in stories">
-        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
+        <img :src="story.profile" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
         <span class="absolute bottom-4 left-4 text-white text-md">{{story.name}}</span>
-        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+        <img class="h-72 max-w-full rounded-lg" :src="story.image" alt="">
       </div>
      </div>
 
@@ -173,7 +173,7 @@
 
           uploadTask.on('state_changed',
             (snapshot) => {
-              alert('uploading')
+              
             },
             (error) => {
               console.log(error)
