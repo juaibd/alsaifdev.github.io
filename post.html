@@ -82,7 +82,7 @@
         <div class="w-full h-80" ref="imageArea">
         </div>
         
-        <div class="w-96 fixed bottom-6 left-5 p-2 flex gap-2 items-center justify-center text-white bg-gray-800 shadow-xl rounded-md">
+        <div class="w-96 fixed bottom-6 left-5 p-2 flex gap-2 items-center justify-between text-white bg-gray-800 shadow-xl rounded-md">
         <div class="flex gap-2 items-center">
           <div class="h-10 px-3 bg-blue-800 flex justify-center items-center gap-2 rounded-md text-lg font-bold">
             <i class='bx bxs-image-alt' @click="imageSlt"></i>
@@ -176,7 +176,7 @@
           uploadTask.on('state_changed',
             (snapshot) => {
               this.uploading = true
-              const value = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              const value =Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
               this.$refs.perValue.textContent = `${value}%`
              this.$refs.progress.style.background = `conic-gradient(#7d2ae8 ${value * 3.6}deg, #ededed 0deg)`
             },
