@@ -13,6 +13,7 @@
       }
   </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.1/dist/full.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -40,8 +41,41 @@
         <h1 class="text-2xl font-bold text-white">Videos</h1>
       </div>
       <div class="flex align-center gap-3">
-        <i class="bx bx-message-square-dots text-white bg-gray-700 rounded-full w-10 h-10 p-2 text-xl flex items-center justify-center"></i>
-        <i @click='logout' class='bx bx-log-out text-white bg-gray-700 rounded-full w-10 h-10 p-2 text-xl flex items-center justify-center'></i>
+        <i class="bx bx-bell text-white bg-gray-700 rounded-full w-10 h-10 p-2 text-xl flex items-center justify-center"></i>
+        <div class="avatar" :class="{online : status}">
+          <div class="w-10 h-10 rounded-full">
+            <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-full h-full rounded-full cursor-pointer" :src="user.profile" alt="User dropdown">
+          </div>
+        </div>
+        <!-- Dropdown menu -->
+        <div id="userDropdown" class="z-10 hidden  divide-y divide-gray-600 rounded-lg shadow w-44 bg-gray-700">
+          <div class="px-4 py-3 text-sm text-gray-900 text-white">
+            <div>{{user.name}}</div>
+            <div class="font-medium truncate">{{user.email}}</div>
+          </div>
+          <ul class="py-2 text-sm text-gray-200" aria-labelledby="avatarButton">
+            <li>
+              <a href="/profile" class="block px-4 py-2 hover:bg-gray-100 hover:bg-gray-600 hover:text-white">
+                Your Account
+              </a>
+            </li>
+            <li>
+              <a class="block px-4 py-2 hover:bg-gray-100 hover:bg-gray-600 hover:text-white flex items-center justify-between">
+                <span>Dark mode</span>
+                <input type="checkbox" class="toggle toggle-sm" checked />
+              </a>
+            </li>
+            <li>
+              <a class="block px-4 py-2 hover:bg-gray-100 hover:bg-gray-600 hover:text-white flex items-center justify-between">
+                <span>Active status</span>
+                <input type="checkbox" class="toggle toggle-success toggle-sm" :checked="status" @change="online" />
+              </a>
+            </li>
+          </ul>
+          <div class="py-1">
+            <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white" @click='logout'>Sign out</a>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -100,11 +134,8 @@
         <button type="button" class=" flex items-center justify-center">
           <i class='bx bx-search text-2xl text-gray-500'></i>
         </button>
-        <button type="button" class="absolute -top-5 left-1/2 -translate-x-1/2  flex items-center justify-center w-12 h-12 rounded-lg" style="background: #dea694;">
-          <a href='/post'> <i class="bx bx-plus text-2xl text-gray-500"></i></a>
-        </button>
         <button type="button" class="flex items-center justify-center">
-
+          <a href='/stories'> <i class='bx bxs-carousel text-3xl bottom-icon-active'></i></a>
         </button>
         <button type="button" class="flex items-center justify-center">
           <i class='bx bxs-videos text-2xl bottom-icon-active'></i>
