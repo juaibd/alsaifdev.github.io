@@ -62,7 +62,7 @@
         </div>
         
         <div class="w-96 fixed bottom-6 left-5 p-2 flex gap-2 items-center text-white bg-gray-800 shadow-xl rounded-md">
-          <!-- <div class="absolute top-0 left-0 right-0 w-1/2 h-full bg-blue-800 opacity-50 rounded-md"></div>-->
+        <div class="flex gap-2 items-center">
           <div class="h-10 px-3 bg-blue-800 flex justify-center items-center gap-2 rounded-md text-lg font-bold">
             <i class='bx bxs-image-alt' @click="imageSlt"></i>
             <input ref="imageSlt" type="file" @change="imgPicker" accept="image/*" hidden />
@@ -75,8 +75,12 @@
             <i class='bx bx-camera' @click="cameraSlt"></i>
             <input ref="cameraSlt" type="file" @change="imgPicker" accept="image/*" capture="camera" hidden>
           </div>
-          <div class="flex-1 text-right">
-            <i v-show='!uploading' class='bx bx-revision bx-rotate-90 text-gray-600 text-2xl' @click="refreshFile"></i>
+        </div>
+          <div class="flex">
+           <span v-if='uploading' class="circular-progress" ref='progress'>
+              <span class="progress-value" ref='perValue'>0%</span>
+           </span>
+            <i v-else class='bx bx-revision bx-rotate-90 text-gray-600 text-2xl' @click="refreshFile"></i>
             
           </div>
         </div>
@@ -151,6 +155,9 @@
           uploadTask.on('state_changed',
             (snapshot) => {
               this.uploading = true
+              const value = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              this.$refs.perValue.textContent = `${value}%`
+             this.$refs.progress.style.background = `conic-gradient(#7d2ae8 ${value * 3.6}deg, #ededed 0deg)`
             },
             (error) => {
               alert(error)
