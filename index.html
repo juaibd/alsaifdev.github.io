@@ -79,10 +79,17 @@
        </div>
     </div>
 
-    <a href="/post" class="bg-gray-900 p-4 mt-16 flex items-center gap-3">
-      <img src="https://alsaifdev.github.io/images/profile.jpg" class="h-10 w-10 rounded-lg" />
-      <h1 class="text-gray-300 font-bold text-md">What's on your mind?</h1>
-    </a>
+    <div class="bg-gray-900 p-4 mt-16 flex items-center justify-between gap-3">
+      <a href="/post" class="flex items-center gap-3">
+        <img :src="user.profile" class="h-10 w-10 rounded-lg" />
+        <h1 class="text-gray-300 font-bold text-md">What's on your mind?</h1>
+      </a>
+      <div class="flex -space-x-4">
+        <img src="https://alsaifdev.github.io/images/profile.jpg" class="w-10 h-10 border-2 border-purple-900 rounded-full" />
+        <img src="https://alsaifdev.github.io/images/profile.jpg" class="w-10 h-10 border-2 border-purple-900 rounded-full" />
+        <div class="w-10 h-10 border-2 border-purple-900 rounded-full bg-gray-700 text-white flex items-center justify-center">+4</div>
+      </div>
+    </div>
     <div class="py-0.5 posts">
       <div v-for="post in posts" class="post mb-1" v-show="post.type === 'public'">
         <div class="px-4 py-4 bg-gray-900 shadow max-w-lg">
