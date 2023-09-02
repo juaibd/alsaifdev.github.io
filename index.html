@@ -85,9 +85,8 @@
         <h1 class="text-gray-300 font-bold text-md">What's on your mind?</h1>
       </a>
       <div class="flex -space-x-4">
-        <img src="https://alsaifdev.github.io/images/profile.jpg" class="w-10 h-10 border-2 border-purple-900 rounded-full" />
-        <img src="https://alsaifdev.github.io/images/profile.jpg" class="w-10 h-10 border-2 border-purple-900 rounded-full" />
-        <div class="w-10 h-10 border-2 border-purple-900 rounded-full bg-gray-700 text-white flex items-center justify-center">+4</div>
+        <img v-for='story in stories' :src="story.image" class="w-10 h-10 border-2 border-purple-900 rounded-full" />
+        <div class="w-10 h-10 border-2 border-purple-900 rounded-full bg-gray-700 text-white flex items-center justify-center">+{{stories.length}}</div>
       </div>
     </div>
     <div class="py-0.5 posts">
@@ -188,7 +187,8 @@
           posts: [],
           inpText: '',
           status: navigator.onLine,
-          audio: new Audio()
+          audio: new Audio(),
+          stories:[]
         }
       },
       methods: {
@@ -202,6 +202,18 @@
               }
             })
           );
+        },
+        getStory() {
+          onSnapshot(collection(db, "stories"), (snapshot) => {
+            this.stories = snapshot.docs.map((doc) => {
+              return {
+                id: doc.id,
+                ...doc.data()
+              }
+            })
+
+            console.log(this.stories)
+          });
         },
         formetDate(d) {
           let date = new Date(d).toUTCString()
@@ -256,32 +268,16 @@
           localStorage.removeItem('user')
           location.assign('/login')
         },
-        updateOnlineStatus(e) {
-        const { type } = e
-        this.status = type === 'online'
-        }
-      },
-      watch: {
-        onLine(v) {
-         if (v) {
-          this.status = true
-         }else{
-           this.status = false
-         }
-       }
+        
       },
       mounted() {
         this.user = JSON.parse(localStorage.getItem('user'))
         this.audio.src = 'https://alsaifdev.github.io/src/facebook-like.mp3';
         this.fetcher()
-        this.observe()
-        window.addEventListener('online', this.updateOnlineStatus)
-        window.addEventListener('offline', this.updateOnlineStatus)
+        this.getStory()
+        
       },
-      beforeDestroy() {
-        window.removeEventListener('online', this.updateOnlineStatus)
-        window.removeEventListener('offline', this.updateOnlineStatus)
-      }
+      
     })
 
     app.mount('#app')
