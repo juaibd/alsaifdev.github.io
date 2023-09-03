@@ -139,8 +139,8 @@
        <div v-for="friend in friends" class="flex items-center space-x-4 mb-2">
         <img class="w-12 h-12 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="">
         <div class="font-medium text-white">
-          <div>Jese Leos</div>
-          <div class="text-sm text-gray-400">Joined in August 2014</div>
+          <div>{{friend.name}}</div>
+          <div class="text-sm text-gray-400">Joined in {{friend.joined_month_year}}</div>
         </div>
         <div class="flex-1 text-right">
           <button class="bg-gray-700 p-2 rounded-md text-white">Message</button>
@@ -303,7 +303,88 @@
           posts: [],
           audio: new Audio(),
           status: true,
-         friends:[1,2,3,4,5,6,7,8,9]
+         friends:  [
+  {
+    name: "John Doe",
+    joined_month_year: "March 2022"
+  },
+  {
+    name: "Jane Smith",
+    joined_month_year: "December 2021"
+  },
+  {
+    name: "Bob Johnson",
+    joined_month_year: "January 2023"
+  },
+  {
+    name: "Alice Brown",
+    joined_month_year: "February 2021"
+  },
+  {
+    name: "David Wilson",
+    joined_month_year: "July 2020"
+  },
+  {
+    name: "Eva Martinez",
+    joined_month_year: "May 2022"
+  },
+  {
+    name: "Frank Adams",
+    joined_month_year: "September 2023"
+  },
+  {
+    name: "Grace Lee",
+    joined_month_year: "April 2020"
+  },
+  {
+    name: "Henry Clark",
+    joined_month_year: "June 2021"
+  },
+  {
+    name: "Ivy Green",
+    joined_month_year: "October 2022"
+  },
+  {
+    name: "Jack White",
+    joined_month_year: "August 2023"
+  },
+  {
+    name: "Karen Taylor",
+    joined_month_year: "November 2019"
+  },
+  {
+    name: "Liam Turner",
+    joined_month_year: "March 2023"
+  },
+  {
+    name: "Mia Harris",
+    joined_month_year: "February 2020"
+  },
+  {
+    name: "Noah Parker",
+    joined_month_year: "May 2021"
+  },
+  {
+    name: "Olivia King",
+    joined_month_year: "July 2022"
+  },
+  {
+    name: "Paula Miller",
+    joined_month_year: "January 2022"
+  },
+  {
+    name: "Quinn Carter",
+    joined_month_year: "December 2020"
+  },
+  {
+    name: "Ryan Brown",
+    joined_month_year: "June 2022"
+  },
+  {
+    name: "Sophia Adams",
+    joined_month_year: "April 2021"
+  }
+]
         }
       },
       methods: {
