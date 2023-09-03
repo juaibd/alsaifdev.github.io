@@ -136,34 +136,16 @@
       </div>
 
       <div class="hidden p-4 bg-gray-900" id="friends" role="tabpanel" aria-labelledby="friends-tab">
-        <div class="flex justify-between items-start">
-          <div>
-            <h1 class="text-2xl text-gray-200 font-bold">Friends</h1>
-            <h1 class="text-md text-gray-500 font-bold mb-3">50 Friends</h1>
-          </div>
-          <h1 class="text-md text-blue-600 font-bold mb-3">Find Friend</h1>
+       <div v-for="friend in friends" class="flex items-center space-x-4 mb-2">
+        <img class="w-12 h-12 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="">
+        <div class="font-medium text-white">
+          <div>Jese Leos</div>
+          <div class="text-sm text-gray-400">Joined in August 2014</div>
         </div>
-        <div class="grid grid-cols-3 gap-2">
-          <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-            <h1 class="text-md text-gray-500 font-bold my-2">Abir khan</h1>
-          </div>
-          <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt="">
-            <h1 class="text-md text-gray-500 font-bold my-2">Abir khan</h1>
-          </div>
-          <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" alt="">
-            <h1 class="text-md text-gray-500 font-bold my-2">Abir khan</h1>
-          </div>
-          <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
-            <h1 class="text-md text-gray-500 font-bold my-2">Abir khan</h1>
-          </div>
+        <div class="flex-1 text-right">
+          <button class="bg-gray-700 p-2 rounded-md text-white">Message</button>
         </div>
-        <a class="w-full my-4 inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg gap-2 h-10">
-          See all friends
-        </a>
+       </div>
       </div>
 
       <div class="hidden py-2 posts" id="posts" role="tabpanel" aria-labelledby="posts-tab">
@@ -320,7 +302,8 @@
           user: {},
           posts: [],
           audio: new Audio(),
-          status: true
+          status: true,
+         friends:[1,2,3,4,5,6,7,8,9]
         }
       },
       methods: {
