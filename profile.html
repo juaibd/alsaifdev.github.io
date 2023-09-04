@@ -173,7 +173,7 @@
                   </video>
                   <img v-if="post.postUrlType.includes('image')" :src="post.postUrl" class="rounded w-full h-auto" @dblclick="toggleLike(post)" />
                 </div>
-                <div class="flex gap-3 items-center mt-3">
+                <div class="flex gap-3 items-center justify-between mt-2.5">
                   <div @click="toggleLike(post)" class="flex items-center gap-1">
                     <i v-if="post.likes.includes(user.email)" class="bx bxs-heart text-xl text-rose-400"></i>
                     <i v-else class="bx bx-heart text-xl text-rose-400"></i>
@@ -186,6 +186,9 @@
                   <div class="flex items-center gap-1.5" @click='commentPost(post)'>
                      <i class="bx bx-bar-chart text-xl text-gray-500"></i>
                     <span class="text-sm text-white">{{post.view.length}}</span>
+                  </div>
+                  <div class="flex items-center gap-1.5" @click='commentPost(post)'>
+                     <i class="bx bx-share-alt text-xl text-gray-500"></i>
                   </div>
                 </div>
               </div>
