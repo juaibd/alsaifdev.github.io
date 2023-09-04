@@ -80,7 +80,9 @@
     </div>
 
     <div class="w-full flex justify-center shadow bg-gray-900 py-2">
-      <img class="w-40 h-40 rounded-lg p-2.5" style="background:#dea694 " :src="user.profile" alt="" />
+      <div class="w-40 h-40 rounded-lg p-2.5" style="border: 3px solid#dea694 ">
+      <img class="w-full h-full rounded-lg"  :src="user.profile" alt="" />
+     </div>
     </div>
     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-200 dark:text-white text-center">{{user.name}}</h5>
     <p class="text-gray-500 px-8 text-justify mb-2">Saif is a talented programmer known for creating elegant solutions to complex problems.</p>
@@ -89,7 +91,7 @@
         Follow
       </a>
       <a class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg gap-2 h-10">
-        <i class="fa-solid fa-pen"></i>
+        <i class="bx bx-message-square"></i>
         Message
       </a>
     </div>
