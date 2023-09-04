@@ -89,9 +89,9 @@
         <div class="w-10 h-10 border-2 border-purple-900 rounded-full bg-gray-700 text-white flex items-center justify-center">+{{stories.length}}</div>
       </div>
     </div>
-    <div class="py-0.5 posts">
-      <div v-for="post in posts" class="post mb-1" v-show="post.type === 'public'">
-        <div class="px-4 py-4 bg-gray-900 shadow max-w-lg">
+    <div class="py-0 posts">
+      <div v-for="post in posts" class="post mb-1 border-b" v-show="post.type === 'public'">
+        <div class="px-4 py-2 bg-gray-900 shadow max-w-lg">
           <div class="flex justify-start gap-3 mb-2">
             <img class="w-10 h-10 rounded-lg" :src="post.profile" />
             <div class="flex-1">
@@ -109,7 +109,7 @@
                 <video controls v-if="post.postUrlType.includes('video')" :src="post.postUrl" class="rounded w-full h-auto dynamic-video" :data-group="post.id"></video>
                 <img v-if="post.postUrlType.includes('image')" :src="post.postUrl" class="rounded w-full h-auto" @dblclick="toggleLike(post)" />
               </div>
-              <div class="flex gap-3 items-center mt-3">
+              <div class="flex gap-3 items-center justify-between mt-3">
                 <div @click="toggleLike(post)" class="flex items-center gap-1">
                   <i v-if="post.likes.includes(user.email)" class="bx bxs-heart text-xl text-rose-400"></i>
                   <i v-else class="bx bx-heart text-xl text-rose-400"></i>
@@ -125,6 +125,9 @@
                   <i class="bx bx-bar-chart text-xl text-gray-500"></i>
                   <span class="text-sm text-white">{{post.view.length}}</span>
                   </div>
+                <div class="flex items-center gap-1.5" @click="sharePost(post)">
+                     <i class="bx bx-share-alt text-xl text-gray-500"></i>
+                </div>
               </div>
             </div>
           </div>
