@@ -160,6 +160,7 @@
                     <span class="block text-sm text-gray-500 dark:text-gray-400 font-light leading-snug">{{post.date}} at {{post.time}}</span>
                   </div>
                   <div class="flex-1 text-right">
+                    <i class="bx bxs-trash text-2xl text-white" @click="deletePost(post.id)"></i>
                     <i class='bx bx-share bx-flip-horizontal text-2xl text-white' @click="sharePost(post)"></i>
                   </div>
                 </div>
