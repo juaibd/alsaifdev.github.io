@@ -37,7 +37,7 @@
                   <span class="block text-sm text-gray-500 dark:text-gray-400 font-light leading-snug">{{post.date}} at {{post.time}}</span>
                 </div>
                 <div class="flex-1 text-right">
-                  <i class="bx bxs-trash text-2xl text-white" @click="deletePost(post.id)"></i>
+                  
                   <i class='bx bx-share bx-flip-horizontal text-2xl text-white ml-3' @click="sharePost(post)"></i>
                 </div>
               </div>
@@ -61,7 +61,7 @@
                 </div>
                  <div class="flex items-center gap-1.5">
                   <i class="bx bx-bar-chart text-xl text-gray-500"></i>
-                  <span class="text-sm text-white">{{post.view.length}}</span>
+                  <span class="text-sm text-white">{{view.length}}</span>
       
                  </div>
               </div>
@@ -110,7 +110,7 @@
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-    import { getFirestore, collection, addDoc, updateDoc, doc, arrayUnion, arrayRemove, onSnapshot, deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+    import { getFirestore, collection, addDoc, updateDoc, doc, arrayUnion, arrayRemove, onSnapshot } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
     const firebaseConfig = {
       apiKey: "AIzaSyDppLDCOXQE5zjyS_KaJ6-k1-jyS6qSRzM",
       authDomain: "upload-bf997.firebaseapp.com",
@@ -162,19 +162,7 @@
               console.log(error);
             })
         },
-        deletePost(id) {
-          const docRef = doc(db, "posts", id);
-
-          deleteDoc(docRef)
-            .then(() => {
-              console.log("Entire Document has been deleted successfully.")
-              localStorage.removeItem('postId')
-              history.back()
-            })
-            .catch(error => {
-              console.log(error);
-            })
-        },
+        
         commentPost({ id, comments }) {
 
           const docRef = doc(db, "posts", id);
