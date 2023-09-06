@@ -211,10 +211,10 @@
           );
         },
         toastNotClc(){
-          this. toast = false
+          this.toast = false
         },
         toastNotShow(){
-          this. toast = true
+          this.toast = true
         },
         getStory() {
           onSnapshot(collection(db, "stories"), (snapshot) => {
@@ -285,7 +285,7 @@
       },
       created() {
       setTimeout(() => this.toast = false , 5000);
-      }
+      },
       mounted() {
         this.user = JSON.parse(localStorage.getItem('user'))
         this.audio.src = 'https://alsaifdev.github.io/src/facebook-like.mp3';
