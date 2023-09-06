@@ -284,7 +284,7 @@
         
       },
       created() {
-      setTimeout(() => this.toast = false , 5000);
+      setTimeout(() => { this.toast = false } , 5000);
       },
       mounted() {
         this.user = JSON.parse(localStorage.getItem('user'))
