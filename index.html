@@ -101,7 +101,7 @@
                   <span class="block text-sm text-gray-500 dark:text-gray-400 font-light leading-snug flex items-center gap-2.5">{{post.date}} <i class='bx bx-world'></i></span>
                 </div>
                 <div class="flex-1 text-right">
-                  <i class='bx bx-bookmarks text-xl text-gray-500'></i>
+                  <i class='bx bx-bookmarks text-xl text-gray-500' @click='toastNot'></i>
                 </div>
               </div>
               <p class="text-gray-300 dark:text-gray-100 leading-snug md:leading-normal mt-3">{{post.message}}</p>
@@ -135,6 +135,12 @@
       </div>
     </div>
 
+    <!--toast notice-->
+  <div :class='{hidden : !toast}' class="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center justify-between w-80 p-4 space-x-4 divide-x  rounded-lg shadow text-gray-400 divide-gray-700 space-x bg-gray-800">
+    <i class="bx bx-bookmark"></i>
+    <div class="pl-4 flex-1 text-sm font-normal">post saved successfully.</div>
+    <i class="pl-4 text-xl bx bx-x"></i>
+  </div>
 
 
 
@@ -188,7 +194,8 @@
           inpText: '',
           status: navigator.onLine,
           audio: new Audio(),
-          stories:[]
+          stories:[],
+          toast: false
         }
       },
       methods: {
@@ -202,6 +209,9 @@
               }
             })
           );
+        },
+        toastNot(){
+          this. toast = !this.toast
         },
         getStory() {
           onSnapshot(collection(db, "stories"), (snapshot) => {
