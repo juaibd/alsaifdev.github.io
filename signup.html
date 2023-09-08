@@ -109,8 +109,11 @@
         <label for="terms" class="ml-2 text-sm font-medium text-gray-300">I agree with the <a href="#" class="hover:underline text-blue-500">terms and conditions</a></label>
       </div>
       <div class="flex items-center justify-between">
-        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" id="signbtn"> Register new account </button>
-        <button onclick="location.assign('/login')" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> Login to your account </button>
+        <button type="button" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" id="signbtn"> Sign Up </button>
+      </div>
+      <div class="my-1 flex items-center gap-4 before:h-px before:flex-1 before:bg-gray-300  before:content-[''] after:h-px after:flex-1 after:bg-gray-300  after:content-['']">or</div>
+      <div class="flex items-center justify-between">
+        <button onclick="location.assign('/login')" class="w-full text-white bg-gray-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"> Login to your account </button>
       </div>
     </div>
 
@@ -150,7 +153,7 @@
       $('#file').addEventListener('change', (e) => {
         file = e.target.files[0];
         let imgUrl = URL.createObjectURL(file);
-        
+
         $('#profile-img').src = imgUrl
       })
 
@@ -231,4 +234,4 @@
     <script src="src/index.js"></script>
 </body>
 
-  </html>
+</html>
