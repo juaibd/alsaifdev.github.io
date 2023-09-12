@@ -89,7 +89,30 @@
         <div class="w-10 h-10 border-2 border-purple-900 rounded-full bg-gray-700 text-white flex items-center justify-center">+{{stories.length}}</div>
       </div>
     </div>
-    <div class="py-0.5 posts">
+
+    
+    <div v-if='loading' role="status" class="py-0.5 posts animate-pulse">
+      <div class="post border-b mb-1">
+        <div class="px-4 py-4 bg-gray-900 shadow max-w-lg">
+          <div class="flex justify-start gap-3 mb-2">
+            <div class="h-12 w-12 rounded-lg bg-gray-700"></div>
+            <div class="flex-1">
+              <div class="mt-1">
+                <p class="bg-gray-700 rounded-md h-3 w-full"></p>
+                <p class="bg-gray-700 rounded-lg  w-1/2 h-2 mt-1.5"></p>
+              </div>
+              <p class="bg-gray-700 h-1.5 w-full mt-2 rounded-lg"></p>
+              <p class="bg-gray-700 h-1.5 w-2/3 mt-2 rounded-lg"></p>
+              <div class="mt-2">
+                <div class="flex items-center justify-center w-full h-48 rounded sm:w-96 bg-gray-700">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+    <div v-else class="py-0.5 posts">
       <div v-for="post in posts" class="post mb-1 border-b" v-show="post.type === 'public'">
         <div class="px-4 py-2 bg-gray-900 shadow max-w-lg">
           <div class="flex justify-start gap-3 mb-2">
@@ -190,6 +213,7 @@
       data() {
         return {
           user: {},
+          loading: true,
           posts: [],
           inpText: '',
           status: navigator.onLine,
@@ -200,7 +224,7 @@
       },
       methods: {
         fetcher() {
-          onSnapshot(collection(db, "posts"), (snapshot) =>
+          onSnapshot(collection(db, "posts"), (snapshot) =>{
             this.posts = snapshot.docs.map((doc) => {
               return {
                 id: doc.id,
@@ -208,7 +232,8 @@
                 date: this.formetDate(doc.data().date + ' ' + doc.data().time)
               }
             })
-          );
+            this.loading = false
+          });
         },
         toastNotClc(){
           this.toast = false
