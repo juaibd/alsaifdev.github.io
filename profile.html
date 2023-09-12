@@ -43,39 +43,78 @@
       <div class="flex items-center gap-4">
         <i class='bx bx-search text-gray-300 text-2xl'></i>
         <div class="avatar" :class="{online : status}">
-          <div class="w-10 h-10 rounded-full">
-            <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-full h-full rounded-full cursor-pointer" :src="user.profile" alt="User dropdown">
+          <div class="w-8 h-8 rounded-full">
+            <img id="avatarButton" type="button"  class="w-full h-full rounded-full cursor-pointer" :src="user.profile" alt="User dropdown" data-drawer-target="drawer-disable-body-scrolling" data-drawer-show="drawer-disable-body-scrolling" data-drawer-body-scrolling="false" aria-controls="drawer-disable-body-scrolling">
           </div>
         </div>
-        <!-- Dropdown menu -->
-        <div id="userDropdown" class="z-10 hidden  divide-y divide-gray-600 rounded-lg shadow w-44 bg-gray-700">
-          <div class="px-4 py-3 text-sm text-gray-900 text-white">
-            <div>{{user.name}}</div>
-            <div class="font-medium truncate">{{user.email}}</div>
-          </div>
-          <ul class="py-2 text-sm text-gray-200" aria-labelledby="avatarButton">
-            <li>
-              <a href="/profile" class="block px-4 py-2 hover:bg-gray-100 hover:bg-gray-600 hover:text-white">
-                Your Account
-              </a>
-            </li>
-            <li>
-              <a class="block px-4 py-2 hover:bg-gray-100 hover:bg-gray-600 hover:text-white flex items-center justify-between">
-                <span>Dark mode</span>
-                <input type="checkbox" class="toggle toggle-sm" checked />
-              </a>
-            </li>
-            <li>
-              <a class="block px-4 py-2 hover:bg-gray-100 hover:bg-gray-600 hover:text-white flex items-center justify-between">
-                <span>Active status</span>
-                <input type="checkbox" class="toggle toggle-success toggle-sm" :checked="status" @change="online" />
-              </a>
-            </li>
-          </ul>
-          <div class="py-1">
-            <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white" @click='logout'>Sign out</a>
+            <!-- drawer component -->
+    <div id="drawer-disable-body-scrolling" class="fixed top-0 left-0 z-50 h-screen p-4 overflow-y-auto transition-transform -translate-x-full w-5/6 bg-gray-800" tabindex="-1" aria-labelledby="drawer-disable-body-scrolling-label">
+      <div class="overflow-y-auto">
+        <div class="flex items-start justify-between">
+          <img src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" class="w-16 h-16 rounded-full" />
+          <div>
+            <div class="bg-gray-700 h-8 w-8 rounded-full flex items-center justify-center text-white">En</div>
+
           </div>
         </div>
+        <div class="flex items-center justify-between w-full text-2xl my-1.5">
+          <h1 class="text-white text-xl font-bold">Abdullah Al Saif</h1>
+          <i class='bx bxs-chevron-right text-white'></i>
+        </div>
+        <hr>
+        <ul class="space-y-2 py-2 font-medium">
+          <li>
+            <a href="#" class="flex items-center rounded-lg text-white">
+              <i class="bx bx-bookmark text-lg"></i>
+              <span class="ml-1.5">Bookmarks</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center rounded-lg text-white">
+              <i class="bx bx-bell text-lg"></i>
+              <span class="ml-1.5">Notification</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center rounded-lg text-white">
+              <i class="bx bx-tv text-lg"></i>
+              <span class="ml-1.5">Videos</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center rounded-lg text-white">
+              <i class="bx bx-tv text-lg"></i>
+              <span class="ml-1.5">Stories</span>
+            </a>
+          </li>
+        </ul>
+        <hr>
+        <div class="text-white w-full flex items-center justify-between absolute bottom-0 left-0 p-4">
+          <div class="flex items-center gap-2" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start">
+            <i class="bx bx-cog text-lg"></i>
+            <span class="ml-1.5">settings</span>
+            <div id="userDropdown" class="z-10 hidden bg-gray-700 divide-y divide-gray-600 rounded-lg shadow w-44">
+              <ul class="py-2 text-sm text-gray-300">
+                <li class="flex items-center justify-between px-2 mb-3">
+                  <span class="block">Active status</span>
+                  <input type="checkbox" class="toggle toggle-success toggle-sm" />
+                </li>
+                <li class="flex items-center justify-between px-2">
+                  <span class="block">Dark mode</span>
+                  <input type="checkbox" class="toggle toggle-success toggle-sm" />
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="ml-1.5">log out</span>
+            <i class="bx bx-log-out text-lg"></i>
+          </div>
+        </div>
+      </div>
+  </div>
+        
+        
       </div>
     </div>
 
