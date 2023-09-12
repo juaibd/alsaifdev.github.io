@@ -85,8 +85,8 @@
         </ul>
         <hr>
         <div class="text-white w-full flex items-center justify-between absolute bottom-0 left-0 p-4">
-          <div class="flex items-center gap-2" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start">
-            <i class="bx bx-cog text-lg"></i>
+          <div class="flex items-center gap-2">
+            <i class="bx bx-cog text-lg" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start"></i>
             <span class="ml-1.5">settings</span>
             <div id="userDropdown" class="z-10 hidden bg-gray-700 divide-y divide-gray-600 rounded-lg shadow w-44">
               <ul class="py-2 text-sm text-gray-300">
@@ -306,7 +306,7 @@
         },
         showBottomNav(){
           this.bottomNav = !this.bottomNav
-        }
+        },
         online(){
           this.status = !this.status
         },
