@@ -35,18 +35,13 @@
 
 <body class="bg-gray-700">
   <div id="app">
-    <div id="navbar" class="fixed z-50 w-full h-16 bg-gray-900 top-0 left-0 flex items-center justify-between px-4 border-b border-gray-700">
+        <div id="navbar" class="fixed z-50 w-full h-12 bg-gray-900 top-0 left-0 flex items-center justify-between px-4 border-b border-gray-700">
       <div class="flex align-center gap-3">
-        <h1 class="text-3xl font-bold text-white h-10 w-10 bg-gray-700 rounded-full flex items-center justify-center">f</h1>
-        <input type="text" id="first_name" class="bg-gray-700 border border-gray-300 text-white text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block  p-2.5  h-10 w-36" placeholder="Search.." required>
-      </div>
-      <div class="flex align-center gap-3">
-        <i class="bx bx-bell text-white bg-gray-700 rounded-full w-10 h-10 p-2 text-xl flex items-center justify-center"></i>
-         <div class="avatar" :class="{online : status}">
+        <div class="avatar" :class="{online : status}">
           <div class="w-10 h-10 rounded-full">
-           <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-full h-full rounded-full cursor-pointer" :src="user.profile" alt="User dropdown">
+            <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-full h-full rounded-full cursor-pointer" :src="user.profile" alt="User dropdown">
           </div>
-         </div>
+        </div>
         <!-- Dropdown menu -->
         <div id="userDropdown" class="z-10 hidden  divide-y divide-gray-600 rounded-lg shadow w-44 bg-gray-700">
           <div class="px-4 py-3 text-sm text-gray-900 text-white">
@@ -56,19 +51,19 @@
           <ul class="py-2 text-sm text-gray-200" aria-labelledby="avatarButton">
             <li>
               <a href="/profile" class="block px-4 py-2 hover:bg-gray-100 hover:bg-gray-600 hover:text-white">
-               Your Account 
+                Your Account
               </a>
             </li>
             <li>
               <a class="block px-4 py-2 hover:bg-gray-100 hover:bg-gray-600 hover:text-white flex items-center justify-between">
                 <span>Dark mode</span>
-                <input type="checkbox" class="toggle toggle-sm" checked/>
+                <input type="checkbox" class="toggle toggle-sm" checked />
               </a>
             </li>
             <li>
               <a class="block px-4 py-2 hover:bg-gray-100 hover:bg-gray-600 hover:text-white flex items-center justify-between">
                 <span>Active status</span>
-                <input type="checkbox" class="toggle toggle-success toggle-sm" :checked="status" @change="online"/>
+                <input type="checkbox" class="toggle toggle-success toggle-sm" :checked="status" @change="online" />
               </a>
             </li>
           </ul>
@@ -76,8 +71,13 @@
             <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white" @click='logout'>Sign out</a>
           </div>
         </div>
-       </div>
-    </div>
+        <h1 class="text-2xl font-bold text-white">Home</h1>
+      </div>
+      <div class="flex align-center gap-3">
+        <i class="bx bx-search text-white text-xl"></i>
+        <i class='bx bx-plus text-white text-xl'></i>
+      </div>
+     </div>
 
     <div class="bg-gray-900 p-4 mt-16 flex items-center justify-between gap-3">
       <a href="/post" class="flex items-center gap-3">
