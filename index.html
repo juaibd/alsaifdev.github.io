@@ -92,7 +92,11 @@
               <ul class="py-2 text-sm text-gray-300">
                 <li class="flex items-center justify-between px-2 mb-3">
                   <span class="block">Active status</span>
-                  <input type="checkbox" class="toggle toggle-success toggle-sm" />
+                  <input type="checkbox" class="toggle toggle-success toggle-sm" :checked='status' @click='online'/>
+                </li>
+                <li class="flex items-center justify-between px-2 mb-3">
+                  <span class="block">Bottom Navbar</span>
+                  <input type="checkbox" class="toggle toggle-success toggle-sm" :checked='bottomNav' @click='showBottomNav'/>
                 </li>
                 <li class="flex items-center justify-between px-2">
                   <span class="block">Dark mode</span>
@@ -259,7 +263,8 @@
           status: navigator.onLine,
           audio: new Audio(),
           stories:[],
-          toast: false
+          toast: false,
+          bottomNav: true
         }
       },
       methods: {
@@ -299,6 +304,9 @@
           let relativeTime = momentDate.fromNow();
           return relativeTime
         },
+        showBottomNav(){
+          this.bottomNav = !this.bottomNav
+        }
         online(){
           this.status = !this.status
         },
