@@ -305,6 +305,7 @@
         },
         showBottomNav(){
           this.bottomNav = !this.bottomNav
+          localStorage.setItem('bottomNav', this.bottomNav);
         },
         online(){
           this.status = !this.status
@@ -363,7 +364,7 @@
         this.audio.src = 'https://alsaifdev.github.io/src/facebook-like.mp3';
         this.fetcher()
         this.getStory()
-        
+        this.bottomNav = localStorage.getItem('bottomNav')
       },
       
     })
