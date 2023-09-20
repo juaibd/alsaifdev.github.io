@@ -72,24 +72,18 @@
           <div class="flex items-center justify-between mb-4">
             <h5 class="text-xl font-bold leading-none text-white">Comments</h5>
           </div>
-          <div class="flow-root">
-            <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
-              <li v-for="comment in comments" class="py-3 sm:py-4">
-                <div class="flex gap-3">
-                  <div class="flex-shrink-0">
-                    <img class="w-12 h-12 rounded-full" :src="comment.profile" alt="Neil image">
-                  </div>
-                  <div class=" bg-gray-700 p-2 rounded-lg">
-                    <p class="text-sm font-medium  truncate text-white">
-                      {{comment.name}}
-                    </p>
-                    <p class="text-sm font-medium text-gray-300">
-                      {{comment.text}}
-                    </p>
-                  </div>
-                </div>
-              </li>
-            </ul>
+          <div class="flow-root pl-4">
+            <ol  class="timeline relative border-l border-gray-700">
+             <li v-for="comment in comments" class="mb-10 ml-6">
+              <span class="absolute flex items-center justify-center w-10 h-10 rounded-full -left-5 bg-blue-900">
+               <img class="rounded-full h-full w-full" :src="comment.profile" alt="Bonnie image" />
+              </span>
+              <div class="items-center justify-between p-4 border rounded-lg shadow-sm sm:flex bg-gray-700 border-gray-600">
+              <time class="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0">{{comment.name}}</time>
+              <div class="text-sm font-normal text-gray-300">{{comment.text}}</div>
+              </div>
+             </li>
+            </ol>
           </div>
         </div>
 
