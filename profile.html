@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>profile</title>
-   <script>
+  <script>
       let user = JSON.parse(localStorage.getItem('user'))
       
       if(!user){
@@ -14,7 +14,7 @@
   </script>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.1/dist/full.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.1/dist/full.css" rel="stylesheet" type="text/css" />
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <link rel="manifest" href="/manifest.json" />
   <style>
@@ -33,9 +33,11 @@
     .bottom-icon-active {
       color: #dea694;
     }
+
     .following {
-     background: #dea694;
+      background: #dea694;
     }
+
     .follow {
       border: 1px solid #dea694;
     }
@@ -44,90 +46,90 @@
 
 <body class="bg-gray-900">
   <div id="app">
-        <div class="flex justify-between items-center px-4 py-3">
+    <div class="flex justify-between items-center px-4 py-3">
       <i class='bx bx-chevron-left text-gray-300 text-4xl' onclick="history.back()"></i>
       <div class="flex items-center gap-4">
         <i class='bx bx-search text-gray-300 text-2xl'></i>
         <div class="avatar" :class="{online : status}">
           <div class="w-8 h-8 rounded-full">
-            <img id="avatarButton" type="button"  class="w-full h-full rounded-full cursor-pointer" :src="user.profile" alt="User dropdown" data-drawer-target="drawer-disable-body-scrolling" data-drawer-show="drawer-disable-body-scrolling" data-drawer-body-scrolling="false" aria-controls="drawer-disable-body-scrolling">
+            <img id="avatarButton" type="button" class="w-full h-full rounded-full cursor-pointer" :src="user.profile" alt="User dropdown" data-drawer-target="drawer-disable-body-scrolling" data-drawer-show="drawer-disable-body-scrolling" data-drawer-body-scrolling="false" aria-controls="drawer-disable-body-scrolling">
           </div>
         </div>
-            <!-- drawer component -->
-    <div id="drawer-disable-body-scrolling" class="fixed top-0 left-0 z-50 h-screen p-4 overflow-y-auto transition-transform -translate-x-full w-5/6 bg-gray-900" tabindex="-1" aria-labelledby="drawer-disable-body-scrolling-label">
-      <div class="overflow-y-auto">
-        <div class="flex items-start justify-between">
-          <img :src="user.profile" class="w-16 h-16 rounded-full" />
-          <div>
-            <div class="bg-gray-700 h-8 w-8 rounded-full flex items-center justify-center text-white">En</div>
+        <!-- drawer component -->
+        <div id="drawer-disable-body-scrolling" class="fixed top-0 left-0 z-50 h-screen p-4 overflow-y-auto transition-transform -translate-x-full w-5/6 bg-gray-900" tabindex="-1" aria-labelledby="drawer-disable-body-scrolling-label">
+          <div class="overflow-y-auto">
+            <div class="flex items-start justify-between">
+              <img :src="user.profile" class="w-16 h-16 rounded-full" />
+              <div>
+                <div class="bg-gray-700 h-8 w-8 rounded-full flex items-center justify-center text-white">En</div>
 
-          </div>
-        </div>
-        <div class="flex items-center justify-between w-full text-2xl my-1.5">
-          <h1 class="text-white text-xl font-bold">{{user.name}}</h1>
-          <i class='bx bxs-chevron-right text-white'></i>
-        </div>
-        <hr>
-        <ul class="space-y-2 py-2 font-medium">
-          <li>
-            <a href="#" class="flex items-center rounded-lg text-white">
-              <i class="bx bx-bookmark text-lg"></i>
-              <span class="ml-1.5">Bookmarks</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center rounded-lg text-white">
-              <i class="bx bx-bell text-lg"></i>
-              <span class="ml-1.5">Notification</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center rounded-lg text-white">
-              <i class="bx bx-tv text-lg"></i>
-              <span class="ml-1.5">Videos</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center rounded-lg text-white">
-              <i class="bx bx-tv text-lg"></i>
-              <span class="ml-1.5">Stories</span>
-            </a>
-          </li>
-        </ul>
-        <hr>
-        <div class="text-white w-full flex items-center justify-between absolute bottom-0 left-0 p-4">
-          <div class="flex items-center gap-2" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start">
-            <i class="bx bx-cog text-lg"></i>
-            <span class="ml-1.5">settings</span>
-            <div id="userDropdown" class="z-10 hidden bg-gray-700 divide-y divide-gray-600 rounded-lg shadow w-44">
-              <ul class="py-2 text-sm text-gray-300">
-                <li class="flex items-center justify-between px-2 mb-3">
-                  <span class="block">Active status</span>
-                  <input type="checkbox" class="toggle toggle-success toggle-sm" />
-                </li>
-                <li class="flex items-center justify-between px-2">
-                  <span class="block">Dark mode</span>
-                  <input type="checkbox" class="toggle toggle-success toggle-sm" />
-                </li>
-              </ul>
+              </div>
+            </div>
+            <div class="flex items-center justify-between w-full text-2xl my-1.5">
+              <h1 class="text-white text-xl font-bold">{{user.name}}</h1>
+              <i class='bx bxs-chevron-right text-white'></i>
+            </div>
+            <hr>
+            <ul class="space-y-2 py-2 font-medium">
+              <li>
+                <a href="#" class="flex items-center rounded-lg text-white">
+                  <i class="bx bx-bookmark text-lg"></i>
+                  <span class="ml-1.5">Bookmarks</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center rounded-lg text-white">
+                  <i class="bx bx-bell text-lg"></i>
+                  <span class="ml-1.5">Notification</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center rounded-lg text-white">
+                  <i class="bx bx-tv text-lg"></i>
+                  <span class="ml-1.5">Videos</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center rounded-lg text-white">
+                  <i class="bx bx-tv text-lg"></i>
+                  <span class="ml-1.5">Stories</span>
+                </a>
+              </li>
+            </ul>
+            <hr>
+            <div class="text-white w-full flex items-center justify-between absolute bottom-0 left-0 p-4">
+              <div class="flex items-center gap-2" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start">
+                <i class="bx bx-cog text-lg"></i>
+                <span class="ml-1.5">settings</span>
+                <div id="userDropdown" class="z-10 hidden bg-gray-700 divide-y divide-gray-600 rounded-lg shadow w-44">
+                  <ul class="py-2 text-sm text-gray-300">
+                    <li class="flex items-center justify-between px-2 mb-3">
+                      <span class="block">Active status</span>
+                      <input type="checkbox" class="toggle toggle-success toggle-sm" />
+                    </li>
+                    <li class="flex items-center justify-between px-2">
+                      <span class="block">Dark mode</span>
+                      <input type="checkbox" class="toggle toggle-success toggle-sm" />
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="ml-1.5">log out</span>
+                <i class="bx bx-log-out text-lg"></i>
+              </div>
             </div>
           </div>
-          <div class="flex items-center gap-2">
-            <span class="ml-1.5">log out</span>
-            <i class="bx bx-log-out text-lg"></i>
-          </div>
         </div>
-      </div>
-  </div>
-        
-        
+
+
       </div>
     </div>
 
     <div class="w-full flex justify-center shadow bg-gray-900 py-2">
       <div class="w-40 h-40 rounded-lg p-2.5" style="border: 3px solid#dea694 ">
-      <img class="w-full h-full rounded-lg"  :src="user.profile" alt="" />
-     </div>
+        <img class="w-full h-full rounded-lg" :src="user.profile" alt="" />
+      </div>
     </div>
     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-200 dark:text-white text-center">{{user.name}}</h5>
     <p class="text-gray-500 px-8 text-justify mb-2">Saif is a talented programmer known for creating elegant solutions to complex problems.</p>
@@ -183,16 +185,16 @@
       </div>
 
       <div class="hidden p-4 bg-gray-900" id="friends" role="tabpanel" aria-labelledby="friends-tab">
-       <div v-for="friend in friends" class="flex items-center space-x-4 mb-2">
-        <img class="w-12 h-12 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="">
-        <div class="font-medium text-white">
-          <div>{{friend.name}}</div>
-          <div class="text-sm text-gray-400">Joined in {{friend.joined_month_year}}</div>
+        <div v-for="friend in friends" class="flex items-center space-x-4 mb-2">
+          <img class="w-12 h-12 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="">
+          <div class="font-medium text-white">
+            <div>{{friend.name}}</div>
+            <div class="text-sm text-gray-400">Joined in {{friend.joined_month_year}}</div>
+          </div>
+          <div class="flex-1 text-right">
+            <button class=" px-2 py-1.5 w-24 rounded-md text-white font-bold" :class="friend.following ? 'following' : 'follow'">{{friend.following ? 'Following' : 'Follow'}}</button>
+          </div>
         </div>
-        <div class="flex-1 text-right">
-          <button class=" p-2 rounded-md text-white following">Following</button>
-        </div>
-       </div>
       </div>
 
       <div class="hidden py-2 posts" id="posts" role="tabpanel" aria-labelledby="posts-tab">
@@ -229,11 +231,11 @@
                     <span class="text-sm text-white">{{post.comments.length}}</span>
                   </div>
                   <div class="flex items-center gap-1.5" @click='commentPost(post)'>
-                     <i class="bx bx-bar-chart text-xl text-gray-500"></i>
+                    <i class="bx bx-bar-chart text-xl text-gray-500"></i>
                     <span class="text-sm text-white">{{post.view.length}}</span>
                   </div>
                   <div class="flex items-center gap-1.5" @click='commentPost(post)'>
-                     <i class="bx bx-share-alt text-xl text-gray-500"></i>
+                    <i class="bx bx-share-alt text-xl text-gray-500"></i>
                   </div>
                 </div>
               </div>
@@ -242,58 +244,58 @@
         </div>
       </div>
       <div class="hidden p-4 bg-gray-900" id="story" role="tabpanel" aria-labelledby="story-tab">
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-2 bg-gray-900">
-      <div class="relative">
-        <i class="bx bx-plus absolute top-4 left-4 bg-white w-10 h-10 rounded-full flex items-center justify-center text-xl"></i>
-        <span class="absolute bottom-4 left-4 text-white text-md">Add to story</span>
-        <img class="h-72 max-w-full rounded-lg" :src="user.profile" alt="">
-      </div>
-      <div class="relative">
-        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
-        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
-        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-      </div>
-      <div class="relative">
-        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
-        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
-        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-      </div>
-      <div class="relative">
-        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
-        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
-        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-      </div>
-      <div class="relative">
-        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
-        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
-        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-      </div>
-      <div class="relative">
-        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
-        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
-        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-      </div>
-      <div class="relative">
-        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
-        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
-        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-      </div>
-      <div class="relative">
-        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
-        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
-        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-      </div>
-      <div class="relative">
-        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
-        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
-        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-      </div>
-      <div class="relative">
-        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
-        <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
-        <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-      </div>
-    </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-2 bg-gray-900">
+          <div class="relative">
+            <i class="bx bx-plus absolute top-4 left-4 bg-white w-10 h-10 rounded-full flex items-center justify-center text-xl"></i>
+            <span class="absolute bottom-4 left-4 text-white text-md">Add to story</span>
+            <img class="h-72 max-w-full rounded-lg" :src="user.profile" alt="">
+          </div>
+          <div class="relative">
+            <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
+            <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
+            <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+          </div>
+          <div class="relative">
+            <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
+            <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
+            <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+          </div>
+          <div class="relative">
+            <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
+            <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
+            <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+          </div>
+          <div class="relative">
+            <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
+            <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
+            <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+          </div>
+          <div class="relative">
+            <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
+            <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
+            <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+          </div>
+          <div class="relative">
+            <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
+            <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
+            <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+          </div>
+          <div class="relative">
+            <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
+            <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
+            <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+          </div>
+          <div class="relative">
+            <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
+            <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
+            <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+          </div>
+          <div class="relative">
+            <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" class="absolute top-4 left-4 w-10 h-10 rounded-full border border-2" />
+            <span class="absolute bottom-4 left-4 text-white text-md">Abdullah Al Saif</span>
+            <img class="h-72 max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+          </div>
+        </div>
       </div>
 
     </div>
@@ -354,86 +356,106 @@
           posts: [],
           audio: new Audio(),
           status: true,
-         friends:  [
-  {
-    name: "John Doe",
-    joined_month_year: "March 2022"
+          friends: [
+            {
+              name: "John Doe",
+              joined_month_year: "March 2022",
+              following: true
   },
-  {
-    name: "Jane Smith",
-    joined_month_year: "December 2021"
+            {
+              name: "Jane Smith",
+              joined_month_year: "December 2021",
+              following: false
   },
-  {
-    name: "Bob Johnson",
-    joined_month_year: "January 2023"
+            {
+              name: "Bob Johnson",
+              joined_month_year: "January 2023",
+              following: true
   },
-  {
-    name: "Alice Brown",
-    joined_month_year: "February 2021"
+            {
+              name: "Alice Brown",
+              joined_month_year: "February 2021",
+              following: true
   },
-  {
-    name: "David Wilson",
-    joined_month_year: "July 2020"
+            {
+              name: "David Wilson",
+              joined_month_year: "July 2020",
+              following: true
   },
-  {
-    name: "Eva Martinez",
-    joined_month_year: "May 2022"
+            {
+              name: "Eva Martinez",
+              joined_month_year: "May 2022",
+              following: false
   },
-  {
-    name: "Frank Adams",
-    joined_month_year: "September 2023"
+            {
+              name: "Frank Adams",
+              joined_month_year: "September 2023",
+              following: true
   },
-  {
-    name: "Grace Lee",
-    joined_month_year: "April 2020"
+            {
+              name: "Grace Lee",
+              joined_month_year: "April 2020",
+              following: true
   },
-  {
-    name: "Henry Clark",
-    joined_month_year: "June 2021"
+            {
+              name: "Henry Clark",
+              joined_month_year: "June 2021",
+              following: false
   },
-  {
-    name: "Ivy Green",
-    joined_month_year: "October 2022"
+            {
+              name: "Ivy Green",
+              joined_month_year: "October 2022",
+              following: true
   },
-  {
-    name: "Jack White",
-    joined_month_year: "August 2023"
+            {
+              name: "Jack White",
+              joined_month_year: "August 2023",
+              following: false
   },
-  {
-    name: "Karen Taylor",
-    joined_month_year: "November 2019"
+            {
+              name: "Karen Taylor",
+              joined_month_year: "November 2019",
+              following: true
   },
-  {
-    name: "Liam Turner",
-    joined_month_year: "March 2023"
+            {
+              name: "Liam Turner",
+              joined_month_year: "March 2023",
+              following: true
   },
-  {
-    name: "Mia Harris",
-    joined_month_year: "February 2020"
+            {
+              name: "Mia Harris",
+              joined_month_year: "February 2020",
+              following: false
   },
-  {
-    name: "Noah Parker",
-    joined_month_year: "May 2021"
+            {
+              name: "Noah Parker",
+              joined_month_year: "May 2021",
+              following: true
   },
-  {
-    name: "Olivia King",
-    joined_month_year: "July 2022"
+            {
+              name: "Olivia King",
+              joined_month_year: "July 2022",
+              following: true
   },
-  {
-    name: "Paula Miller",
-    joined_month_year: "January 2022"
+            {
+              name: "Paula Miller",
+              joined_month_year: "January 2022",
+              following: true
   },
-  {
-    name: "Quinn Carter",
-    joined_month_year: "December 2020"
+            {
+              name: "Quinn Carter",
+              joined_month_year: "December 2020",
+              following: true
   },
-  {
-    name: "Ryan Brown",
-    joined_month_year: "June 2022"
+            {
+              name: "Ryan Brown",
+              joined_month_year: "June 2022",
+              following: true
   },
-  {
-    name: "Sophia Adams",
-    joined_month_year: "April 2021"
+            {
+              name: "Sophia Adams",
+              joined_month_year: "April 2021",
+              following: false
   }
 ]
         }
