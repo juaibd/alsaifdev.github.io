@@ -177,7 +177,7 @@
               </div>
               <div class="flex gap-3 items-center justify-between mt-3">
                 <div @click="toggleLike(post)" class="flex items-center gap-1">
-                  <i class="bx bx-tada-hover text-xl text-rose-400" :class="[post.likes.includes(user.email) ? 'bxs-heart':'bx-heart']"></i>
+                  <i class="bx text-xl text-rose-400" :class="[post.likes.includes(user.email) ? 'bxs-heart':'bx-heart']"></i>
                   <span class="text-sm text-white countdown">
                     <span :style="{ '--value': post.likes.length }"></span>
                   </span>
