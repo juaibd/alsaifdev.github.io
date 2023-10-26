@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script src='https://unpkg.com/react-router-dom@5.0.0/umd/react-router-dom.min.js'></script>
+
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="manifest" href="/manifest.json" />
+</head>
+
+<body>
+
+  <div id="app"></div>
+  <script src="/BottomNav.js" type="text/babel"></script>
+  <script src="/Post.js" type="text/babel"></script>
+  <script src="/Posts.js" type="text/babel"></script>
+    <script src="/Product.js" type="text/babel"></script>
+  <script type="text/babel">
+    const {Link,Route ,HashRouter,BrowserRouter} = ReactRouterDOM;
+    //console.log(ReactRouterDOM)
+
+    function App() {
+        return(
+          <div>
+           <BrowserRouter>
+            <Route path="/" exact component={Posts} />
+            <Route path="/products" exact component={Posts} />
+            <Route path="/products/:id" exact component={Product} />
+            <BottomNav />
+           </BrowserRouter>
+          </div>
+          );
+      }
+
+      const container = document.getElementById('app');
+      const root = ReactDOM.createRoot(container);
+      root.render(<App />)
+    </script>
+<script src="src/index.js"></script>
+</body>
+
+</html>
