@@ -135,31 +135,31 @@ export default class Toast {
   }
   success(title = 'Success' , option = {}) {
     let type = 'success';
-    let icon = option.icon ? option.icon 'fa-solid fa-circle-check';
+    let icon = option.icon ? option.icon : 'fa-solid fa-circle-check';
     let text = option.discription ? option.discription : 'This is a Success toast.';
     this.createToast(type, icon, title, text);
   }
   error(title = 'Error' , option = {}) {
     let type = 'error';
-    let icon = option.icon ? option.icon 'fa-solid fa-circle-exclamation';
+    let icon = option.icon ? option.icon : 'fa-solid fa-circle-exclamation';
     let text = option.discription ? option.discription : 'This is a error toast.';
     this.createToast(type, icon, title, text);
   }
   warning(title = 'Warning' , option = {}) {
     let type = 'warning';
-    let icon = option.icon ? option.icon 'fa-solid fa-triangle-exclamation';
+    let icon = option.icon ? option.icon : 'fa-solid fa-triangle-exclamation';
     let text = option.discription ? option.discription : 'This is a Warning toast.';
     this.createToast(type, icon, title, text);
   }
   info(title = 'Info' , option = {}) {
     let type = 'info';
-    let icon = option.icon ? option.icon 'fa-solid fa-circle-info';
+    let icon = option.icon ? option.icon : 'fa-solid fa-circle-info';
     let text = option.discription ? option.discription : 'This is a Info toast.';
     this.createToast(type, icon, title, text);
   }
   loading(title = 'Loading' , option = {}) {
     let type = 'info';
-    let icon = option.icon ? option.icon 'fa-solid fa-spinner fa-spin';
+    let icon = option.icon ? option.icon : 'fa-solid fa-spinner fa-spin';
     let text = option.discription ? option.discription : 'This is a Loading toast.';
     this.createToast(type, icon, title, text);
   }
