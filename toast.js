@@ -16,11 +16,57 @@ style.innerHTML = `
       padding: 10px;
     }
 
-    .notifications {
+    .top-right {
       position: fixed;
       top: 20px;
       right: 5px;
     }
+    .top-center {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+   .top-left {
+      position: fixed;
+      top: 20px;
+      left: 5px;
+    }
+        .bottom-right {
+            position: fixed;
+            bottom: 20px;
+            right: 5px;
+          }
+          .bottom-center {
+            position: fixed;
+            bottom: 20px;
+            left: 50% ;
+            transform: translateX(-50%);
+          }
+          .bottom-left {
+            position: fixed;
+            bottom: 20px;
+            left: 5px;
+          }
+        .center-right {
+            position: fixed;
+            top: 50%;
+            right: 5px;
+            transform: translateY(-50%);
+          }
+          .center-center {
+            position: fixed;
+            top: 50%;
+            left: 50% ;
+            transform: translate(-50%,-50%);
+          }
+          .center-left {
+            position: fixed;
+            top: 50%;
+            left: 5px;
+            transform: translateY(-50%);
+          }
+    
 
     .toast {
       position: relative;
@@ -113,9 +159,9 @@ style.innerHTML = `
 document.head.appendChild(link)
 document.head.appendChild(style)
 export default class Toast {
-  constructor(selector) {
+  constructor(selector, option = {}) {
     this.notifications = document.querySelector(selector);
-    this.notifications.classList.add('notifications')
+    this.notifications.classList.add(option.position ? option.position : 'top-right')
     this.createToast = (type, icon, title, text) => {
       let newToast = document.createElement('div');
       newToast.innerHTML = `
@@ -129,38 +175,38 @@ export default class Toast {
             </div>`;
       this.notifications.appendChild(newToast)
       newToast.timeOut = setTimeout(
-        () => newToast.remove(), 5000
+        () => newToast.remove(), option.duration ? option.duration : 5000
       )
     }
   }
-  success(title = 'Success' , option = {}) {
+  success(title = 'Success', option = {}) {
     let type = 'success';
     let icon = option.icon ? option.icon : 'fa-solid fa-circle-check';
     let text = option.discription ? option.discription : 'This is a Success toast.';
     this.createToast(type, icon, title, text);
   }
-  error(title = 'Error' , option = {}) {
+  error(title = 'Error', option = {}) {
     let type = 'error';
     let icon = option.icon ? option.icon : 'fa-solid fa-circle-exclamation';
     let text = option.discription ? option.discription : 'This is a error toast.';
     this.createToast(type, icon, title, text);
   }
-  warning(title = 'Warning' , option = {}) {
+  warning(title = 'Warning', option = {}) {
     let type = 'warning';
     let icon = option.icon ? option.icon : 'fa-solid fa-triangle-exclamation';
     let text = option.discription ? option.discription : 'This is a Warning toast.';
     this.createToast(type, icon, title, text);
   }
-  info(title = 'Info' , option = {}) {
+  info(title = 'Info', option = {}) {
     let type = 'info';
     let icon = option.icon ? option.icon : 'fa-solid fa-circle-info';
     let text = option.discription ? option.discription : 'This is a Info toast.';
     this.createToast(type, icon, title, text);
   }
-  loading(title = 'Loading' , option = {}) {
+  loading(title = 'Loading', option = {}) {
     let type = 'info';
     let icon = option.icon ? option.icon : 'fa-solid fa-spinner fa-spin';
     let text = option.discription ? option.discription : 'This is a Loading toast.';
     this.createToast(type, icon, title, text);
   }
- }
+}
