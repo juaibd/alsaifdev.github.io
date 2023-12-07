@@ -133,39 +133,29 @@ export default class Toast {
       )
     }
   }
-  success(t) {
+  success(title = 'Success' , text = 'This is a success toast.') {
     let type = 'success';
     let icon = 'fa-solid fa-circle-check';
-    let title = t || 'Success';
-    let text = 'This is a success toast.';
     this.createToast(type, icon, title, text);
   }
-  error() {
+  error(title = 'Error' , text = 'This is a error toast.') {
     let type = 'error';
     let icon = 'fa-solid fa-circle-exclamation';
-    let title = 'Error';
-    let text = 'This is a error toast.';
     this.createToast(type, icon, title, text);
   }
-  warning() {
+  warning(title = 'Warning' , text = 'This is a Warning toast') {
     let type = 'warning';
     let icon = 'fa-solid fa-triangle-exclamation';
-    let title = 'Warning';
-    let text = 'This is a warning toast.';
     this.createToast(type, icon, title, text);
   }
-  info() {
+  info(title = 'Info' , text = 'This is a Info toast') {
     let type = 'info';
     let icon = 'fa-solid fa-circle-info';
-    let title = 'Info';
-    let text = 'This is a info toast.';
     this.createToast(type, icon, title, text);
   }
-  loading() {
+  loading(title = 'Loading' , text = 'This is a Loading toast') {
     let type = 'info';
     let icon = 'fa-solid fa-spinner fa-spin';
-    let title = 'Info';
-    let text = 'This is a info toast.';
     this.createToast(type, icon, title, text);
   }
  }
