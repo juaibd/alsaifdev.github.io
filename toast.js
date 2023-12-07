@@ -162,6 +162,7 @@ export default class Toast {
   constructor(selector, option = {}) {
     this.notifications = document.createElement('div');
     this.notifications.classList.add(option.position ? option.position : 'top-right')
+    document.body.appendChild(this.notifications)
     this.createToast = (type, icon, title, text) => {
       let newToast = document.createElement('div');
       newToast.innerHTML = `
