@@ -160,7 +160,7 @@ document.head.appendChild(link)
 document.head.appendChild(style)
 export default class Toast {
   constructor(selector, option = {}) {
-    this.notifications = document.querySelector(selector);
+    this.notifications = document.createElement('div');
     this.notifications.classList.add(option.position ? option.position : 'top-right')
     this.createToast = (type, icon, title, text) => {
       let newToast = document.createElement('div');
