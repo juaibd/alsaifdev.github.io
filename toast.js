@@ -120,7 +120,7 @@ style.innerHTML = `
       }
     }
 
-    .toast::before {
+    .toast.progress::before {
       position: absolute;
       bottom: 0;
       left: 0;
@@ -129,7 +129,7 @@ style.innerHTML = `
       height: 3px;
       content: '';
       box-shadow: 0 0 10px var(--color);
-      animation: timeOut 5s linear 1 forwards
+      animation: timeOut var(--duration) linear 1 forwards
     }
 
     @keyframes timeOut {
@@ -159,14 +159,15 @@ style.innerHTML = `
 document.head.appendChild(link)
 document.head.appendChild(style)
 export default class Toast {
-  constructor(selector, option = {}) {
+  constructor(option = {}) {
     this.notifications = document.createElement('div');
     this.notifications.classList.add(option.position ? option.position : 'top-right')
+    this.notifications.setAttribute('style',`--duration:${(option.duration ? option.duration : 5000) / 1000}s`)
     document.body.appendChild(this.notifications)
     this.createToast = (type, icon, title, text) => {
       let newToast = document.createElement('div');
       newToast.innerHTML = `
-            <div class="toast ${type}">
+            <div class="toast ${option.progress && 'progress'} ${type}">
               <i class="${icon}"></i>
               <div class="content">
                 <div class="title">${title}</div>
