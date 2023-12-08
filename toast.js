@@ -173,7 +173,7 @@ export default class Toast {
                 <div class="title">${title}</div>
                   <span>${text}</span>
                 </div>
-              <i class="fa-solid fa-xmark" onclick="(this.parentElement).remove()"></i>
+              ${option.closeOnClick ? ` <i class="fa-solid fa-xmark" onclick="(this.parentElement).remove()"></i> ` : ''}
             </div>`;
       this.notifications.appendChild(newToast)
       newToast.timeOut = setTimeout(
