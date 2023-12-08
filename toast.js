@@ -162,7 +162,7 @@ export default class Toast {
   constructor(option = {}) {
     this.notifications = document.createElement('div');
     this.notifications.classList.add(option.position ? option.position : 'top-right')
-    this.notifications.setAttribute('style',`--duration:${(option.duration ? option.duration : 5000) / 1000}s`)
+    this.notifications.setAttribute('style',`--duration:${(option.autoClose ? option.autoClose : 5000) / 1000}s`)
     document.body.appendChild(this.notifications)
     this.createToast = (type, icon, title, text) => {
       let newToast = document.createElement('div');
@@ -177,7 +177,7 @@ export default class Toast {
             </div>`;
       this.notifications.appendChild(newToast)
       newToast.timeOut = setTimeout(
-        () => newToast.remove(), option.duration ? option.duration : 5000
+        () => newToast.remove(), option.autoClose ? option.autoClose : 5000
       )
     }
   }
