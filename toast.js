@@ -158,7 +158,7 @@ style.innerHTML = `
   `;
 document.head.appendChild(link)
 document.head.appendChild(style)
-export default class Toast {
+class Toast {
   constructor(option = {}) {
     this.notifications = document.createElement('div');
     this.notifications.classList.add(option.position ? option.position : 'top-right')
