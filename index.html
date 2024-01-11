@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div class="fixed bottom-0 left-0 bg-gray-700 w-full z-50">
+    <ul class="grid grid-cols-4 -mb-px text-sm font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
+      <li class="me-2" role="presentation">
+        <button class="inline-block p-4" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
+          <i class="bi bi-person-circle text-2xl"></i>
+        </button>
+      </li>
+      <li class="me-2" role="presentation">
+        <button class="inline-block p-4 hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">
+          <i class="bi bi-browser-chrome text-2xl"></i>
+        </button>
+      </li>
+      <li class="me-2" role="presentation">
+        <button class="inline-block p-4 hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="settings-tab" data-tabs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">
+          <i class="bi bi-geo text-2xl"></i>
+        </button>
+      </li>
+      <li role="presentation">
+        <button class="inline-block p-4  hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="contacts-tab" data-tabs-target="#contacts" type="button" role="tab" aria-controls="contacts" aria-selected="false">
+          <i class="bi bi-sliders text-2xl"></i>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <div id="default-tab-content">
+    <div class="hidden rounded-lg bg-gray-50 dark:bg-gray-800" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <div class="header">
+        <div class="profile w-full p-3 relative">
+          <img src="/images/blank.jpg" alt="" class="rounded">
+          <i class="bi bi-trash3 absolute bottom-6 right-7 bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center"></i>
+        </div>
+        <div class="w-full flex items-center justify-center">
+          <div class="profile w-40 relative">
+            <img src="/images/profile.jpg" alt="" class="rounded-full">
+            <i class="bi bi-trash3 absolute bottom-2 right-2 bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center"></i>
+          </div>
+        </div>
+      </div>
+      <div class="information p-3 grid grid-cols-2 gap-3">
+        <div class="mb-2">
+          <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name</label>
+          <input type="text" placeholder="Type here" class="input input-bordered w-full" id="firstName" />
+        </div>
+        <div class="mb-2">
+          <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name</label>
+          <input type="text" placeholder="Type here" class="input input-bordered w-full" id="lastName" />
+        </div>
+      </div>
+      <div class="p-3">
+        <div class="mb-6">
+          <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+          <input type="text" placeholder="Type here" class="input input-bordered w-full" id="email" />
+        </div>
+        <div class="mb-6">
+          <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone</label>
+          <input type="text" placeholder="Type here" class="input input-bordered w-full" id="phone" />
+        </div>
+        <div class="mb-6">
+          <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
+          <input type="text" placeholder="Type here" class="input input-bordered w-full" id="address" />
+        </div>
+        <div class="mb-6 col-span-12">
+          <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bio</label>
+          <textarea class="textarea textarea-bordered w-full h-40" placeholder="Bio" id="bio"></textarea>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+    </div>
+    <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+      <div class="mb-b socialLink">
+        <label for="website-admin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Website</label>
+        <div class="flex">
+          <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 rounded-s-md">
+            <i class="bi bi-globe text-gray-500 dark:text-gray-400">
+            </i>
+          </span><input type="text" placeholder="Type here" class="input input-bordered w-full rounded-l-none" name="website" value="https://example.com" />
+        </div>
+      </div>
+      <div class="mb-4 socialLink">
+        <label for="website-admin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Facebook</label>
+        <div class="flex">
+          <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 rounded-s-md">
+            <i class="bi bi-facebook text-gray-500 dark:text-gray-400">
+            </i>
+          </span><input type="text" placeholder="Type here" class="input input-bordered w-full rounded-l-none" name="facebook" value="https://facebook.com" />
+        </div>
+      </div>
+      <div class="mb-4 socialLink">
+        <label for="website-admin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Youtube</label>
+        <div class="flex">
+          <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 rounded-s-md">
+            <i class="bi bi-youtube text-gray-500 dark:text-gray-400">
+            </i>
+          </span><input type="text" placeholder="Type here" class="input input-bordered w-full rounded-l-none" name="youtube" value="https://youtube.com " />
+        </div>
+      </div>
+      <div class="mb-4 socialLink">
+        <label for="website-admin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Twitter </label>
+        <div class="flex">
+          <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 rounded-s-md">
+            <i class="bi bi-twitter text-gray-500 dark:text-gray-400">
+            </i>
+          </span><input type="text" placeholder="Type here" class="input input-bordered w-full rounded-l-none" name="twitter" value="https://twitter.com" />
+        </div>
+      </div>
+      <div class="mb-4 socialLink">
+        <label for="website-admin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Telegram </label>
+        <div class="flex">
+          <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 rounded-s-md">
+            <i class="bi bi-telegram text-gray-500 dark:text-gray-400">
+            </i>
+          </span><input type="text" placeholder="Type here" class="input input-bordered w-full rounded-l-none" name="telegram" value="https://telegram.com" />
+        </div>
+      </div>
+      <div class="mb-4 socialLink">
+        <label for="website-admin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Signal </label>
+        <div class="flex">
+          <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 rounded-s-md">
+            <i class="bi bi-signal text-gray-500 dark:text-gray-400">
+            </i>
+          </span><input type="text" placeholder="Type here" class="input input-bordered w-full rounded-l-none" name="signal" value="https://signal.com" />
+        </div>
+      </div>
+      <div class="mb-4 socialLink">
+        <label for="website-admin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Github</label>
+        <div class="flex">
+          <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 rounded-s-md">
+            <i class="bi bi-github text-gray-500 dark:text-gray-400">
+            </i>
+          </span><input type="text" placeholder="Type here" class="input input-bordered w-full rounded-l-none" name="github" value="https://github.com" />
+        </div>
+      </div>
+      <div class="mb-4 socialLink">
+        <label for="website-admin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Medium </label>
+        <div class="flex">
+          <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 rounded-s-md">
+            <i class="bi bi-medium text-gray-500 dark:text-gray-400">
+            </i>
+          </span><input type="text" placeholder="Type here" class="input input-bordered w-full rounded-l-none" name="medium" value="https://medium.com" />
+        </div>
+      </div>
+      <div class="mb-4 socialLink">
+        <label for="website-admin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Quora </label>
+        <div class="flex">
+          <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 rounded-s-md">
+            <i class="bi bi-quora text-gray-500 dark:text-gray-400">
+            </i>
+          </span><input type="text" placeholder="Type here" class="input input-bordered w-full rounded-l-none" name="quora" value="https://quora.com" />
+        </div>
+      </div>
+      <div class="mb-4 socialLink">
+        <label for="website-admin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Instagram</label>
+        <div class="flex">
+          <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 rounded-s-md">
+            <i class="bi bi-instagram text-gray-500 dark:text-gray-400">
+            </i>
+          </span><input type="text" placeholder="Type here" class="input input-bordered w-full rounded-l-none" name="instagram" value="https://instagram.com" />
+        </div>
+      </div>
+      <div class="mb-4 socialLink">
+        <label for="website-admin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">LinkedIn</label>
+        <div class="flex">
+          <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 rounded-s-md">
+            <i class="bi bi-linkedin text-gray-500 dark:text-gray-400">
+            </i>
+          </span><input type="text" placeholder="Type here" class="input input-bordered w-full rounded-l-none" name="linkedin" value="https://linkedin.com" />
+        </div>
+      </div>
+      <div class="mb-4 socialLink">
+        <label for="website-admin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Threads</label>
+        <div class="flex">
+          <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 rounded-s-md">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-threads-fill text-gray-500" viewBox="0 0 16 16">
+              <path d="M6.81 9.204c0-.41.197-1.062 1.727-1.062.469 0 .758.034 1.146.121-.124 1.606-.91 1.818-1.674 1.818-.418 0-1.2-.218-1.2-.877Z" />
+              <path d="M2.59 16h10.82A2.59 2.59 0 0 0 16 13.41V2.59A2.59 2.59 0 0 0 13.41 0H2.59A2.59 2.59 0 0 0 0 2.59v10.82A2.59 2.59 0 0 0 2.59 16M5.866 5.91c.567-.81 1.315-1.126 2.35-1.126.73 0 1.351.246 1.795.711.443.466.696 1.132.754 1.983.245.103.472.224.678.363.832.559 1.29 1.395 1.29 2.353 0 2.037-1.67 3.806-4.692 3.806-2.595 0-5.291-1.51-5.291-6.004C2.75 3.526 5.361 2 8.033 2c1.234 0 4.129.182 5.217 3.777l-1.02.264c-.842-2.56-2.607-2.968-4.224-2.968-2.675 0-4.187 1.628-4.187 5.093 0 3.107 1.69 4.757 4.222 4.757 2.083 0 3.636-1.082 3.636-2.667 0-1.079-.906-1.595-.953-1.595-.177.925-.651 2.482-2.733 2.482-1.213 0-2.26-.838-2.26-1.936 0-1.568 1.488-2.136 2.663-2.136.44 0 .97.03 1.247.086 0-.478-.404-1.296-1.426-1.296-.911 0-1.16.288-1.45.624l-.024.027c-.202-.135-.875-.601-.875-.601Z" />
+            </svg>
+          </span><input type="text" placeholder="Type here" class="input input-bordered w-full rounded-l-none" name="threads" value="https://threads.com" />
+        </div>
+      </div>
+      <div class="mb-4 socialLink">
+        <label for="website-admin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">TikTok</label>
+        <div class="flex">
+          <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 rounded-s-md">
+            <i class="bi bi-tiktok text-gray-500 dark:text-gray-400">
+            </i>
+          </span><input type="text" placeholder="Type here" class="input input-bordered w-full rounded-l-none" name="tiktok" value="https://tiktok.com" />
+        </div>
+      </div>
+      <div class="mb-4 socialLink">
+        <label for="website-admin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Whatsapp</label>
+        <div class="flex">
+          <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 rounded-s-md">
+            <i class="bi bi-whatsapp text-gray-500 dark:text-gray-400">
+            </i>
+          </span><input type="text" placeholder="Type here" class="input input-bordered w-full rounded-l-none" name="whatsapp" value="https://whatsapp.com" />
+        </div>
+      </div>
+      <div class="mb-4 socialLink">
+        <label for="website-admin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Messenger</label>
+        <div class="flex">
+          <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 rounded-s-md">
+            <i class="bi bi-messenger text-gray-500 dark:text-gray-400">
+            </i>
+          </span><input type="text" placeholder="Type here" class="input input-bordered w-full rounded-l-none" name="messenger" value="https://messenger.com" />
+        </div>
+      </div>
+    </div>
+
+    <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+      <div>
+        <div class="mb-6">
+          <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Facebook page </label>
+          <input type="text" placeholder="Type here" class="input input-bordered w-full" />
+        </div>
+        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fasmmbd&tabs&width=480&height=130&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=false&appId" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+      </div>
+      <div class="mb-6">
+        <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Facebook page </label>
+        <input type="text" placeholder="Type here" class="input input-bordered w-full" />
+      </div>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.3801178362414!2d88.6336304142973!3d23.769474793965855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f9480879361a2d%3A0x65d1e008dd28277d!2sMeherpur%20Bus%20Stand!5e0!3m2!1sen!2sbd!4v1678470431892!5m2!1sen!2sbd" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    </div>
+  </div>
+  <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
+    <div class="w-full flex items-center justify-center">
+      <img src="/images/profile.jpg" alt="" class="rounded-lg border w-40 h-40">
+    </div>
+    <div class="mt-4">
+      <ul class="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white switchs">
+        <li class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600 flex items-center justify-between">Profile Image
+          <input type="checkbox" class="toggle toggle-success profile-image" checked />
+
+        </li>
+        <li class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600 flex items-center justify-between"> Cover Photo
+          <input type="checkbox" class="toggle toggle-success cover-photo" checked />
+
+        </li>
+        <li class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600 flex items-center justify-between"> Social links
+          <input type="checkbox" class="toggle toggle-success social-links" checked />
+
+        </li>
+        <li class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600 flex items-center justify-between">Facebook page
+          <input type="checkbox" class="toggle toggle-success fb-page" checked />
+
+        </li>
+        <li class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600 flex items-center justify-between">Map
+          <input type="checkbox" class="toggle toggle-success map" checked />
+
+        </li>
+        <li class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600 flex items-center justify-between">Call to Action
+          <input type="checkbox" class="toggle toggle-success call-to-action" />
+
+        </li>
+        <li class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600 flex items-center justify-between">Theme
+          <div>
+            <input type="radio" name="theme" class="radio" checked />
+            <input type="radio" name="theme" class="radio radio-primary" />
+            <input type="radio" name="theme" class="radio radio-secondary" />
+            <input type="radio" name="theme" class="radio radio-accent" />
+            <input type="radio" name="theme" class="radio radio-success" />
+            <input type="radio" name="theme" class="radio radio-warning" />
+            <input type="radio" name="theme" class="radio radio-info" />
+            <input type="radio" name="theme" class="radio radio-error" />
+          </div>
+
+        </li>
+      </ul>
+
+    </div>
+    <div class="mt-4">
+      <ul class="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+        <li class="w-full p-4 border-b border-gray-200 rounded-t-lg dark:border-gray-600 flex items-center justify-between"> Teams and conditions
+        </li>
+        <li class="w-full p-4 border-b border-gray-200 rounded-t-lg dark:border-gray-600 flex items-center justify-between">About
+        </li>
+        <li class="w-full p-4 border-b border-gray-200 rounded-t-lg dark:border-gray-600 flex items-center justify-between">Sign out
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+  </div>
+
+  <div class="mt-6 mb-4 text-center">
+    <button class="btn btn-wide">Save changes</button>
+  </div>
+
+  <div class="flex items-center justify-center mb-6">
+    <div class="radial-progress text-primary" style="--value:70;" role="progressbar">70%</div>
+  </div>
+
+  <div class="join mb-2 flex items-center justify-center">
+    <input class="input input-bordered join-item" placeholder="Email" />
+    <button class="btn join-item rounded-r-full">Subscribe</button>
+  </div>
+  <footer class="footer footer-center p-10 bg-base-200 text-base-content rounded mb-16">
+    <nav class="grid grid-flow-col gap-4">
+      <a class="link link-hover">About us</a>
+      <a class="link link-hover">Contact</a>
+      <a class="link link-hover">Jobs</a>
+      <a class="link link-hover">Press kit</a>
+    </nav>
+    <nav>
+      <div class="grid grid-flow-col gap-4">
+        <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
+            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
+          </svg></a>
+        <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
+            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
+          </svg></a>
+        <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
+            <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
+          </svg></a>
+      </div>
+    </nav>
+    <aside>
+      <p>Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
+    </aside>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.js"></script>
+  <script src="/library.js"></script>
+  <script>
+    let btn = document.querySelector('.btn');
+    let radialProgress = document.querySelector('.radial-progress');
+    let socialLink = document.querySelectorAll('.socialLink')
+
+    //console.log(socialLink)
+
+    let links = {};
+
+    socialLink.forEach(link => {
+      let input = link.querySelector('input');
+      links[input.name] = input.value;
+    })
+
+    // console.log(links)
+
+
+
+    let i = 0;
+    let interval = setInterval(() => {
+      radialProgress.setAttribute('style', `--value:${i}`)
+      radialProgress.innerHTML = i + '%'
+      i++;
+      if (i > 80) {
+        clearInterval(interval)
+      }
+    }, 100)
+
+
+
+
+    btn.addEventListener('click', () => {
+      let controlers = {
+        callToAction: $('.call-to-action').checked(),
+        fbPage: $('.fb-page').checked(),
+        map: $('.map').checked(),
+        profile: $('.profile-image').checked(),
+        cover: $('.cover-photo').checked(),
+        socialLinks: $('.social-links').checked(),
+      }
+      console.log({
+        firstName: $('#firstName').val(),
+        lastName: $('#lastName').val(),
+        email: $('#email').val(),
+        phone: $('#phone').val(),
+        address: $('#address').val(),
+        bio: $('#bio').val(),
+        controlers: { ...controlers },
+        links: { ...links }
+      })
+    })
+  </script>
+</body>
+
+</html>
