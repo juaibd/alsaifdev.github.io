@@ -183,7 +183,11 @@
       my_modal_2.showModal()
     }
 
-
+    closeBtn.addEventListener('click', ()=>{
+      nodeText.value = '';
+      nodeTitle.value = '';
+      isEditItem = null;
+    })
 
 
     document.addEventListener('scroll', () => {
