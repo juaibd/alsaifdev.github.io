@@ -8,7 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
-  <title></title>
+  <title>NoteBook Application</title>
 </head>
 
 <body>
@@ -209,8 +209,8 @@
         }, 500)
       }
       cards.forEach(card => {
-        let text = card.querySelector('p').innerHTML;
-        if (text.indexOf(e.target.value) > -1) {
+        let text = card.querySelector('p').innerHTML.toLowerCase();
+        if (text.indexOf(e.target.value.toLowerCase()) > -1) {
           card.classList.remove('hidden')
         }
         else {
