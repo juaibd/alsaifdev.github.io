@@ -82,7 +82,7 @@
     </dialog>
 
   </div>
-
+  <script src="https://alsaifdev.github.io/toast.js"></script>
   <script>
     let saveBtn = document.getElementById('saveBtn');
     let closeBtn = document.getElementById('closeBtn');
@@ -95,6 +95,11 @@
 
     let notes = JSON.parse(localStorage.getItem('notes')) || [];
 
+    let toast = new Toast({
+      closeOnClick: true,
+      position: 'top-center',
+    })
+    
     let isEditItem = null;
 
     function randerNotes() {
@@ -149,7 +154,7 @@
           return note
         })
         saveNotes()
-        
+        toast.success('note updated successfully!')
       } else {
         let note = {
           title: nodeTitle.value,
@@ -158,6 +163,7 @@
         }
         notes.push(note);
         saveNotes()
+        toast.success('note added successfully!')
       }
     })
 
@@ -167,6 +173,7 @@
       notes = notes.filter(note => note.id !== id);
       localStorage.setItem('notes', JSON.stringify(notes))
       randerNotes();
+      toast.success('note deleted successfully!')
     }
 
     function editNote(id) {
