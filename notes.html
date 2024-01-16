@@ -7,7 +7,17 @@
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.6.0/dist/full.min.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+  <style>
+    .progressBar {
+      animation: timeOut 4s linear 1 forwards
+    }
 
+    @keyframes timeOut {
+      to {
+        width: 0;
+      }
+    }
+  </style>
   <title>NoteBook Application</title>
 </head>
 
@@ -82,7 +92,7 @@
     </dialog>
 
   </div>
-  <script src="https://alsaifdev.github.io/toast.js"></script>
+  
   <script>
     let saveBtn = document.getElementById('saveBtn');
     let closeBtn = document.getElementById('closeBtn');
@@ -95,10 +105,24 @@
 
     let notes = JSON.parse(localStorage.getItem('notes')) || [];
 
-    let toast = new Toast({
-      closeOnClick: true,
-      position: 'top-center',
-    })
+    function toast(text) {
+      let elm = document.createElement('div');
+      elm.innerHTML = `
+          <div class="fixed top-4 right-4 w-auto p-3 rounded-md bg-white shadow-md flex gap-2 items-center">
+            <i class='bx bxs-check-circle text-xl text-blue-700'></i>
+            <p>${text}</p>
+            <i class="bx bx-x text-xl"></i>
+            <span class="absolute bottom-0 left-0 w-full h-1 bg-blue-700 rounded-md progressBar"></span>
+          </div>
+      `;
+
+      document.body.appendChild(elm);
+
+      setTimeout(() => {
+        elm.remove()
+      }, 4000)
+    }
+
     
     let isEditItem = null;
 
@@ -154,7 +178,7 @@
           return note
         })
         saveNotes()
-        toast.success('note updated successfully!')
+        toast('note updated successfully!')
       } else {
         let note = {
           title: nodeTitle.value,
@@ -163,7 +187,7 @@
         }
         notes.push(note);
         saveNotes()
-        toast.success('note added successfully!')
+        toast('note added successfully!')
       }
     })
 
@@ -173,7 +197,7 @@
       notes = notes.filter(note => note.id !== id);
       localStorage.setItem('notes', JSON.stringify(notes))
       randerNotes();
-      toast.success('note deleted successfully!')
+      toast('note deleted successfully!')
     }
 
     function editNote(id) {
