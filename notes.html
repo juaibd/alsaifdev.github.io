@@ -68,11 +68,27 @@
 
 
 
-    <div class="px-3 py-4 mt-4 grid gap-3 md:grid-cols-3" id="notes-body">
+        <div class="main-container flex h-screen">
+      <div class="sidebar w-40 h-screen hidden md:block bg-base-200">
+        <div class="px-2 py-4 w-40">
+          
+          <!--<input type="text" placeholder="Type here" class="input input-bordered w-full" />-->
+          <div class="lists mt-2 w-full">
+            <button class="btn btn-primary w-full flex items-center justify-between" onclick="my_modal_5.showModal()" id="addBtn">
+              Add new <i class="bx bx-plus text-xl"></i>
+            </button>
+            <button class="btn w-full flex items-center justify-between">Notes <span id="noteLength" class="text-red-600"></span></button>
+          </div>
+        </div>
+      </div>
+      <div class="main h-screen">
+        <div class="px-3 py-4 mt-4 grid gap-3 md:grid-cols-3" id="notes-body">
+        </div>
+      </div>
     </div>
 
 
-    <div class="fixed bottom-6 right-6">
+    <div class="fixed bottom-6 right-6 md:hidden">
       <button class="btn btn-primary" onclick="my_modal_5.showModal()" id="addBtn">
         Add new <i class="bx bx-plus text-xl"></i>
       </button>
@@ -115,7 +131,7 @@
     let nodeTitle = document.getElementById('node-title');
     let nodeText = document.getElementById('node-text');
     let notesBody = document.getElementById('notes-body');
-
+    let noteLength = document.getElementById('noteLength');
     let notes = JSON.parse(localStorage.getItem('notes')) || [];
 
     function toast(text) {
@@ -163,6 +179,7 @@
               </div>
         `;
       })
+      noteLength.innerHTML = notes.length
     }
 
     randerNotes()
