@@ -17,6 +17,19 @@
         width: 0;
       }
     }
+    .progressContent {
+      animation: contentRemove 4s linear forwards
+    }
+
+    @keyframes contentRemove {
+      97% {
+        left: unset;
+      }
+
+      100% {
+        left: 100%;
+      }
+    }
   </style>
   <title>NoteBook Application</title>
 </head>
@@ -108,7 +121,7 @@
     function toast(text) {
       let elm = document.createElement('div');
       elm.innerHTML = `
-          <div class="fixed top-4 right-4 w-auto p-3 rounded-md bg-white shadow-md flex gap-2 items-center">
+          <div class="fixed top-4 right-4 w-auto p-3 rounded-md bg-white shadow-md flex gap-2 items-center progressContent">
             <i class='bx bxs-check-circle text-xl text-blue-700'></i>
             <p>${text}</p>
             <i class="bx bx-x text-xl"></i>
