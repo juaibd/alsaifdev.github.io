@@ -18,8 +18,11 @@
         <a class="btn btn-ghost text-xl">NoteBook</a>
       </div>
       <div class="flex-none gap-2">
-        <div class="form-control">
-          <input type="text" placeholder="Search" class="input input-bordered w-44 rounded-full md:w-auto" />
+        <div class="form-control w-44 rounded-full md:w-auto relative">
+          <input type="text" placeholder="Search" class="input input-bordered w-44 rounded-full md:w-auto" id="search-input" />
+          <div id="loading-icon">
+            <i class='bx bx-search text-2xl absolute top-2 right-3'></i>
+          </div>
         </div>
         <div class="dropdown dropdown-end">
           <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
@@ -84,6 +87,8 @@
     let saveBtn = document.getElementById('saveBtn');
     let closeBtn = document.getElementById('closeBtn');
     let addBtn = document.getElementById('addBtn');
+    let searchInput = document.getElementById('search-input');
+    let loadingIcon = document.getElementById('loading-icon');
     let nodeTitle = document.getElementById('node-title');
     let nodeText = document.getElementById('node-text');
     let notesBody = document.getElementById('notes-body');
@@ -188,7 +193,32 @@
       nodeTitle.value = '';
       isEditItem = null;
     })
+        // search functionality //
 
+    let cards = document.querySelectorAll('.card');
+    searchInput.addEventListener('input', (e) => {
+      if (e.target.value) {
+        loadingIcon.innerHTML = `
+             <span class="loading loading-spinner loading-md absolute top-3 right-3"></span>
+            `;
+
+        setTimeout(() => {
+          loadingIcon.innerHTML = `
+               <i class='bx bx-search text-2xl absolute top-2 right-3'></i>
+              `;
+        }, 500)
+      }
+      cards.forEach(card => {
+        let text = card.querySelector('p').innerHTML;
+        if (text.indexOf(e.target.value) > -1) {
+          card.classList.remove('hidden')
+        }
+        else {
+          card.classList.add('hidden')
+        }
+      })
+    })
+    
 
     document.addEventListener('scroll', () => {
       let isPosition = window.scrollY > 100;
