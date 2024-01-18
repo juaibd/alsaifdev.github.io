@@ -103,34 +103,6 @@
     },
     {
       "kind": "youtube#searchResult",
-      "etag": "YVeULR5Up0c4fAmk_eRFRMGh40M",
-      "id": {
-        "kind": "youtube#channel",
-        "channelId": "UCpemNqdQXNW_jzCLjuaAgyg"
-      },
-      "snippet": {
-        "publishedAt": "2023-08-28T14:17:53Z",
-        "channelId": "UCpemNqdQXNW_jzCLjuaAgyg",
-        "title": "Sundar Quran Tilawat",
-        "description": "\"SundarQuranTilawat\" is a beautiful Quran recitation channel that aims to touch the hearts and souls of its viewers. The channel ...",
-        "thumbnails": {
-          "default": {
-            "url": "https://yt3.ggpht.com/vCWaM1ydA-GfV1vBwQDzt2Pyt6ARViIL_CQU0xJChglGkWdbVhIDXKUoIlVeHHVje97k_eyx=s88-c-k-c0xffffffff-no-rj-mo"
-          },
-          "medium": {
-            "url": "https://yt3.ggpht.com/vCWaM1ydA-GfV1vBwQDzt2Pyt6ARViIL_CQU0xJChglGkWdbVhIDXKUoIlVeHHVje97k_eyx=s240-c-k-c0xffffffff-no-rj-mo"
-          },
-          "high": {
-            "url": "https://yt3.ggpht.com/vCWaM1ydA-GfV1vBwQDzt2Pyt6ARViIL_CQU0xJChglGkWdbVhIDXKUoIlVeHHVje97k_eyx=s800-c-k-c0xffffffff-no-rj-mo"
-          }
-        },
-        "channelTitle": "Sundar Quran Tilawat",
-        "liveBroadcastContent": "upcoming",
-        "publishTime": "2023-08-28T14:17:53Z"
-      }
-    },
-    {
-      "kind": "youtube#searchResult",
       "etag": "JpT-itR2g2WaR_rt5Cl5VIM1_SE",
       "id": {
         "kind": "youtube#playlist",
