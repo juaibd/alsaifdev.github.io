@@ -1,13 +1,4 @@
-{
-  "kind": "youtube#searchListResponse",
-  "etag": "Rw4DAgi8KQeeB9Gyyoyn1uiHEfc",
-  "nextPageToken": "CDIQAA",
-  "regionCode": "BD",
-  "pageInfo": {
-    "totalResults": 208,
-    "resultsPerPage": 50
-  },
-  "items": [
+[
     {
       "kind": "youtube#searchResult",
       "etag": "5fEv1z4w5Pj7yRifrRoiHcimPMo",
@@ -1702,5 +1693,4 @@
         "publishTime": "2023-12-20T19:51:46Z"
       }
     }
-  ]
-}
+]
