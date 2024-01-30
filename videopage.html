@@ -28,17 +28,17 @@
               <i class="ri-more-line text-xl"></i>
             </div>
             <div class="body w-full fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <video src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" autoplay muted class="w-full">
+             <video src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" autoplay muted class="w-full video-container">
               </video>
             </div>
             <footer class="w-full fixed bottom-0 left-0 bg-white py-2  text-lg">
         
               <div class="w-full flex items-center justify-between px-3 gap-2">
-                <i class="ri-play-fill text-2xl text-gray-500"></i>
-                <span class="w-full h-1 bg-gray-200 rounded relative">
-                  <span class="w-1/2 h-1 bg-blue-500 rounded absolute top-0 left-0"></span>
+               <i class="ri-pause-line text-2xl text-gray-500 playPauseBtn"></i>
+                <span class="progressBar w-full h-1 bg-gray-200 rounded relative">
+                  <span class="progress w-0 h-1 bg-blue-500 rounded absolute top-0 left-0"></span>
                 </span>
-                <i class="ri-volume-up-line text-2xl"></i>
+                <i class="ri-volume-mute-line text-2xl mutedBtn"></i>
               </div>
         
               <div class="w-full flex justify-between px-3 my-3">
@@ -78,6 +78,50 @@
 
 
     customElements.define('video-card', Post)
+
+    
+    const videoContainer = document.querySelector(".video-container");
+    const playPauseBtn = document.querySelector(".playPauseBtn");
+    const progress = document.querySelector(".progress");
+    const progressBar = document.querySelector(".progressBar");
+    const mutedBtn = document.querySelector(".mutedBtn");
+
+    function togglePlay() {
+      if (videoContainer.paused || videoContainer.ended) {
+        videoContainer.play();
+        playPauseBtn.classList.replace('ri-play-fill', 'ri-pause-line')
+      } else {
+        videoContainer.pause();
+        playPauseBtn.classList.replace('ri-pause-line', 'ri-play-fill')
+      }
+    }
+
+    function handleProgress() {
+      const progressPercentage = (videoContainer.currentTime / videoContainer.duration) * 100;
+      progress.style.width = `${progressPercentage}%`;
+    }
+    playPauseBtn.addEventListener('click', togglePlay);
+    videoContainer.addEventListener("click", togglePlay);
+    videoContainer.addEventListener("timeupdate", handleProgress);
+    mutedBtn.addEventListener('click', () => {
+      if (videoContainer.muted) {
+        videoContainer.muted = false
+        mutedBtn.classList.replace('ri-volume-mute-line', 'ri-volume-up-line')
+      } else {
+        videoContainer.muted = true
+        mutedBtn.classList.replace('ri-volume-up-line', 'ri-volume-mute-line')
+      }
+    })
+
+
+
+
+    function jump(e) {
+      const position = (e.offsetX / progress.offsetWidth) * videoContainer.duration;
+      videoContainer.currentTime = position;
+      videoContainer.play()
+    }
+    progressBar.addEventListener("click", jump);
   </script>
 </body>
 
