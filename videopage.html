@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <div class="app">
+    <video-card></video-card>
+    <video-card></video-card>
+    <video-card></video-card>
+    <video-card></video-card>
+    <video-card></video-card>
+    <video-card></video-card>
+    <video-card></video-card>
+    <video-card></video-card>
+    <video-card></video-card>
+    <video-card></video-card>
+  </div>
+
+
+  <script>
+    class Post extends HTMLElement {
+      constructor() {
+        super();
+        this.rander()
+      }
+      rander() {
+        this.innerHTML = `
+         <div class="w-full h-screen relative">
+            <div class="header flex justify-between w-full absolute top-0 left-0 p-3">
+              <a href="./" class="ri-arrow-left-line text-xl"></a>
+              <i class="ri-more-line text-xl"></i>
+            </div>
+            <div class="body w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+              <img src="https://picsum.photos/400/300?random=7" class="w-full">
+        
+            </div>
+            <footer class="w-full absolute bottom-0 left-0 bg-white py-2  text-lg">
+        
+              <div class="w-full flex items-center justify-between px-3 gap-2">
+                <i class="ri-play-fill text-2xl text-gray-500"></i>
+                <span class="w-full h-1 bg-gray-200 rounded relative">
+                  <span class="w-1/2 h-1 bg-blue-500 rounded absolute top-0 left-0"></span>
+                </span>
+                <i class="ri-volume-up-line text-2xl"></i>
+              </div>
+        
+              <div class="w-full flex justify-between px-3 my-3">
+                <div class="flex items-center gap-2">
+                  <img src="../images/profile.png" alt="../images/profile.png" class="w-10 h-10 rounded-full" />
+                  <div>
+                    <p>Abdullah Al Saif</p>
+                    <p class="-mt-1 text-sm">@alsaif2001</p>
+                  </div>
+                </div>
+                <i class="ri-more-line text-xl"></i>
+              </div>
+              <ul class="w-full flex justify-between px-3">
+                <li class="flex gap-1">
+                  <i class="ri-chat-1-line"></i>
+                  <span>8k</span>
+                </li>
+                <li class="flex gap-1">
+                  <i class="ri-heart-3-fill text-red-700"></i>
+                  <span>8k</span>
+                </li>
+                <li class="flex gap-1">
+                  <i class="ri-bar-chart-grouped-line"></i>
+                  <span>8k</span>
+                </li>
+                <li>
+                  <i class="ri-bookmark-line"></i>
+                </li>
+                <li class="flex gap-1">
+                  <i class="ri-share-line"></i>
+                </li>
+              </ul>
+            </footer>
+          </div>
+        `;
+      }
+    }
+
+
+    customElements.define('video-card', Post)
+  </script>
+</body>
+
+</html>
