@@ -288,7 +288,7 @@ class PostCard extends HTMLElement {
               </div>
               <read-more>If you need to use a one-off flex-shrink value that doesn’t make sense to include in your theme, use square brackets to generate a property on the fly using any arbitrary value.</read-more>
               <div class="my-1.5 grid ${this.images?.length > 1 && 'grid-cols-2 gap-1'}">
-               ${this.images ? this.images.map(url => `<img src="${url}" class="rounded-lg" />`).join('') : ''}
+               ${this.images ? this.images.map(url => `<a href='./postpage'><img src="${url}" class="rounded-lg" /> </a>`).join('') : ''}
               </div>
     
               <div class="post-footer">
