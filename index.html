@@ -212,6 +212,59 @@
         </div>
       </div>
 
+      <div class="ai-chat w-full h-screen fixed top-0 left-0 hidden">
+        <div class="overlay w-full h-screen fixed top-0 left-0 bg-gray-100 opacity-90" onclick="toggleAi()"></div>
+        <div class="body w-full bg-white shadow-3xl px-2 pt-8 pb-2 fixed bottom-0 left-0 border-t rounded-t-xl">
+          <span class="w-16 h-1 bg-gray-300 absolute top-2 rounded-full left-1/2 -translate-x-1/2"></span>
+          <i class="ri-fullscreen-line absolute top-1 right-4"></i>
+          <ul class="h-96 overflow-scroll mb-16">
+            <li class="flex gap-2 user mt-2">
+              <img src="../images/profile.png" alt="" class="w-8 h-8 rounded-full">
+              <div class="bg-blue-700 text-white rounded-lg p-1.5">
+                For situations where the user has specified that they prefer reduced motion, you can conditionally apply animations and transitions using the
+              </div>
+            </li>
+            <li class="flex gap-2 bot mt-2">
+              <i class="ri-sparkling-line text-3xl"></i>
+              <div class="bg-gray-100 text-gray-800 rounded-lg p-1.5">
+                For situations where the user has specified that they prefer reduced motion, you can conditionally apply animations and transitions using the
+              </div>
+            </li>
+            <li class="flex gap-2 bot mt-2">
+              <i class="ri-sparkling-line text-3xl"></i>
+              <div class="bg-gray-100 text-gray-800 rounded-lg p-1.5">
+                For situations where the user has specified that they prefer reduced motion, you can conditionally apply animations and transitions using the
+              </div>
+            </li>
+            <li class="flex gap-2 bot mt-2">
+              <i class="ri-sparkling-line text-3xl"></i>
+              <div class="bg-gray-100 text-gray-800 rounded-lg p-1.5">
+                For situations where the user has specified that they prefer reduced motion, you can conditionally apply animations and transitions using the
+              </div>
+            </li>
+            <li class="flex gap-2 bot mt-2">
+              <i class="ri-sparkling-line text-3xl"></i>
+              <div class="bg-gray-100 text-gray-800 rounded-lg p-1.5">
+                For situations where the user has specified that they prefer reduced motion, you can conditionally apply animations and transitions using the
+              </div>
+            </li>
+            <li class="flex gap-2 bot mt-2">
+              <i class="ri-sparkling-line text-3xl"></i>
+              <div class="bg-gray-100 text-gray-800 rounded-lg p-1.5">
+                For situations where the user has specified that they prefer reduced motion, you can conditionally apply animations and transitions using the
+              </div>
+            </li>
+          </ul>
+
+          <div class="w-full fixed bottom-0 left-0 bg-white py-2 px-3 border-t text-lg">
+            <div class="w-full h-10 relative">
+              <i class="chat-btn ri-send-plane-fill text-2xl text-green-400 absolute top-1.5 right-3"></i>
+              <input type="text" class="chat-input w-full h-full border rounded-lg outline-0 pl-3 pr-10" placeholder="Question what you want to know!">
+            </div>
+          </div>
+        </div>
+      </div>
+      
 
 
     </div>
@@ -422,6 +475,15 @@ window.onscroll = function() {
   }
   prevScrollpos = currentScrollPos;
 }
+
+
+    let aiChat = document.querySelector('.ai-chat');
+
+
+    function toggleAi() {
+      aiChat.classList.toggle('hidden');
+      document.body.classList.toggle('overflow-hidden')
+    }
   </script>
 </body>
 
