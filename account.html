@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>social app</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+
+  <style>
+    body.dark {
+      background: #040404;
+      color: #DDDEE3;
+    }
+
+    .dark header,
+    .dark footer,
+    .dark .add-post,
+    .dark nav .body,
+    .dark .overlay,
+    .dark .share .body,
+    .dark .post-option .body {
+      background: #040404;
+      color: #DDDEE3;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+    <header class="border-b pb-2 sticky top-0 left-0 bg-white">
+      <div class="w-full relative">
+        <img src="https://picsum.photos/400/200?random=2" alt="" class="w-full">
+        <img src="../images/profile.png" alt="../images/profile.png" class="w-32 h-32 rounded-full absolute -bottom-10 left-2" />
+      </div>
+      <div class="p-2">
+        <button class="border rounded-full px-2 py-1 ml-full float-right">Edit profile</button>
+        <p class="font-bold mt-10">Abdullah Al Saif</p>
+        <p>@alsaif2001</p>
+        <p class="py-2">13 Following 0 Followers</p>
+      </div>
+      <div class="tabs grid grid-cols-5">
+        <div class="text-center">
+          <span class="p-1.5 border-b border-b-4 border-sky-500 rounded">Posts </span>
+        </div>
+        <div class="text-center">
+          <span>Replies</span>
+        </div>
+        <div class="text-center">
+          <span>Highlights</span>
+        </div>
+        <div class="text-center">
+          <span>Midea</span>
+        </div>
+        <div class="text-center">
+          <span>Likes</span>
+        </div>
+      </div>
+    </header>
+
+    <nav class="fixed top-0 left-0 w-full h-screen z-50 hidden">
+      <div class="overlay w-full h-screen fixed top-0 left-0 bg-gray-100 opacity-90" onclick="toggleNav()"></div>
+      <div class="body fixed top-0 left-0 w-80 h-full bg-white p-3">
+        <div class="flex justify-between">
+          <img src="../images/profile.png" alt="..../images" class="w-10 h-10 rounded-full">
+          <i class="ri-moon-clear-line text-lg" onclick="toggleTheme()" id="theme-icon"></i>
+        </div>
+        <p class="font-bold">Abdullah Al Saif</p>
+        <p>@alsaif2001</p>
+        <p class="py-2">13 Following 0 Followers</p>
+
+        <ul class="grid gap-4 text-xl font-bold mt-4">
+          <li class="hover:bg-gray-100 rounded-lg">
+            <i class="ri-user-line"></i>
+            <span class="ml-2">Profile</span>
+          </li>
+          <li class="hover:bg-gray-100 rounded-lg">
+            <i class="ri-file-list-line"></i>
+            <span class="ml-2">Lists</span>
+          </li>
+          <li class="hover:bg-gray-100 rounded-lg">
+            <i class="ri-bookmark-line"></i>
+            <span class="ml-2">Bookmarks</span>
+          </li>
+          <li class="hover:bg-gray-100 rounded-lg">
+            <i class="ri-settings-3-line"></i>
+            <span class="ml-2">Settings</span>
+          </li>
+          <li class="hover:bg-gray-100 rounded-lg">
+            <i class="ri-logout-box-r-line"></i>
+            <span class="ml-2">Log out</span>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="add-post fixed bottom-16 right-4 w-12 h-12 rounded-full bg-white flex items-center justify-center text-2xl border">
+      <i class="ri-quill-pen-line"></i>
+    </div>
+
+    <footer class="w-full fixed bottom-0 left-0 bg-white py-2 border-t text-2xl">
+      <ul class="grid grid-cols-4">
+        <li class="text-center">
+          <i class="ri-home-5-line"></i>
+        </li>
+        <li class="text-center">
+          <i class="ri-search-line"></i>
+        </li>
+        <li class="text-center">
+          <i class="ri-notification-4-line"></i>
+        </li>
+        <li class="text-center">
+          <i class="ri-mail-line"></i>
+        </li>
+      </ul>
+    </footer>
+
+
+    <div class="save-post w-full fixed bottom-12 left-0 bg-green-500 text-white py-2 px-4 text-md flex justify-between hidden">
+      <span>Added to your bookmark</span>
+      <span class="font-bold">View</span>
+    </div>
+
+
+
+    <div class="posts mb-12">
+      <post-card images="https://picsum.photos/400/400?random=1,https://picsum.photos/400/400?random=2"></post-card>
+      <post-card images="https://picsum.photos/400/400?random=6"></post-card>
+      <post-card images="https://picsum.photos/400/400?random=9,https://picsum.photos/400/400?random=5"></post-card>
+      <post-card images="https://picsum.photos/400/400?random=8"></post-card>
+      <post-card images="https://picsum.photos/400/400?random=9,https://picsum.photos/400/400?random=2"></post-card>
+      <post-card images="https://picsum.photos/400/400?random=5"></post-card>
+      <post-card images="https://picsum.photos/400/400?random=4"></post-card>
+      <post-card images="https://picsum.photos/400/400?random=2,https://picsum.photos/400/400?random=18"></post-card>
+      <post-card images="https://picsum.photos/400/400?random=11"></post-card>
+      <post-card images="https://picsum.photos/400/400?random=6,https://picsum.photos/400/400?random=10"></post-card>
+      <post-card images="https://picsum.photos/400/400?random=7,https://picsum.photos/400/400?random=8,https://picsum.photos/400/400?random=4,https://picsum.photos/400/400?random=9"></post-card>
+      <post-card></post-card>
+
+
+
+
+
+
+      <div class="share w-full h-screen fixed top-0 left-0 hidden">
+        <div class="overlay w-full h-screen fixed top-0 left-0 bg-gray-100 opacity-90" onclick="toggleShare()"></div>
+        <div class="body w-full bg-white shadow-3xl px-2 pt-8 pb-2 fixed bottom-0 left-0 border-t rounded-t-xl">
+          <span class="w-16 h-1 bg-gray-300 absolute top-2 rounded-full left-1/2 -translate-x-1/2"></span>
+          <ul class="grid gap-2">
+            <li class="p-1 hover:bg-gray-100 rounded-lg">
+              <i class="ri-file-copy-line"></i>
+              <span>copy link</span>
+            </li>
+            <li class="p-1 hover:bg-gray-100 rounded-lg">
+              <i class="ri-share-line"></i>
+              <span>Share post via...</span>
+            </li>
+            <li class="p-1 hover:bg-gray-100 rounded-lg">
+              <i class="ri-mail-send-line"></i>
+              <span>Send via Direct Message</span>
+            </li>
+
+            <button class="w-full p-2 bg-gray-100 rounded-lg border" onclick="toggleShare()">cancel</button>
+          </ul>
+        </div>
+      </div>
+
+
+      <div class="post-option w-full h-screen fixed top-0 left-0 hidden">
+        <div class="overlay w-full h-screen fixed top-0 left-0 bg-gray-100 opacity-90" onclick="toggleOption()"></div>
+        <div class="body w-full bg-white shadow-3xl px-2 pt-8 pb-2 fixed bottom-0 left-0 border-t rounded-t-xl">
+          <span class="w-16 h-1 bg-gray-300 absolute top-2 rounded-full left-1/2 -translate-x-1/2"></span>
+          <ul class="grid gap-2">
+            <li class="p-1 hover:bg-gray-100 rounded-lg">
+              <i class="ri-file-copy-line"></i>
+              <span>copy link</span>
+            </li>
+            <li class="p-1 hover:bg-gray-100 rounded-lg">
+              <i class="ri-share-line"></i>
+              <span>Share post via...</span>
+            </li>
+            <li class="p-1 hover:bg-gray-100 rounded-lg">
+              <i class="ri-mail-send-line"></i>
+              <span>Send via Direct Message</span>
+            </li>
+            <li class="p-1 hover:bg-gray-100 rounded-lg">
+              <i class="ri-file-copy-line"></i>
+              <span>copy link</span>
+            </li>
+            <li class="p-1 hover:bg-gray-100 rounded-lg">
+              <i class="ri-share-line"></i>
+              <span>Share post via...</span>
+            </li>
+            <li class="p-1 hover:bg-gray-100 rounded-lg">
+              <i class="ri-mail-send-line"></i>
+              <span>Send via Direct Message</span>
+            </li>
+            <li class="p-1 hover:bg-gray-100 rounded-lg">
+              <i class="ri-file-copy-line"></i>
+              <span>copy link</span>
+            </li>
+            <li class="p-1 hover:bg-gray-100 rounded-lg">
+              <i class="ri-share-line"></i>
+              <span>Share post via...</span>
+            </li>
+            <li class="p-1 hover:bg-gray-100 rounded-lg">
+              <i class="ri-mail-send-line"></i>
+              <span>Send via Direct Message</span>
+            </li>
+
+            <button class="w-full p-2 bg-gray-100 rounded-lg border" onclick="toggleOption()">cancel</button>
+          </ul>
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+  </div>
+
+  <script>
+    class Like extends HTMLElement {
+  constructor() {
+    super();
+    this.isLiked = false;
+    this.rander()
+
+    this.onclick = function() {
+      this.isLiked = !this.isLiked;
+      this.rander()
+    }
+  }
+
+  rander() {
+    this.innerHTML = `
+       <li class="flex gap-1">
+        ${this.isLiked ? `<i class="ri-heart-3-fill text-red-700"></i>` : `<i class="ri-heart-3-line"></i>`}
+         <span>8k</span>
+       </li>
+    `;
+  }
+}
+
+customElements.define('like-btn', Like)
+
+
+
+
+class ReadMore extends HTMLElement {
+  constructor() {
+    super();
+    this.text = this.innerHTML;
+    this.isMore = false;
+    this.rander()
+
+    this.onclick = function() {
+      this.isMore = !this.isMore;
+      this.rander()
+    }
+  }
+
+  rander() {
+    this.innerHTML = `
+       <p>
+        ${!this.isMore ? `${this.text.slice(0,100)}... <span class='text-red-900'>read more</span>` : `${this.text} read less`}
+       </p>
+    `;
+  }
+}
+
+customElements.define('read-more', ReadMore)
+
+
+class PostCard extends HTMLElement {
+  constructor() {
+    super()
+    this.images = this.getAttribute('images')?.split(',');
+    this.rander()
+  }
+
+  rander() {
+    this.innerHTML = `
+          <div class="post w-full p-2 border-b flex gap-2">
+            <div class="left shrink-0">
+              <img src="../images/profile.png" class="w-12 h-12 rounded-full" />
+            </div>
+    
+            <div class="right w-full">
+              <div class="flex justify-between">
+                <h1><span class="font-bold text-lg">Abdullah Al Saif</span>
+                <i class="ri-checkbox-circle-fill text-green-500"></i>
+                <span>@alsaif2001 . 1h</span></h1>
+                <i class="ri-more-line text-xl" onclick='toggleOption()'></i>
+              </div>
+              <read-more>If you need to use a one-off flex-shrink value that doesn’t make sense to include in your theme, use square brackets to generate a property on the fly using any arbitrary value.</read-more>
+              <div class="my-1.5 grid ${this.images?.length > 1 && 'grid-cols-2 gap-1'}">
+               ${this.images ? this.images.map(url => `<img src="${url}" class="rounded-lg" />`).join('') : ''}
+              </div>
+    
+              <div class="post-footer">
+                <ul class="w-full flex justify-between">
+                  <li class="flex gap-1">
+                    <i class="ri-chat-1-line"></i>
+                    <span>8k</span>
+                  </li>
+                  <like-btn></like-btn>
+                  <li class="flex gap-1">
+                    <i class="ri-bar-chart-grouped-line"></i>
+                    <span>8k</span>
+                  </li>
+                  <li class="flex gap-2">
+                  <i class="ri-bookmark-line" onclick='toggleSave()'></i>
+                   <i class="ri-share-line" onclick='toggleShare()'></i>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+    `;
+  }
+}
+
+customElements.define('post-card', PostCard)
+
+
+let shareContent = document.querySelector('.share');
+
+
+function toggleShare() {
+  shareContent.classList.toggle('hidden');
+  document.body.classList.toggle('overflow-hidden')
+}
+
+let postOptions = document.querySelector('.post-option');
+
+
+function toggleOption() {
+  postOptions.classList.toggle('hidden');
+  document.body.classList.toggle('overflow-hidden')
+}
+
+let navbar = document.querySelector('nav');
+
+
+function toggleNav() {
+  navbar.classList.toggle('hidden');
+  document.body.classList.toggle('overflow-hidden')
+}
+
+
+
+let savePost = document.querySelector('.save-post');
+
+
+function toggleSave() {
+  savePost.classList.remove('hidden');
+  setTimeout(() => {
+    savePost.classList.add('hidden');
+  }, 3000)
+}
+
+
+let theme = localStorage.getItem('theme') || 'light';
+let themeIcon = document.querySelector('#theme-icon')
+
+function setTheme() {
+  if (theme === 'dark') {
+    document.body.classList.add('dark')
+    themeIcon.classList.replace('ri-moon-clear-line', 'ri-sun-line')
+  } else {
+    document.body.classList.remove('dark')
+    themeIcon.classList.replace('ri-sun-line','ri-moon-clear-line')
+
+  }
+}
+setTheme()
+
+function toggleTheme() {
+  if (document.body.classList.contains('dark')) {
+    document.body.classList.remove('dark')
+    localStorage.setItem('theme', 'light')
+    themeIcon.classList.replace('ri-sun-line', 'ri-moon-clear-line')
+
+  } else {
+    document.body.classList.add('dark')
+    localStorage.setItem('theme', 'dark')
+    themeIcon.classList.replace( 'ri-moon-clear-line', 'ri-sun-line')
+
+  }
+}
+
+
+
+let header = document.querySelector('header');
+let footer = document.querySelector('footer');
+
+
+window.addEventListener('scroll', () => {
+  let y = window.scrollY;
+
+  if (y > 200) {
+    header.classList.add('opacity-70');
+    header.classList.add('text-gray-600');
+    footer.classList.add('opacity-70');
+  } else {
+    header.classList.remove('opacity-70');
+    header.classList.remove('text-gray-600');
+    footer.classList.remove('opacity-70');
+  }
+})
+
+
+
+let prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+  let currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    header.style.top = "0";
+  } else {
+    header.style.top = "-100%";
+  }
+  prevScrollpos = currentScrollPos;
+}
+  </script>
+</body>
+
+</html>
