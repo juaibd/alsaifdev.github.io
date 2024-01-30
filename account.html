@@ -35,6 +35,10 @@
 
   <div class="app">
     <header class="border-b pb-2  bg-white">
+      <div class="account-top w-full p-2 flex items-center gap-4 text-lg sticky top-0 left-0 bg-white">
+        <a href="./" class="ri-arrow-left-line"></a>
+        <span> Abdullah Al Saif </span>
+      </div>
       <div class="w-full relative">
         <img src="https://picsum.photos/400/200?random=2" alt="" class="w-full">
         <img src="./images/profile.jpg" alt="../images/profile.png" class="w-32 h-32 rounded-full absolute -bottom-10 left-2" />
@@ -399,7 +403,7 @@ function toggleTheme() {
 
 
 
-//let header = document.querySelector('header');
+let header = document.querySelector('.account-top');
 let footer = document.querySelector('footer');
 
 
@@ -419,7 +423,7 @@ window.addEventListener('scroll', () => {
 
 
 
-/* let prevScrollpos = window.pageYOffset;
+ let prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
   let currentScrollPos = window.pageYOffset;
   if (prevScrollpos > currentScrollPos) {
@@ -428,7 +432,7 @@ window.onscroll = function() {
     header.style.top = "-100%";
   }
   prevScrollpos = currentScrollPos;
-} */
+} 
   </script>
 </body>
 
