@@ -12,15 +12,6 @@
 <body>
   <div class="app">
     <video-card></video-card>
-    <video-card></video-card>
-    <video-card></video-card>
-    <video-card></video-card>
-    <video-card></video-card>
-    <video-card></video-card>
-    <video-card></video-card>
-    <video-card></video-card>
-    <video-card></video-card>
-    <video-card></video-card>
   </div>
 
 
@@ -32,16 +23,15 @@
       }
       rander() {
         this.innerHTML = `
-         <div class="w-full h-screen relative">
-            <div class="header flex justify-between w-full absolute top-0 left-0 p-3">
+            <div class="header flex justify-between w-full fixed top-0 left-0 p-3">
               <a href="./" class="ri-arrow-left-line text-xl"></a>
               <i class="ri-more-line text-xl"></i>
             </div>
-            <div class="body w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div class="body w-full fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
               <img src="https://picsum.photos/400/300?random=7" class="w-full">
         
             </div>
-            <footer class="w-full absolute bottom-0 left-0 bg-white py-2  text-lg">
+            <footer class="w-full fixed bottom-0 left-0 bg-white py-2  text-lg">
         
               <div class="w-full flex items-center justify-between px-3 gap-2">
                 <i class="ri-play-fill text-2xl text-gray-500"></i>
@@ -82,7 +72,6 @@
                 </li>
               </ul>
             </footer>
-          </div>
         `;
       }
     }
