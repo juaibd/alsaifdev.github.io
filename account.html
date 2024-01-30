@@ -34,10 +34,10 @@
 <body>
 
   <div class="app">
-    <header class="border-b pb-2 sticky top-0 left-0 bg-white">
+    <header class="border-b pb-2  bg-white">
       <div class="w-full relative">
         <img src="https://picsum.photos/400/200?random=2" alt="" class="w-full">
-        <img src="../images/profile.png" alt="../images/profile.png" class="w-32 h-32 rounded-full absolute -bottom-10 left-2" />
+        <img src="./images/profile.jpg" alt="../images/profile.png" class="w-32 h-32 rounded-full absolute -bottom-10 left-2" />
       </div>
       <div class="p-2">
         <button class="border rounded-full px-2 py-1 ml-full float-right">Edit profile</button>
@@ -68,7 +68,7 @@
       <div class="overlay w-full h-screen fixed top-0 left-0 bg-gray-100 opacity-90" onclick="toggleNav()"></div>
       <div class="body fixed top-0 left-0 w-80 h-full bg-white p-3">
         <div class="flex justify-between">
-          <img src="../images/profile.png" alt="..../images" class="w-10 h-10 rounded-full">
+          <img src="./images/profile.jpg" alt="..../images" class="w-10 h-10 rounded-full">
           <i class="ri-moon-clear-line text-lg" onclick="toggleTheme()" id="theme-icon"></i>
         </div>
         <p class="font-bold">Abdullah Al Saif</p>
@@ -78,7 +78,7 @@
         <ul class="grid gap-4 text-xl font-bold mt-4">
           <li class="hover:bg-gray-100 rounded-lg">
             <i class="ri-user-line"></i>
-            <span class="ml-2">Profile</span>
+            <a href='./account' class="ml-2">Profile</a>
           </li>
           <li class="hover:bg-gray-100 rounded-lg">
             <i class="ri-file-list-line"></i>
@@ -110,7 +110,7 @@
           <i class="ri-home-5-line"></i>
         </li>
         <li class="text-center">
-          <i class="ri-search-line"></i>
+          <a href='./search' class="ri-search-line"></a>
         </li>
         <li class="text-center">
           <i class="ri-notification-4-line"></i>
@@ -290,7 +290,7 @@ class PostCard extends HTMLElement {
     this.innerHTML = `
           <div class="post w-full p-2 border-b flex gap-2">
             <div class="left shrink-0">
-              <img src="../images/profile.png" class="w-12 h-12 rounded-full" />
+              <img src="./images/profile.jpg" class="w-12 h-12 rounded-full" />
             </div>
     
             <div class="right w-full">
@@ -399,7 +399,7 @@ function toggleTheme() {
 
 
 
-let header = document.querySelector('header');
+//let header = document.querySelector('header');
 let footer = document.querySelector('footer');
 
 
@@ -407,19 +407,19 @@ window.addEventListener('scroll', () => {
   let y = window.scrollY;
 
   if (y > 200) {
-    header.classList.add('opacity-70');
-    header.classList.add('text-gray-600');
+   // header.classList.add('opacity-70');
+    //header.classList.add('text-gray-600');
     footer.classList.add('opacity-70');
   } else {
-    header.classList.remove('opacity-70');
-    header.classList.remove('text-gray-600');
+   // header.classList.remove('opacity-70');
+    // header.classList.remove('text-gray-600');
     footer.classList.remove('opacity-70');
   }
 })
 
 
 
-let prevScrollpos = window.pageYOffset;
+/* let prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
   let currentScrollPos = window.pageYOffset;
   if (prevScrollpos > currentScrollPos) {
@@ -428,7 +428,7 @@ window.onscroll = function() {
     header.style.top = "-100%";
   }
   prevScrollpos = currentScrollPos;
-}
+} */
   </script>
 </body>
 
