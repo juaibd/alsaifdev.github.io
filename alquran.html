@@ -70,9 +70,9 @@
 
   <footer class="fixed bottom-0 left-0 w-full h-32 border-t bg-white rounded-lg">
     <div class="w-full p-4 flex gap-1.5">
-      <span class="text-sm">00.00</span>
-      <input type="range" value='0' class="w-full">
-      <span class="text-sm">00.00</span>
+      <span class="text-sm current-time">00.00</span>
+      <input type="range" value='0' class="w-full progress-bar">
+      <span class="text-sm max-duration">00.00</span>
     </div>
     <div class="contolars flex items-center justify-center gap-6">
       <i class="ri-repeat-2-line text-xl"></i>
@@ -90,7 +90,8 @@
     let lists = document.querySelector('.lists');
     let allist = document.querySelectorAll('.lists li');
 
-    let audio = document.querySelector('audio');
+    let mainAudio = document.querySelector('audio');
+    let progressBar = document.querySelector('.progress-bar');
     let surahs = [];
 
     function loadMusic() {
@@ -119,8 +120,38 @@
     
 
     function playMusic(e,src) {
-      audio.src = src;
-      audio.play()
+      mainAudio.src = src;
+      mainAudio.play()
+      controller()
+    }
+
+
+
+    function controller() {
+      mainAudio.addEventListener("timeupdate", (e) => {
+        const currentTime = e.target.currentTime; //getting playing song currentTime
+        const duration = e.target.duration; //getting playing song total duration
+       let progressValue = (currentTime / duration) * 100;
+         progressBar.value = `${progressValue}`;
+        let musicCurrentTime = document.querySelector(".current-time"),
+          musicDuartion = document.querySelector(".max-duration");
+        mainAudio.addEventListener("loadeddata", () => {
+           // update song total duration
+           let mainAdDuration = mainAudio.duration;
+           let totalMin = Math.floor(mainAdDuration / 60);
+           let totalSec = Math.floor(mainAdDuration % 60);
+           if (totalSec < 10) { //if sec is less than 10 then add 0 before it
+             totalSec = `0${totalSec}`;
+           }
+           musicDuartion.innerText = `${totalMin}:${totalSec}`;
+         });
+        let currentMin = Math.floor(currentTime / 60);
+        let currentSec = Math.floor(currentTime % 60);
+        if (currentSec < 10) { //if sec is less than 10 then add 0 before it
+          currentSec = `0${currentSec}`;
+        }
+        musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
+      });
     }
 
 
