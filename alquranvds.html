@@ -129,6 +129,35 @@
       navbar.classList.toggle('hidden');
       document.body.classList.toggle('overflow-hidden')
     }
+
+    let header = document.querySelector('header');
+   // let footer = document.querySelector('footer');
+
+
+    window.addEventListener('scroll', () => {
+      let y = window.scrollY;
+
+      if (y > 200) {
+        header.classList.add('opacity-70');
+        header.classList.add('text-gray-600');
+      } else {
+        header.classList.remove('opacity-70');
+        header.classList.remove('text-gray-600');
+      }
+    })
+
+
+
+    let prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+      let currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos) {
+        header.style.top = "0";
+      } else {
+        header.style.top = "-100%";
+      }
+      prevScrollpos = currentScrollPos;
+    }
   </script>
 </body>
 
