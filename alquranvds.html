@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Muslim Book || Al Quran</title>
+</head>
+
+<body>
+  <div class="app">
+
+    <header class="border-b pb-2 sticky top-0 left-0 bg-white">
+      <div class="w-full flex items-center justify-between p-2">
+        <div class="flex items-center gap-1.5">
+          <a href="./" class="ri-arrow-left-line text-xl"></a>
+          <img src="./images/profile.jpg" alt="../images/profile.png" class="w-8 h-8 rounded-full" onclick="toggleNav()" />
+        </div>
+        <h1 class="font-bold text-lg">Al Quran</h1>
+        <i class="ri-settings-3-line text-xl"></i>
+      </div>
+      <div class="tabs grid grid-cols-3">
+        <div class="text-center">
+          <a href="./alquran">Audio </a>
+        </div>
+        <div class="text-center">
+          <span class="p-1.5 border-b border-b-4 border-sky-500 rounded">Videos</span>
+        </div>
+        <div class="text-center">
+          <span>Lives</span>
+        </div>
+      </div>
+    </header>
+
+    <nav class="fixed top-0 left-0 w-full h-screen z-50 hidden">
+      <div class="overlay w-full h-screen fixed top-0 left-0 bg-gray-100 opacity-90" onclick="toggleNav()"></div>
+      <div class="body fixed top-0 left-0 w-80 h-full bg-white p-3">
+        <div class="flex justify-between">
+          <img src="./images/profile.jpg" alt="..../images" class="w-10 h-10 rounded-full">
+          <i class="ri-moon-clear-line text-lg" onclick="toggleTheme()" id="theme-icon"></i>
+        </div>
+        <p class="font-bold">Abdullah Al Saif</p>
+        <p>@alsaif2001</p>
+        <p class="py-2">13 Following 0 Followers</p>
+
+        <ul class="grid gap-4 text-xl font-bold mt-4">
+          <li class="hover:bg-gray-100 rounded-lg">
+            <i class="ri-user-line"></i>
+            <span class="ml-2">Profile</span>
+          </li>
+          <li class="hover:bg-gray-100 rounded-lg">
+            <i class="ri-file-list-line"></i>
+            <span class="ml-2">Lists</span>
+          </li>
+          <li class="hover:bg-gray-100 rounded-lg">
+            <i class="ri-bookmark-line"></i>
+            <span class="ml-2">Bookmarks</span>
+          </li>
+          <li class="hover:bg-gray-100 rounded-lg">
+            <i class="ri-settings-3-line"></i>
+            <span class="ml-2">Settings</span>
+          </li>
+          <li class="hover:bg-gray-100 rounded-lg">
+            <i class="ri-logout-box-r-line"></i>
+            <span class="ml-2">Log out</span>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="w-full video-div">
+      <iframe class="w-full h-60" id="iframe">
+      </iframe>
+    </div>
+
+
+    <div id="videos" class="w-full px-2 py-4 grid"></div>
+  </div>
+
+
+  <script>
+    let videos = document.getElementById('videos');
+    let iframe = document.getElementById('iframe');
+
+
+
+    function show(id) {
+      console.log(id)
+      let url = id.split('/')[4];
+      iframe.src = `https://www.youtube.com/embed/${url}?autoplay=1`;
+    }
+
+
+    function rander(data) {
+      data.map(video => {
+        videos.innerHTML += `
+          <div class="w-full mb-2 border p-0 rounded-md flex items-start gap-2" onclick="show('${video.snippet.thumbnails.medium.url}')">
+           <img src=${video.snippet.thumbnails.medium.url} alt="" class="w-40 h-24 rounded-md">
+           
+           <div class="w-full py-1">
+            <div>
+             <h1 class="text-lg font-bold">${video.snippet.title.slice(0,50)}</h1>
+             <p class="text-gray-400"><span class="font-semibold mr-3">Tilawatul Quran</span><span>10M views</span></p>
+            </div>
+           </div>
+         </div>
+      `;
+      })
+    }
+
+    function fetcher() {
+      fetch(`https://alsaifdev.github.io/quran.json`)
+        .then(ress => ress.json())
+        .then(data => {
+          rander(data)
+          show(data[0].snippet.thumbnails.medium.url)
+          // console.log(data)
+        })
+    }
+
+    fetcher()
+
+    let navbar = document.querySelector('nav');
+
+
+    function toggleNav() {
+      navbar.classList.toggle('hidden');
+      document.body.classList.toggle('overflow-hidden')
+    }
+  </script>
+</body>
+
+</html>
