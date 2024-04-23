@@ -11,17 +11,17 @@
 ```
 ## or copy script
 ```html
-  <script src="https://static.staticsave.com/toaster/toast.js"></script>
+<script src="https://static.staticsave.com/toaster/toast.js"></script>
 ```
 ## initialization 
 
 
 
 ```html
-  <script> 
+<script> 
     const toast = new Toast()
     toast.success("toast successfully created!");
-  </script>
+</script>
 ```
 
 ## Features
@@ -41,16 +41,7 @@
 - You can limit the number of toast displayed at the same time
 - And much more !
 
-## or copy code
 
-```html
-  <script src="https://static.staticsave.com/toaster/toast.js"></script>
-
-  <script> 
-    const toast = new Toast()
-    toast.success("toast successfully created!");
-  </script>
-```
 
 ## Some Methods
 
