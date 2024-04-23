@@ -1,10 +1,11 @@
-let icons = {
+  <script>
+    let icons = {
       success: `
        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"><path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" /></svg>`,
       info: `
-      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.147 15.085a7.159 7.159 0 0 1-6.189 3.307A6.713 6.713 0 0 1 3.1 15.444c-2.679-4.513.287-8.737.888-9.548A4.373 4.373 0 0 0 5 1.608c1.287.953 6.445 3.218 5.537 10.5 1.5-1.122 2.706-3.01 2.853-6.14 1.433 1.049 3.993 5.395 1.757 9.117Z" /></svg>`,
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-info"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><line x1="12" x2="12" y1="16" y2="12"/><line x1="12" x2="12.01" y1="8" y2="8"/></svg>`,
       warning: `
-      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"><path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM10 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1-4a1 1 0 0 1-2 0V6a1 1 0 0 1 2 0v5Z" /></svg>`,
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-triangle-alert"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>`,
       danger: `
       <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"><path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 11.793a1 1 0 1 1-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L8.586 10 6.293 7.707a1 1 0 0 1 1.414-1.414L10 8.586l2.293-2.293a1 1 0 0 1 1.414 1.414L11.414 10l2.293 2.293Z" /></svg>`,
       error: `
@@ -15,6 +16,24 @@ let icons = {
       `,
       close: `
       <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" /></svg>
+      `,
+      online: `
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wifi"><path d="M12 20h.01"/><path d="M2 8.82a15 15 0 0 1 20 0"/><path d="M5 12.859a10 10 0 0 1 14 0"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/></svg>
+      `,
+      offline: `
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wifi-off"><path d="M12 20h.01"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/><path d="M5 12.859a10 10 0 0 1 5.17-2.69"/><path d="M19 12.859a10 10 0 0 0-2.007-1.523"/><path d="M2 8.82a15 15 0 0 1 4.177-2.643"/><path d="M22 8.82a15 15 0 0 0-11.288-3.764"/><path d="m2 2 20 20"/></svg>
+      `,
+      link: `
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      `,
+      navigate: `
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-arrow-out-up-right"><path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6"/><path d="m21 3-9 9"/><path d="M15 3h6v6"/></svg>
+      `,
+      copy:`
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save-all"><path d="M6 4a2 2 0 0 1 2-2h10l4 4v10.2a2 2 0 0 1-2 1.8H8a2 2 0 0 1-2-2Z"/><path d="M10 2v4h6"/><path d="M18 18v-7h-8v7"/><path d="M18 22H4a2 2 0 0 1-2-2V6"/></svg>
+      `,
+      save:`
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
       `
     }
     let style = document.createElement('style');
@@ -144,12 +163,28 @@ let icons = {
     color: #10B981;
     background-color: #D1FAE5;
     }
+    .icon-style.online {
+    color: #10B981;
+    background-color: #D1FAE5;
+    }
+    .icon-style.link {
+    color: #10B981;
+    background-color: #D1FAE5;
+    }
+    .icon-style.copy {
+    color: #10B981;
+    background-color: #D1FAE5;
+    }
 
     .icon-style.error {
     color: #EF4444;
     background-color: #FEE2E2;
     }
     .icon-style.danger {
+    color: #EF4444;
+    background-color: #FEE2E2;
+    }
+    .icon-style.offline{
     color: #EF4444;
     background-color: #FEE2E2;
     }
@@ -182,11 +217,23 @@ let icons = {
     .progressBar.success {
     background-color: #10B981;
     }
+    .progressBar.online {
+    background-color: #10B981;
+    }
+    .progressBar.link {
+    background-color: #10B981;
+    }
+    .progressBar.copy {
+    background-color: #10B981;
+    }
 
     .progressBar.error {
     background-color: #EF4444;
     }
     .progressBar.danger {
+    background-color: #EF4444;
+    }
+    .progressBar.offline {
     background-color: #EF4444;
     }
 
@@ -237,6 +284,10 @@ let icons = {
               ${icons[type]}
             </div>
             <div class="title">${title}</div>
+            ${callback === null && type === 'copy' ? `<button type="button" class="close-btn" onclick="navigator.clipboard.writeText('${title}')">${icons["save"]}</button>`:""}
+            
+            ${callback === null && type === 'link' ? `<a class="close-btn ${type}" href="${title}">${icons["navigate"]}</a>`:""}
+            
             ${callback === null ? (option.closeBtn === undefined || option.closeBtn ? `<button type="button" class="close-btn" onclick="(this.parentElement).remove()">${icons["close"]}</button>`:""): ''}
              ${callback === null ? (option.progress === undefined || option.progress ? `<span class="progressBar ${type}"></span>` : "") : ""}
           </div>
@@ -272,8 +323,25 @@ let icons = {
         let type = 'danger';
         this.createToast(type, title);
       }
+      online(title = 'Loading', option = {}) {
+        let type = 'online';
+        this.createToast(type, title);
+      }
+      offline(title = 'Loading', option = {}) {
+        let type = 'offline';
+        this.createToast(type, title);
+      }
+      link(title = 'Loading', option = {}) {
+        let type = 'link';
+        this.createToast(type, title);
+      }
+      copy(title = 'Loading', option = {}) {
+        let type = 'copy';
+        this.createToast(type, title);
+      }
 
       loading(title = 'Loading', callback = null) {
         this.createToast('loading', title, callback);
       }
     }
+  </script>
