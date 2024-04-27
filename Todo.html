@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <div x-data="data()">
+    <div class="bg-gray-100 h-screen">
+      <header class="flex items-center justify-between p-2">
+        <i data-lucide="align-left"></i>
+        <div>
+          <input type="text" class="w-full h-10 border-2 outline-0 px-3 rounded-lg bg-gray-100">
+        </div>
+        <img alt="user 1" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1480&amp;q=80" class="relative inline-block h-10 w-10 !rounded-lg  border-2 border-white object-cover object-center hover:z-10 focus:z-10" />
+      </header>
+      <div class="flex items-center justify-between p-2">
+        <h1 class="text-lg font-bold"> Categories</h1>
+        <button @click="()=> isCtOpen = true" class="flex items-center gap-2 bg-gray-900 text-gray-200 p-2 rounded-md text-sm">Add Category <i data-lucide="plus" class="w-4 h-4"></i></button>
+      </div>
+
+      <div class="categories overflow-x-auto p-3 flex items-center gap-4 *:text-md *:font-semibold *:px-2 *:py-1 *:rounded-md">
+        <button class="bg-gray-900 text-white"> Personal</button>
+
+        <template x-for="label in labels">
+          <button @dblclick="()=> removeLabel(label.id)" class="border flex items-center justify-center gap-1.5">
+            <span x-text=label.text></span>
+            <svg width='12' height='12' viewBox='0 0 8 8' fill='none' xmlns='http://www.w3.org/2000/svg'>
+              <path d='M1.52539 6.47487L6.47514 1.52512M6.47514 6.47487L1.52539 1.52512' stroke='#6B7280' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'></path>
+            </svg>
+          </button>
+        </template>
+      </div>
+
+
+      <h1 class="text-lg font-bold px-2">You have <span x-text="todoLength"></span> tasks for today</h1>
+      <div class="p-2 grid md:grid-cols-2 space-y-3" x-show="page === 'all'">
+        <template x-for="todo in todos">
+          <div class="w-full py-2 px-1 bg-white border rounded-md flex items-center relative">
+            <label class="relative flex items-center p-3 rounded-full cursor-pointer" :for="todo.id" data-ripple-dark="true">
+              <input :id="todo.id" type="checkbox" class="before:content[''] peer relative h-6 w-6 cursor-pointer appearance-none rounded-full border border-2 border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10" :checked="todo.complete" @change="()=> toggleComplete(todo.id)" />
+              <span class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </span>
+            </label>
+            <label class="mt-px font-light text-gray-700 cursor-pointer select-none" :class="todo.complete ? 'line-through' : 'no-underline'" :for="todo.id" x-text="todo.text">
+            </label>
+            <span class="ms-auto font-normal text-sm flex gap-2 mr-2">
+              <svg :class="todo.favorite ? 'fill-red-500 text-red-500':''" @click="()=> toggleFavorite(todo.id)" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart">
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+              </svg>
+
+
+              <svg @click="()=> deletedTodos(todo)" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2">
+                <path d="M3 6h18" />
+                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                <line x1="10" x2="10" y1="11" y2="17" />
+                <line x1="14" x2="14" y1="11" y2="17" />
+              </svg>
+
+              <span class="absolute -top-2 left-3 bg-gray-900 text-gray-100 text-[10px] rounded-md px-1" x-text="new Date(todo.time).toLocaleTimeString()"></span>
+            </span>
+          </div>
+        </template>
+      </div>
+
+      <div class="p-2 space-y-3" x-show="page === 'complete'">
+        <template x-for="todo in todos">
+          <div x-show="todo.complete" class="w-full py-2 px-1 bg-white border rounded-md flex items-center relative">
+            <label class="relative flex items-center p-3 rounded-full cursor-pointer" :for="todo.id" data-ripple-dark="true">
+              <input :id="todo.id" type="checkbox" class="before:content[''] peer relative h-6 w-6 cursor-pointer appearance-none rounded-full border border-2 border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10" :checked="todo.complete" @change="()=> toggleComplete(todo.id)" />
+              <span class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </span>
+            </label>
+            <label class="mt-px font-light text-gray-700 cursor-pointer select-none" :class="todo.complete ? 'line-through' : 'no-underline'" :for="todo.id" x-text="todo.text">
+            </label>
+            <span class="ms-auto font-normal text-sm flex gap-2 mr-2">
+              <svg :class="todo.favorite ? 'fill-red-500 text-red-500':''" @click="()=> toggleFavorite(todo.id)" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart">
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+              </svg>
+              <span class="absolute -top-2 left-3 bg-gray-900 text-gray-100 text-[10px] rounded-md px-1" x-text="new Date(todo.time).toLocaleTimeString()"></span>
+            </span>
+          </div>
+        </template>
+      </div>
+
+      <div class="p-2 space-y-3" x-show="page === 'favorite'">
+        <template x-for="todo in todos">
+          <div x-show="todo.favorite" class="w-full py-2 px-1 bg-white border rounded-md flex items-center relative">
+            <label class="relative flex items-center p-3 rounded-full cursor-pointer" :for="todo.id" data-ripple-dark="true">
+              <input :id="todo.id" type="checkbox" class="before:content[''] peer relative h-6 w-6 cursor-pointer appearance-none rounded-full border border-2 border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10" :checked="todo.complete" @change="()=> toggleComplete(todo.id)" />
+              <span class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </span>
+            </label>
+            <label class="mt-px font-light text-gray-700 cursor-pointer select-none" :class="todo.complete ? 'line-through' : 'no-underline'" :for="todo.id" x-text="todo.text">
+            </label>
+            <span class="ms-auto font-normal text-sm flex gap-2 mr-2">
+              <svg :class="todo.favorite ? 'fill-red-500 text-red-500':''" @click="()=> toggleFavorite(todo.id)" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart">
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+              </svg>
+              <span class="absolute -top-2 left-3 bg-gray-900 text-gray-100 text-[10px] rounded-md px-1" x-text="new Date(todo.time).toLocaleTimeString()"></span>
+            </span>
+          </div>
+        </template>
+      </div>
+
+      <div class="p-2 space-y-3" x-show="page === 'trashs'">
+        <template x-for="todo in trashs">
+          <div class="w-full py-2 px-1 bg-white border rounded-md flex items-center relative">
+            <label class="mt-2 px-2 font-light text-gray-700 cursor-pointer select-none" :for="todo.id" x-text="todo.text">
+            </label>
+            <span class="ms-auto font-normal text-sm flex gap-2 mr-2">
+              <svg @click="()=> backTodo(todo)" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-output">
+                <path d="M2 7.5V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-1.5" />
+                <path d="M2 13h10" />
+                <path d="m5 10-3 3 3 3" />
+              </svg>
+              <span class="absolute -top-2 left-3 bg-gray-900 text-gray-100 text-[10px] rounded-md px-1" x-text="new Date(todo.time).toLocaleTimeString()"></span>
+            </span>
+          </div>
+        </template>
+      </div>
+    </div>
+
+
+
+    <div class="pointer-events-all fixed inset-0 z-[999] grid h-screen w-screen place-items-center bg-black bg-opacity-60 opacity-1 backdrop-blur-sm transition-opacity duration-300" :class="isOpen ? 'pointer-events-all opacity-1' : 'pointer-events-none opacity-0'">
+      <div class="relative mx-auto flex w-full max-w-[24rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+        <div class="flex flex-col gap-4 p-6">
+          <p class="block mb-3 font-sans text-base antialiased font-normal leading-relaxed text-gray-700">
+            Add a new todo today
+          </p>
+          <h6 class="block -mb-2 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-inherit">
+            Todo text
+          </h6>
+          <div class="relative h-11 w-full min-w-[200px]">
+            <input class="w-full h-full px-3 py-3 font-sans text-sm font-normal transition-all bg-transparent border rounded-md peer border-blue-gray-200 border-t-transparent text-blue-gray-700 outline outline-0 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50" placeholder=" " x-model="todoText" />
+            <label class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+              Todo Text
+            </label>
+          </div>
+          <h6 class="block -mb-2 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-inherit">
+            Add Category
+          </h6>
+          <div class="relative h-10 w-full">
+            <select x-model="label" class="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 empty:!bg-gray-900 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border">
+              <template x-for="label in labels">
+                <option value="label.text" x-text="label.text">Brazil</option>
+              </template>
+            </select>
+            <label class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+             <span :class="!labels.length && 'text-red-500'" x-text="labels.length ? 'Select a category' : 'Please add category first'"></span>
+            </label>
+          </div>
+
+          <h6 class="block -mb-2 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-inherit">
+            Time
+          </h6>
+          <div class="relative h-11 w-full min-w-[200px]">
+            <input type="datetime-local" class="w-full h-full px-3 py-3 font-sans text-sm font-normal transition-all bg-transparent border rounded-md peer border-blue-gray-200 border-t-transparent text-blue-gray-700 outline outline-0 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50" placeholder=" " x-model="todoTime" />
+            <label class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+              Time
+            </label>
+          </div>
+          <div class="-ml-2.5 -mt-3">
+            <div class="inline-flex items-center">
+              <label class="relative flex items-center p-3 rounded-full cursor-pointer" htmlFor="remember">
+                <input type="checkbox" class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10" id="remember" x-model="favorite" />
+                <span class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </span>
+              </label>
+              <label class="mt-px font-light text-gray-700 cursor-pointer select-none" htmlFor="remember">
+                Add to favorite list
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="p-6 pt-0 flex gap-3">
+          <button class="block w-full select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button" @click="()=> isOpen = false">
+            cancel
+          </button>
+          <button class="block w-full select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button" @click="()=> addTodo()">
+            Add todo
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="pointer-events-all fixed inset-0 z-[999] grid h-screen w-screen place-items-center bg-black bg-opacity-60 opacity-1 backdrop-blur-sm transition-opacity duration-300" :class="isCtOpen ? 'pointer-events-all opacity-1' : 'pointer-events-none opacity-0'">
+      <div class="relative mx-auto flex w-full max-w-[24rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+        <div class="flex flex-col gap-4 p-6">
+          <p class="block mb-3 font-sans text-base antialiased font-normal leading-relaxed text-gray-700">
+            Add a new category
+          </p>
+          <h6 class="block -mb-2 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-inherit">
+            Category
+          </h6>
+          <div class="relative h-11 w-full min-w-[200px]">
+            <input class="w-full h-full px-3 py-3 font-sans text-sm font-normal transition-all bg-transparent border rounded-md peer border-blue-gray-200 border-t-transparent text-blue-gray-700 outline outline-0 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50" placeholder=" " x-model="categoryText" />
+            <label class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+              category
+            </label>
+          </div>
+
+          <div class="w-full pt-0 flex gap-3">
+            <button class="block w-full select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button" @click="()=> isCtOpen = false">
+              cancel
+            </button>
+            <button class="block w-full select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button" @click="()=> addLabel()">
+              Add category
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="fixed bottom-0 left-0 w-full h-14 bg-white flex justify-around items-center rounded-t-xl">
+      <button @click="()=> page = 'all'">
+        <i data-lucide="list-checks"></i>
+      </button>
+      <button @click="()=> page = 'trashs'">
+        <i data-lucide="trash-2"></i>
+      </button>
+      <button @click="()=> isOpen = true">
+        <i data-lucide="circle-plus"></i>
+      </button>
+      <button @click="()=> page = 'favorite'">
+        <i data-lucide="heart"></i>
+      </button>
+      <button @click="()=> page = 'complete'">
+        <i data-lucide="circle-check-big"></i>
+      </button>
+    </div>
+  </div>
+
+  <script src="https://static.staticsave.com/toaster/toast.js"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+  <script>
+    const toast = new Toast()
+
+    function data() {
+      return {
+        page: 'all',
+        isOpen: false,
+        isCtOpen: false,
+        todoText: '',
+        todoTime: '',
+        inputText: '',
+        categoryText: '',
+        favorite: false,
+        label: '',
+        labels: JSON.parse(localStorage.getItem('labels')) || [],
+        trashs: JSON.parse(localStorage.getItem('trashs')) || [],
+        todos: JSON.parse(localStorage.getItem('todos')) || [],
+        get todoLength() {
+          return this.todos.filter(todo => !todo.complete).length
+        },
+        saveTodo() {
+          localStorage.setItem('todos', JSON.stringify(this.todos))
+        },
+        addLabel(e) {
+          this.labels.push({
+            id: crypto.randomUUID(),
+            text: this.categoryText
+          })
+          this.categoryText = ''
+          localStorage.setItem('labels', JSON.stringify(this.labels))
+          this.isCtOpen = false;
+        },
+        removeLabel(id) {
+          this.labels = this.labels.filter(label => label.id !== id);
+          localStorage.setItem('labels', JSON.stringify(this.labels))
+        },
+        addTodo() {
+          this.todos.push({
+            id: crypto.randomUUID(),
+            text: this.todoText,
+            time: this.todoTime,
+            favorite: this.favorite,
+            complete: false
+          })
+          this.saveTodo();
+          toast.success('todo add successfully!')
+          console.log(this.todos)
+        },
+        toggleComplete(id) {
+          this.todos = this.todos.map(todo => {
+            if (todo.id === id) {
+              return {
+                ...todo,
+                complete: !todo.complete
+              }
+            }
+            return todo
+          })
+          this.saveTodo()
+          toast.success('todo updated successfully!')
+        },
+        toggleFavorite(id) {
+          this.todos = this.todos.map(todo => {
+            if (todo.id === id) {
+              return {
+                ...todo,
+                favorite: !todo.favorite
+              }
+            }
+            return todo
+          })
+          this.saveTodo()
+          toast.success('todo added to favorite successfully!')
+        },
+        deletedTodos(todo) {
+          this.trashs.push({
+            ...todo
+          })
+
+          this.todos = this.todos.filter(t => t.id !== todo.id)
+          this.saveTodo();
+          localStorage.setItem('trashs', JSON.stringify(this.trashs))
+          toast.danger('todo deleted successfully!')
+        },
+        backTodo(todo) {
+          this.todos.push({
+            ...todo
+          })
+
+          this.trashs = this.trashs.filter(t => t.id !== todo.id)
+          this.saveTodo();
+          localStorage.setItem('trashs', JSON.stringify(this.trashs))
+          toast.success('todo back from trash successfully!')
+        }
+
+      }
+    }
+  </script>
+
+
+</body>
+
+</html>
