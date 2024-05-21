@@ -23,24 +23,24 @@
 
 <body>
   <div x-data="data()">
-    <div class="px-2 flex items-center justify-between gap-2">
+   <!-- <div class="px-2 flex items-center justify-between gap-2">
       <img src="https://atr.tv/wp-content/uploads/2020/09/cropped-ATR-Tv-Logo-Final-Converted-1-1.png" class="w-28">
       <div class="flex items-center gap-2">
         <input type="text" class="border outline-0 rounded-lg h-10">
         <button class="h-10 w-10 border rounded-lg">=</button>
       </div>
-    </div>
+    </div>-->
     <div class="px-2 mt-3">
       <marquee behavior="" direction="" class="border rounded-sm py-2">
         <span class="text-lg text-blue-700">ইসলামী জিন্দেগী গঠনে আমীরুল মুছলিহীন হযরত নেছারাবাদী হুজুর দা.বা. এর আলোচনা ও ফোনালাপ অনুষ্ঠান ছওতুল মুছলিহীন দেখুন প্রতি ইংরেজি মাসের শেষ শুক্রবার রাত ১০ টায়</span>
       </marquee>
     </div>
-    <header :class="height > 200 ? 'w-full fixed top-0 left-0 pb-2': 'w-full p-2'">
+    <header class="w-full p-2">
 
       <div x-show="!items" class="h-56 mb-2 bg-gray-300 rounded animate-pulse">
       </div>
 
-      <iframe x-show="items" :class="height > 200 ? 'w-full h-56': 'w-full h-56 rounded'" :src="'https://www.youtube.com/embed/'+videoId" title="" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+      <iframe x-show="items" class="w-full h-56 rounded" :src="'https://www.youtube.com/embed/'+videoId" title="" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
     </header>
     <div x-show="items" class="grid grid-cols-2 p-2 gap-2" @scroll.window="height = window.pageYOffset">
       <template x-for="item in items">
